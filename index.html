@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aarav Jit - Developer Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Hero Section with Resume PDF -->
+    <section id="hero" class="fade-in">
+        <div class="hero-content">
+            <h1 class="slide-up">Aarav Jit</h1>
+            <p class="subtitle slide-up-delay">Computer Science Student | Software Developer | Problem Solver</p>
+            <div class="contact-info slide-up-delay-2">
+                <a href="tel:9165196612">📞 916-519-6612</a>
+                <span class="address-center">📍 Sacramento, CA</span>
+                <a href="mailto:aaravjit16@gmail.com">✉️ aaravjit16@gmail.com</a>
+            </div>
+        </div>
+        
+        <!-- Resume PDF Viewer -->
+        <div class="resume-container fade-in-delay">
+            <div class="resume-header" onclick="toggleResume()">
+                <h2>📄 Resume <span class="dropdown-arrow">▼</span></h2>
+                <a href="Aarav-Jit Resume.pdf" download class="download-btn" onclick="event.stopPropagation()">Download PDF</a>
+            </div>
+            <div class="pdf-viewer" id="resumeViewer">
+                <iframe src="Aarav-Jit Resume.pdf" type="application/pdf" width="100%" height="600px"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="scroll-fade">
+        <div class="section-content">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-container">
+                <p class="about-paragraph">
+                    I'm a dedicated Computer Science student at California State University, Sacramento, actively building my expertise in software development, algorithms, and system design. Proficient in multiple programming languages including Java, Python, C++, and JavaScript, I combine strong technical skills with practical problem-solving abilities gained through real-world experience. My work in digital operations has sharpened my ability to analyze data, optimize processes, and deliver results—skills that translate directly to software development. I'm passionate about writing clean, efficient code, solving complex problems, and contributing to innovative projects. Currently seeking software engineering internships and entry-level positions where I can apply my technical knowledge, learn from experienced developers, and grow as a professional in the tech industry.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="scroll-fade">
+        <div class="section-content">
+            <h2 class="section-title">Professional Experience</h2>
+            
+            <div class="experience-timeline">
+                <div class="timeline-item slide-in-left">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="exp-badge">Current</div>
+                        <h3>Digital Personal Shopper</h3>
+                        <h4>Walmart · Sacramento, CA</h4>
+                        <span class="exp-date">Jul 2024 - Present</span>
+                        <p class="exp-intro">This role has strengthened my analytical thinking, attention to detail, and ability to work with digital systems—core skills essential for software development. I leverage data analysis and process optimization techniques that directly translate to debugging code, optimizing algorithms, and improving system efficiency.</p>
+                        <div class="exp-highlights">
+                            <div class="highlight-item">
+                                <span class="highlight-icon">💻</span>
+                                <span>Utilize digital platforms and systems daily, developing strong technical proficiency with software tools and interfaces</span>
+                            </div>
+                            <div class="highlight-item">
+                                <span class="highlight-icon">📊</span>
+                                <span>Analyze data patterns and trends to optimize workflows—applying analytical thinking similar to algorithm optimization</span>
+                            </div>
+                            <div class="highlight-item">
+                                <span class="highlight-icon">🔍</span>
+                                <span>Maintain exceptional accuracy and precision—skills critical for writing bug-free code and thorough testing</span>
+                            </div>
+                            <div class="highlight-item">
+                                <span class="highlight-icon">🤝</span>
+                                <span>Collaborate effectively in team environments, communicating technical concepts and working toward shared goals</span>
+                            </div>
+                            <div class="highlight-item">
+                                <span class="highlight-icon">⚡</span>
+                                <span>Identify and solve problems proactively, demonstrating the systematic thinking required for software development</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item slide-in-right">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Seasonal Fulfillment Expert</h3>
+                        <h4>Target Corporation · Roseville, CA</h4>
+                        <span class="exp-date">Nov 2023 - Dec 2023</span>
+                        <p class="exp-description">This fast-paced seasonal role developed my ability to work efficiently under pressure, adapt quickly to changing requirements, and maintain high quality standards—all essential skills for software development. The experience reinforced my capacity to handle tight deadlines and dynamic work environments, similar to sprint cycles in agile development.</p>
+                        <div class="exp-highlights">
+                            <div class="highlight-item">
+                                <span class="highlight-icon">⚡</span>
+                                <span>Excelled in high-pressure environment, demonstrating ability to perform under tight deadlines</span>
+                            </div>
+                            <div class="highlight-item">
+                                <span class="highlight-icon">🔄</span>
+                                <span>Quickly adapted to changing processes and requirements, showing flexibility crucial for software development</span>
+                            </div>
+                            <div class="highlight-item">
+                                <span class="highlight-icon">✅</span>
+                                <span>Maintained quality standards while working efficiently, reflecting attention to detail needed in code review</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="scroll-fade">
+        <div class="section-content">
+            <h2 class="section-title">Education</h2>
+            
+            <div class="education-grid">
+                <div class="education-card scale-in">
+                    <div class="edu-icon">🎓</div>
+                    <h3>Bachelor in Computer Science</h3>
+                    <h4>California State University, Sacramento</h4>
+                    <p class="edu-location">Sacramento, CA</p>
+                    <span class="edu-date">Aug 2024 - Present</span>
+                    <p class="edu-description">Currently pursuing a Bachelor's in Computer Science with a focus on software engineering fundamentals. Coursework includes Data Structures & Algorithms, Object-Oriented Programming (Java), Systems Programming (C++), Web Development (HTML/CSS/JavaScript), and Database Systems. Actively building projects to apply theoretical knowledge and develop practical software development skills. Seeking internships and opportunities to gain real-world experience in software engineering.</p>
+                    <div class="edu-achievements">
+                        <span class="achievement-badge">Data Structures</span>
+                        <span class="achievement-badge">Algorithms</span>
+                        <span class="achievement-badge">OOP</span>
+                        <span class="achievement-badge">Web Dev</span>
+                    </div>
+                    <div class="edu-status">In Progress</div>
+                </div>
+
+                <div class="education-card scale-in-delay">
+                    <div class="edu-icon">🏆</div>
+                    <h3>High School Diploma</h3>
+                    <h4>Foothill High School</h4>
+                    <p class="edu-location">Sacramento, CA</p>
+                    <span class="edu-date">Aug 2020 - Jun 2024</span>
+                    <p class="edu-description">My high school journey was where I first discovered my passion for technology and learned the importance of perseverance. Balancing academics, personal interests, and growth taught me valuable lessons about discipline and dedication that I carry with me every day.</p>
+                    <div class="edu-achievements">
+                        <span class="achievement-badge">3.2 GPA</span>
+                        <span class="achievement-badge">A-G Requirements</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="scroll-fade">
+        <div class="section-content">
+            <h2 class="section-title">Technical Skills</h2>
+            <p class="skills-intro">Proficient in multiple programming languages and technologies, with hands-on experience building projects and solving problems. Continuously expanding my skill set through coursework, personal projects, and self-directed learning.</p>
+            <div class="skills-container">
+                <div class="skill-group fade-in-stagger">
+                    <div class="skill-header">
+                        <span class="skill-icon">💻</span>
+                        <h3>Programming Languages</h3>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item">Java <span class="skill-level">Proficient</span></div>
+                        <div class="skill-item">Python <span class="skill-level">Proficient</span></div>
+                        <div class="skill-item">C++ <span class="skill-level">Proficient</span></div>
+                        <div class="skill-item">JavaScript <span class="skill-level">Proficient</span></div>
+                        <div class="skill-item">HTML/CSS <span class="skill-level">Proficient</span></div>
+                    </div>
+                </div>
+
+                <div class="skill-group fade-in-stagger">
+                    <div class="skill-header">
+                        <span class="skill-icon">🛠️</span>
+                        <h3>Technologies & Tools</h3>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item">Linux/Unix</div>
+                        <div class="skill-item">Git Version Control</div>
+                        <div class="skill-item">Command Line</div>
+                        <div class="skill-item">Microsoft 365</div>
+                        <div class="skill-item">VS Code / IDEs</div>
+                    </div>
+                </div>
+
+                <div class="skill-group fade-in-stagger">
+                    <div class="skill-header">
+                        <span class="skill-icon">📚</span>
+                        <h3>CS Fundamentals</h3>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item">Data Structures</div>
+                        <div class="skill-item">Algorithms</div>
+                        <div class="skill-item">Object-Oriented Programming</div>
+                        <div class="skill-item">Software Engineering</div>
+                        <div class="skill-item">Problem Solving</div>
+                        <div class="skill-item">System Design Basics</div>
+                    </div>
+                </div>
+
+                <div class="skill-group fade-in-stagger">
+                    <div class="skill-header">
+                        <span class="skill-icon">⭐</span>
+                        <h3>Soft Skills</h3>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item">Analytical Thinking</div>
+                        <div class="skill-item">Problem Solving</div>
+                        <div class="skill-item">Team Collaboration</div>
+                        <div class="skill-item">Attention to Detail</div>
+                        <div class="skill-item">Time Management</div>
+                        <div class="skill-item">Continuous Learning</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="scroll-fade">
+        <div class="section-content">
+            <h2 class="section-title">Projects & Coursework</h2>
+            <p class="projects-intro">Building practical applications and solving problems through hands-on projects. Continuously working on new projects to expand my skills and portfolio.</p>
+            
+            <div class="projects-grid">
+                <div class="project-card scale-in">
+                    <div class="project-icon">🌐</div>
+                    <h3>Personal Portfolio Website</h3>
+                    <p class="project-tech">HTML, CSS, JavaScript</p>
+                    <p class="project-description">Developed a responsive, interactive portfolio website showcasing my skills and experience. Implemented smooth animations, mobile-responsive design, and modern UI/UX principles. Demonstrates proficiency in front-end web development and attention to design details.</p>
+                    <div class="project-tags">
+                        <span class="tag">Frontend</span>
+                        <span class="tag">Responsive Design</span>
+                        <span class="tag">JavaScript</span>
+                    </div>
+                </div>
+
+                <div class="project-card scale-in-delay">
+                    <div class="project-icon">💻</div>
+                    <h3>CS Coursework Projects</h3>
+                    <p class="project-tech">Java, C++, Python</p>
+                    <p class="project-description">Completed various programming assignments and projects covering data structures, algorithms, object-oriented programming, and system design. Projects include implementing data structures (linked lists, trees, graphs), algorithm optimization, and building modular software solutions.</p>
+                    <div class="project-tags">
+                        <span class="tag">Data Structures</span>
+                        <span class="tag">Algorithms</span>
+                        <span class="tag">OOP</span>
+                    </div>
+                </div>
+
+                <div class="project-card scale-in-delay-2">
+                    <div class="project-icon">🚀</div>
+                    <h3>Ongoing Learning Projects</h3>
+                    <p class="project-tech">Multiple Technologies</p>
+                    <p class="project-description">Continuously working on personal projects to expand technical skills. Actively learning new frameworks, practicing algorithm problems, and building applications to solve real-world problems. Committed to continuous improvement and staying current with industry best practices.</p>
+                    <div class="project-tags">
+                        <span class="tag">Learning</span>
+                        <span class="tag">Practice</span>
+                        <span class="tag">Growth</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hobbies Section -->
+    <section id="hobbies" class="scroll-fade">
+        <div class="section-content">
+            <h2 class="section-title">Interests & Hobbies</h2>
+            <p class="hobbies-subtitle">Personal interests that complement my technical skills, fostering problem-solving abilities, engineering mindset, and attention to detail</p>
+            
+            <div class="hobbies-grid">
+                <div class="hobby-card scale-in">
+                    <div class="hobby-icon">🚗</div>
+                    <h3>Automotive Enthusiast</h3>
+                    <p>My interest in automotive engineering reflects my passion for understanding complex systems, problem-solving, and technological innovation. Analyzing how components work together, optimizing performance, and staying current with EV technology and autonomous systems develops my systems thinking—skills directly applicable to software architecture and system design. This hobby strengthens my analytical mindset and attention to technical details.</p>
+                    <div class="hobby-tags">
+                        <span class="tag">Performance</span>
+                        <span class="tag">Engineering</span>
+                        <span class="tag">Technology</span>
+                    </div>
+                </div>
+
+                <div class="hobby-card scale-in-delay">
+                    <div class="hobby-icon">🏍️</div>
+                    <h3>Motorcycle Enthusiast</h3>
+                    <p>My fascination with motorcycle mechanics and design reflects my appreciation for elegant, efficient solutions and precision engineering. Understanding how mechanical systems integrate and function develops my systems thinking and problem-solving approach. This interest reinforces the importance of clean design, efficiency, and understanding how components interact—principles that translate directly to writing clean, efficient code and designing well-structured software.</p>
+                    <div class="hobby-tags">
+                        <span class="tag">Design</span>
+                        <span class="tag">Mechanics</span>
+                        <span class="tag">Adventure</span>
+                    </div>
+                </div>
+
+                <div class="hobby-card scale-in-delay-2">
+                    <div class="hobby-icon">💪</div>
+                    <h3>Fitness & Wellness</h3>
+                    <p>Regular fitness training develops discipline, consistency, and mental resilience—qualities essential for software development. The systematic approach to progress, breaking down complex goals into manageable steps, and maintaining focus through challenges directly parallels debugging complex code, learning new technologies, and persisting through difficult programming problems. This practice strengthens my work ethic and determination.</p>
+                    <div class="hobby-tags">
+                        <span class="tag">Strength Training</span>
+                        <span class="tag">Discipline</span>
+                        <span class="tag">Wellness</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="scroll-fade">
+        <div class="section-content">
+            <h2 class="section-title">Let's Connect</h2>
+            <p class="contact-subtitle">Seeking software engineering internships, entry-level positions, and opportunities to contribute to innovative projects. Open to connecting with recruiters, hiring managers, and fellow developers. Let's discuss how I can bring my technical skills, problem-solving abilities, and passion for software development to your team.</p>
+            <div class="contact-grid">
+                <a href="mailto:aaravjit16@gmail.com" class="contact-card hover-lift">
+                    <div class="contact-icon">✉️</div>
+                    <h3>Email</h3>
+                    <p>aaravjit16@gmail.com</p>
+                </a>
+                <a href="tel:9165196612" class="contact-card hover-lift">
+                    <div class="contact-icon">📞</div>
+                    <h3>Phone</h3>
+                    <p>916-519-6612</p>
+                </a>
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <h3>Location</h3>
+                    <p>Sacramento, CA</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
