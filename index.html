@@ -3,255 +3,146 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aarav Jit — Portfolio</title>
-  <meta name="description" content="Aarav Jit portfolio — projects, skills, and contact." />
-  <meta name="theme-color" content="#070a14" />
+  <title>Aarav Jit — Software Engineer</title>
+
+  <meta name="description" content="Aarav Jit — Software Engineer building clean, scalable web applications and automation tools." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./style.css" />
 </head>
 
 <body>
-  <!-- Liquid background -->
+  <!-- Background -->
   <div class="bg" aria-hidden="true">
     <div class="blob b1"></div>
     <div class="blob b2"></div>
     <div class="blob b3"></div>
-    <div class="grain"></div>
   </div>
 
+  <!-- NAV -->
   <header class="top">
     <div class="container nav glass">
-      <a class="brand" href="#top">
-        <span class="dot"></span>
-        <span class="brand-text">Aarav Jit</span>
-      </a>
+      <span class="brand">Aarav Jit</span>
 
       <nav class="links">
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
+        <a href="https://github.com/aaravjit" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/aarav-jit-499a93293/" target="_blank">LinkedIn</a>
+        <a href="./resume.pdf" target="_blank">Resume</a>
       </nav>
 
-      <div class="nav-actions">
-        <button class="iconbtn" id="themeBtn" title="Toggle theme" aria-label="Toggle theme">☾</button>
-        <a class="btn primary" href="./resume.pdf" target="_blank" rel="noreferrer">Resume</a>
-        <button class="iconbtn burger" id="menuBtn" aria-label="Open menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
-
-    <div class="container mobile glass" id="mobileMenu" hidden>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-      <a class="btn primary full" href="./resume.pdf" target="_blank" rel="noreferrer">Open Resume</a>
+      <button id="themeToggle" class="theme-btn" aria-label="Toggle theme">🌙</button>
     </div>
   </header>
 
-  <main id="top" class="container">
+  <main class="container">
     <!-- HERO -->
     <section class="hero">
-      <div class="hero-left">
-        <div class="chip glass">
-          <span class="pulse"></span>
-          <span>CS Student • Building modern apps</span>
-        </div>
+      <h1>
+        Software Engineer building clean, scalable products that solve real problems.
+      </h1>
 
-        <h1>
-          Clean UI. Real utility.
-          <span class="grad">Liquid Glass</span> style.
-        </h1>
+      <p class="subtitle">
+        Computer Science student focused on modern web applications, automation,
+        and AI-powered tools. Strong fundamentals, fast learner, production-minded.
+      </p>
 
-        <p class="muted">
-          Frosted panels, soft highlights, subtle motion—without being tacky.
-          Simple, fast, and mobile-friendly.
-        </p>
+      <p class="tagline">
+        I design, build, and ship — from idea to deployment.
+      </p>
 
-        <div class="cta">
-          <a class="btn primary" href="#projects">View Projects</a>
-          <a class="btn ghost" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
-          <button class="btn ghost" id="copyEmail">Copy Email</button>
-        </div>
-
-        <div class="stats">
-          <div class="stat glass">
-            <div class="num" data-counter="12">0</div>
-            <div class="label">Projects / experiments</div>
-          </div>
-          <div class="stat glass">
-            <div class="num" data-counter="3">0</div>
-            <div class="label">Core stacks</div>
-          </div>
-          <div class="stat glass">
-            <div class="num" data-counter="2025">0</div>
-            <div class="label">Building</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="hero-right">
-        <div class="profile glass">
-          <div class="row">
-            <div class="avatar">AJ</div>
-            <div>
-              <div class="name">Aarav Jit</div>
-              <div class="muted small">Software • Web • Automation</div>
-            </div>
-          </div>
-
-          <div class="pills">
-            <span class="pill glass">Frontend</span>
-            <span class="pill glass">Backend</span>
-            <span class="pill glass">AI tooling</span>
-            <span class="pill glass">Automation</span>
-          </div>
-
-          <div class="profile-actions">
-            <a class="btn primary full" href="#contact">Let’s connect</a>
-            <a class="btn ghost full" href="./resume.pdf" target="_blank" rel="noreferrer">Resume PDF</a>
-          </div>
-
-          <div class="mini muted small">
-            <div class="minirow"><span class="s-dot ok"></span>Available for internships</div>
-            <div class="minirow"><span class="s-dot"></span>Sacramento, CA</div>
-          </div>
-        </div>
-
-        <div class="now glass">
-          <div class="now-title">Currently</div>
-          <div class="now-item"><span class="k">Deal AI</span><span class="v">Marketplace assistant</span></div>
-          <div class="now-item"><span class="k">This site</span><span class="v">Liquid Glass redesign</span></div>
-        </div>
+      <div class="cta">
+        <a href="#projects" class="btn primary">View Projects</a>
+        <a href="./resume.pdf" target="_blank" class="btn ghost">Resume</a>
+        <a href="mailto:aaravjit16@gmail.com" class="btn ghost">Contact</a>
       </div>
     </section>
 
     <!-- PROJECTS -->
     <section id="projects" class="section">
-      <div class="section-head">
-        <h2>Projects</h2>
-        <p class="muted">Swap these links to your real repos/live demos.</p>
-      </div>
+      <h2>Projects</h2>
 
-      <div class="grid3">
-        <article class="card glass">
-          <div class="tags">
-            <span class="tag glass">App</span>
-            <span class="tag glass">AI</span>
-          </div>
+      <div class="grid">
+        <div class="card glass">
           <h3>Deal AI</h3>
-          <p class="muted">
-            Upload a marketplace screenshot → deal score, market estimate, scam flags,
-            and negotiation messages.
+          <p>
+            AI-powered marketplace analysis tool that evaluates listings using pricing data,
+            image analysis, and heuristics to detect undervalued deals and potential scams.
           </p>
-          <div class="cardlinks">
-            <a href="#" aria-disabled="true">Live (soon)</a>
-            <a href="#" aria-disabled="true">Repo (soon)</a>
+          <div class="card-links">
+            <span>In Progress</span>
           </div>
-        </article>
+        </div>
 
-        <article class="card glass">
-          <div class="tags">
-            <span class="tag glass">Web</span>
-            <span class="tag glass">UI</span>
-          </div>
-          <h3>Liquid Glass Portfolio</h3>
-          <p class="muted">
-            A modern, recruiter-friendly site with glass layers, lighting, and motion.
+        <div class="card glass">
+          <h3>Personal Portfolio</h3>
+          <p>
+            Designed and deployed a modern, responsive portfolio using custom UI components
+            and GitHub Pages.
           </p>
-          <div class="cardlinks">
-            <a href="#top">View</a>
-            <a href="./resume.pdf" target="_blank" rel="noreferrer">Resume</a>
+          <div class="card-links">
+            <a href="https://aaravjit.github.io/" target="_blank">Live</a>
           </div>
-        </article>
+        </div>
 
-        <article class="card glass">
-          <div class="tags">
-            <span class="tag glass">Tools</span>
-            <span class="tag glass">Automation</span>
-          </div>
-          <h3>Utilities</h3>
-          <p class="muted">
-            Small scripts and helpers for workflow + setup + productivity.
+        <div class="card glass">
+          <h3>Automation Utilities</h3>
+          <p>
+            Collection of scripts and small tools built to improve workflows,
+            system setup, and developer productivity.
           </p>
-          <div class="cardlinks">
-            <a href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+          <div class="card-links">
+            <a href="https://github.com/aaravjit" target="_blank">GitHub</a>
           </div>
-        </article>
+        </div>
       </div>
     </section>
 
     <!-- SKILLS -->
     <section id="skills" class="section">
-      <div class="section-head">
-        <h2>Skills</h2>
-        <p class="muted">Short + clean. Add/remove as needed.</p>
-      </div>
+      <h2>Skills</h2>
 
-      <div class="grid3">
+      <div class="grid">
         <div class="card glass">
           <h3>Frontend</h3>
-          <ul class="muted">
-            <li>HTML / CSS / JS</li>
-            <li>React (learning + shipping)</li>
-            <li>Responsive UI + animations</li>
+          <ul>
+            <li>HTML, CSS, JavaScript</li>
+            <li>Responsive UI & modern layouts</li>
+            <li>Accessibility-aware design</li>
           </ul>
         </div>
 
         <div class="card glass">
           <h3>Backend</h3>
-          <ul class="muted">
-            <li>APIs + auth patterns</li>
-            <li>Databases (practical)</li>
-            <li>Integrations (payments/tools)</li>
+          <ul>
+            <li>API design & integration</li>
+            <li>Authentication fundamentals</li>
+            <li>Data handling & validation</li>
           </ul>
         </div>
 
         <div class="card glass">
-          <h3>Dev</h3>
-          <ul class="muted">
-            <li>Git + GitHub</li>
-            <li>Linux / Windows</li>
-            <li>Debugging mindset</li>
+          <h3>Developer Tools</h3>
+          <ul>
+            <li>Git & GitHub workflows</li>
+            <li>Linux & Windows environments</li>
+            <li>Debugging & optimization</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="section">
-      <div class="section-head">
-        <h2>Contact</h2>
-        <p class="muted">One click to copy, one click to send.</p>
-      </div>
-
-      <div class="grid2">
-        <div class="card glass">
-          <h3>Email</h3>
-          <div class="mono" id="emailText">aaravjit16@gmail.com</div>
-          <div class="row2">
-            <button class="btn primary full" id="copyEmail2">Copy Email</button>
-            <a class="btn ghost full" href="mailto:aaravjit16@gmail.com">Open Mail</a>
-          </div>
-        </div>
-
-        <div class="card glass">
-          <h3>Links</h3>
-          <div class="linklist">
-            <a href="https://aaravjit.github.io/" target="_blank" rel="noreferrer">Portfolio</a>
-            <a href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
-            <a href="./resume.pdf" target="_blank" rel="noreferrer">Resume PDF</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
+    <!-- FOOTER -->
     <footer class="footer glass">
       <span>© <span id="year"></span> Aarav Jit</span>
-      <span class="muted small">Liquid Glass UI</span>
-      <a href="#top">Back to top</a>
+      <span>
+        <a href="https://github.com/aaravjit" target="_blank">GitHub</a> ·
+        <a href="https://www.linkedin.com/in/aarav-jit-499a93293/" target="_blank">LinkedIn</a>
+      </span>
     </footer>
   </main>
 
