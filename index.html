@@ -10,130 +10,286 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="./style.css" />
 </head>
 
 <body>
-  <!-- Background -->
+  <!-- Background / liquid blobs -->
   <div class="bg" aria-hidden="true">
     <div class="blob b1"></div>
     <div class="blob b2"></div>
     <div class="blob b3"></div>
+    <div class="grain"></div>
   </div>
 
   <!-- NAV -->
   <header class="top">
     <div class="container nav glass">
-      <span class="brand">Aarav Jit</span>
+      <div class="brand">
+        <span class="dot"></span>
+        <span>Aarav Jit</span>
+      </div>
 
       <nav class="links">
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
-        <a href="https://github.com/aaravjit" target="_blank">GitHub</a>
-        <a href="https://www.linkedin.com/in/aarav-jit-499a93293/" target="_blank">LinkedIn</a>
-        <a href="./resume.pdf" target="_blank">Resume</a>
+        <a href="https://github.com/aaravjit" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/aarav-jit-499a93293/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="./resume.pdf" target="_blank" rel="noreferrer">Resume</a>
       </nav>
 
-      <button id="themeToggle" class="theme-btn" aria-label="Toggle theme">🌙</button>
+      <div class="nav-actions">
+        <button id="themeToggle" class="theme-btn" aria-label="Toggle theme">🌙</button>
+      </div>
     </div>
   </header>
 
   <main class="container">
     <!-- HERO -->
-    <section class="hero">
-      <h1>
-        Software Engineer building clean, scalable products that solve real problems.
-      </h1>
+    <section class="hero glass" data-tilt>
+      <div class="hero__text">
+        <div class="chip">
+          <span class="pulse"></span>
+          <span>Open to full-time SWE roles</span>
+        </div>
 
-      <p class="subtitle">
-        Computer Science student focused on modern web applications, automation,
-        and AI-powered tools. Strong fundamentals, fast learner, production-minded.
-      </p>
+        <h1>
+          Liquid glass visuals paired with playful interactions for a memorable portfolio.
+        </h1>
 
-      <p class="tagline">
-        I design, build, and ship — from idea to deployment.
-      </p>
+        <p class="subtitle">
+          I'm Aarav, a Computer Science student who builds modern web experiences, automation tools, and AI-powered utilities.
+          I ship quickly, iterate with intent, and love polishing the edges.
+        </p>
 
-      <div class="cta">
-        <a href="#projects" class="btn primary">View Projects</a>
-        <a href="./resume.pdf" target="_blank" class="btn ghost">Resume</a>
-        <a href="mailto:aaravjit16@gmail.com" class="btn ghost">Contact</a>
+        <div class="cta">
+          <a href="#projects" class="btn primary">See the builds</a>
+          <a href="./resume.pdf" target="_blank" class="btn ghost">Resume</a>
+          <a href="mailto:aaravjit16@gmail.com" class="btn ghost">Email me</a>
+        </div>
+
+        <div class="quick-grid">
+          <div class="quick-card glass" data-tilt>
+            <p class="label">What I do now</p>
+            <p class="text">Designing resilient frontend systems, automating workflows, and experimenting with AI agents.</p>
+          </div>
+          <div class="quick-card glass" data-tilt>
+            <p class="label">Interview-ready flyouts</p>
+            <p class="text">Click any project tile below — each one reveals the reasoning, constraints, and stack choices.</p>
+          </div>
+          <div class="quick-card glass" data-tilt>
+            <p class="label">How I work</p>
+            <p class="text">Bias for delivery, clear documentation, and small interactive touches that make products feel alive.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__panel glass" data-tilt>
+        <div class="panel-head">
+          <p class="muted">Interactive profile</p>
+          <span class="spark"></span>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="avatar">AJ</div>
+            <div>
+              <p class="name">Aarav Jit</p>
+              <p class="muted small">Software Engineer · Ottawa, ON</p>
+            </div>
+          </div>
+
+          <div class="pills">
+            <span class="pill">Web Apps</span>
+            <span class="pill">Automation</span>
+            <span class="pill">AI Experiments</span>
+          </div>
+
+          <div class="now glass">
+            <div class="now-title">Currently exploring</div>
+            <div class="now-item">
+              <span class="k">Browser automation</span>
+              <span class="v">Playwright + agentic flows</span>
+            </div>
+            <div class="now-item">
+              <span class="k">Frontend</span>
+              <span class="v">Micro-interactions, glass UI, motion</span>
+            </div>
+            <div class="now-item">
+              <span class="k">Dev velocity</span>
+              <span class="v">CLI tooling, scripting, infra hygiene</span>
+            </div>
+          </div>
+
+          <div class="mini">
+            <p class="label">Tap to pin</p>
+            <div class="minirow">
+              <span class="s-dot ok"></span>
+              <span>Delight-driven UI polish</span>
+            </div>
+            <div class="minirow">
+              <span class="s-dot ok"></span>
+              <span>Systems thinking mindset</span>
+            </div>
+            <div class="minirow">
+              <span class="s-dot"></span>
+              <span>Always learning something new</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- PROJECTS -->
     <section id="projects" class="section">
-      <h2>Projects</h2>
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Projects with interactive flyouts</p>
+          <h2>Click the tiles to see the thinking.</h2>
+        </div>
+        <p class="muted small">Glassy cards, motion, and on-click details that surface the why.</p>
+      </div>
 
       <div class="grid">
-        <div class="card glass">
-          <h3>Deal AI</h3>
-          <p>
-            AI-powered marketplace analysis tool that evaluates listings using pricing data,
-            image analysis, and heuristics to detect undervalued deals and potential scams.
-          </p>
-          <div class="card-links">
-            <span>In Progress</span>
+        <article class="card glass" data-tilt>
+          <div class="card__top">
+            <div class="chip ghost">Deal AI</div>
+            <button class="iconbtn" aria-label="Peek details" data-target="deal-ai">↗</button>
           </div>
-        </div>
-
-        <div class="card glass">
-          <h3>Personal Portfolio</h3>
+          <h3>Deal AI — marketplace analysis agent</h3>
           <p>
-            Designed and deployed a modern, responsive portfolio using custom UI components
-            and GitHub Pages.
+            AI-powered crawler that evaluates listings using pricing data, image heuristics, and fraud signals to rank the best buys.
           </p>
-          <div class="card-links">
-            <a href="https://aaravjit.github.io/" target="_blank">Live</a>
+          <div class="tags">
+            <span class="tag">Next.js</span>
+            <span class="tag">Vision</span>
+            <span class="tag">Pipelines</span>
           </div>
-        </div>
+          <div class="cardlinks">
+            <span class="muted">In progress</span>
+          </div>
+          <div class="flyout" id="deal-ai" role="dialog" aria-label="Deal AI details">
+            <button class="close" data-close>×</button>
+            <p class="fly-title">Build intent</p>
+            <p class="text">
+              Built scoring heuristics for trust & quality, integrated browser automations to gather imagery, and shaped a feedback loop
+              that learns what "good" means per user.
+            </p>
+            <ul>
+              <li>Scraper → vector store → rerank pipeline</li>
+              <li>Computer vision checks for damage & doctored images</li>
+              <li>Flyout conversation UI to justify each recommendation</li>
+            </ul>
+          </div>
+        </article>
 
-        <div class="card glass">
-          <h3>Automation Utilities</h3>
+        <article class="card glass" data-tilt>
+          <div class="card__top">
+            <div class="chip ghost">Portfolio 2.0</div>
+            <button class="iconbtn" aria-label="Peek details" data-target="portfolio">↗</button>
+          </div>
+          <h3>Portfolio — interactive glass experience</h3>
           <p>
-            Collection of scripts and small tools built to improve workflows,
-            system setup, and developer productivity.
+            Reshaped my personal site into a liquid-glass playground with motion, flyout notes, and click-to-tilt cards that mirror how I build products.
           </p>
-          <div class="card-links">
-            <a href="https://github.com/aaravjit" target="_blank">GitHub</a>
+          <div class="tags">
+            <span class="tag">Glassmorphism</span>
+            <span class="tag">Animation</span>
+            <span class="tag">Accessibility</span>
+          </div>
+          <div class="cardlinks">
+            <a href="https://aaravjit.github.io/" target="_blank" rel="noreferrer">Live</a>
+          </div>
+          <div class="flyout" id="portfolio" role="dialog" aria-label="Portfolio details">
+            <button class="close" data-close>×</button>
+            <p class="fly-title">Design notes</p>
+            <p class="text">
+              Layered gradients, glass panels, and purposeful motion. Flyouts keep the main UI clean but surface depth on click, with
+              keyboard-escape friendly dismissals.
+            </p>
+            <ul>
+              <li>Cards respond to cursor and reset smoothly</li>
+              <li>Theme toggle for light/dark glass</li>
+              <li>Reduced blur on mobile for performance</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card glass" data-tilt>
+          <div class="card__top">
+            <div class="chip ghost">Automation Kit</div>
+            <button class="iconbtn" aria-label="Peek details" data-target="automation">↗</button>
+          </div>
+          <h3>Automation utilities</h3>
+          <p>
+            A toolbox of scripts for onboarding, system setup, and workflow boosts — from dotfile syncing to repository health checks.
+          </p>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">Playwright</span>
+            <span class="tag">CLI</span>
+          </div>
+          <div class="cardlinks">
+            <a href="https://github.com/aaravjit" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+          <div class="flyout" id="automation" role="dialog" aria-label="Automation details">
+            <button class="close" data-close>×</button>
+            <p class="fly-title">Why it matters</p>
+            <p class="text">
+              I like codifying the boring parts: spin up dev envs, sync secrets safely, and keep repos linted. These scripts save hours and
+              make collaboration predictable.
+            </p>
+            <ul>
+              <li>Repeatable dev environment bootstrap</li>
+              <li>CI-friendly lint & format helpers</li>
+              <li>Schedule-able checks with human-readable logs</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SKILLS / PLAYGROUND -->
+    <section id="skills" class="section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Skill Lab</p>
+          <h2>Click a lane to see how I apply it.</h2>
+        </div>
+        <p class="muted small">Interactive, glassy, and packed with context.</p>
+      </div>
+
+      <div class="lab glass" data-tilt>
+        <div class="lab-tags" role="tablist" aria-label="Skill highlights">
+          <button class="pill active" data-skill="frontend" role="tab">Frontend</button>
+          <button class="pill" data-skill="backend" role="tab">Backend</button>
+          <button class="pill" data-skill="automation" role="tab">Automation</button>
+          <button class="pill" data-skill="ai" role="tab">AI + ML</button>
+        </div>
+        <div class="lab-detail" role="tabpanel">
+          <p class="label" data-skill-title>Interactive UI systems</p>
+          <p class="text" data-skill-body>
+            Ship responsive layouts with motion and accessibility baked in. I pair design tokens with reusable glass components so the UI feels cohesive.
+          </p>
+          <div class="lab-pills" data-skill-pills>
+            <span class="tag">React patterns</span>
+            <span class="tag">Animation</span>
+            <span class="tag">Design systems</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SKILLS -->
-    <section id="skills" class="section">
-      <h2>Skills</h2>
-
-      <div class="grid">
-        <div class="card glass">
-          <h3>Frontend</h3>
-          <ul>
-            <li>HTML, CSS, JavaScript</li>
-            <li>Responsive UI & modern layouts</li>
-            <li>Accessibility-aware design</li>
-          </ul>
-        </div>
-
-        <div class="card glass">
-          <h3>Backend</h3>
-          <ul>
-            <li>API design & integration</li>
-            <li>Authentication fundamentals</li>
-            <li>Data handling & validation</li>
-          </ul>
-        </div>
-
-        <div class="card glass">
-          <h3>Developer Tools</h3>
-          <ul>
-            <li>Git & GitHub workflows</li>
-            <li>Linux & Windows environments</li>
-            <li>Debugging & optimization</li>
-          </ul>
-        </div>
+    <section class="cta-rail glass" data-tilt>
+      <div>
+        <p class="eyebrow">Ready to chat?</p>
+        <h3>Let's build something together.</h3>
+        <p class="muted">Reach out for full-time roles, freelance projects, or to jam on product ideas.</p>
+      </div>
+      <div class="cta">
+        <a href="mailto:aaravjit16@gmail.com" class="btn primary">Say hello</a>
+        <a href="./resume.pdf" target="_blank" class="btn ghost">Download resume</a>
       </div>
     </section>
 
@@ -141,8 +297,8 @@
     <footer class="footer glass">
       <span>© <span id="year"></span> Aarav Jit</span>
       <span>
-        <a href="https://github.com/aaravjit" target="_blank">GitHub</a> ·
-        <a href="https://www.linkedin.com/in/aarav-jit-499a93293/" target="_blank">LinkedIn</a>
+        <a href="https://github.com/aaravjit" target="_blank" rel="noreferrer">GitHub</a> ·
+        <a href="https://www.linkedin.com/in/aarav-jit-499a93293/" target="_blank" rel="noreferrer">LinkedIn</a>
       </span>
     </footer>
   </main>
