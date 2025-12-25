@@ -1,6 +1,46 @@
-export default function Home() {
-  const currentYear = new Date().getFullYear();
+import { MAINTENANCE_MODE, LINKS } from './config';
 
+function MaintenancePage({ currentYear }: { currentYear: number }) {
+  return (
+    <>
+      <header className="header header--maintenance">
+        <div className="container header-inner">
+          <span className="logo">Aarav Jit</span>
+        </div>
+      </header>
+
+      <main className="maintenance">
+        <span className="maintenance-status">Updating</span>
+        <h1 className="maintenance-title">Portfolio is being updated</h1>
+        <p className="maintenance-subtitle">
+          I&apos;m shipping some improvements. In the meantime, feel free to check out my resume or connect with me directly.
+        </p>
+        <div className="maintenance-cta">
+          <a href={LINKS.resume} target="_blank" rel="noreferrer" className="btn btn-primary">
+            View Resume
+          </a>
+          <a href={LINKS.github} target="_blank" rel="noreferrer" className="btn">
+            GitHub
+          </a>
+          <a href={LINKS.linkedin} target="_blank" rel="noreferrer" className="btn">
+            LinkedIn
+          </a>
+          <a href={`mailto:${LINKS.email}`} className="btn">
+            Email Me
+          </a>
+        </div>
+      </main>
+
+      <footer className="footer">
+        <div className="container">
+          <span>&copy; {currentYear} Aarav Jit</span>
+        </div>
+      </footer>
+    </>
+  );
+}
+
+function PortfolioPage({ currentYear }: { currentYear: number }) {
   return (
     <>
       <header className="header">
@@ -151,4 +191,14 @@ export default function Home() {
       </footer>
     </>
   );
+}
+
+export default function Home() {
+  const currentYear = new Date().getFullYear();
+
+  if (MAINTENANCE_MODE) {
+    return <MaintenancePage currentYear={currentYear} />;
+  }
+
+  return <PortfolioPage currentYear={currentYear} />;
 }
