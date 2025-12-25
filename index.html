@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,47 +7,43 @@
   <title>Aarav Jit — Software Engineer</title>
   <meta name="description" content="Software engineer building web applications, automation tools, and AI utilities." />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="./styles.css" />
 </head>
 
 <body>
-  <div class="page">
-    <header class="header">
-      <div class="header-content">
-        <span class="name">Aarav Jit</span>
-        <nav class="nav">
-          <a href="#experience">Experience</a>
-          <a href="#projects">Projects</a>
-          <a href="#education">Education</a>
-          <a href="#skills">Skills</a>
-          <a href="#resume">Resume</a>
-          <a href="#contact">Contact</a>
-        </nav>
-        <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
-          <span class="theme-icon"></span>
-        </button>
-      </div>
-    </header>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="#" class="logo">Aarav Jit</a>
+      <nav class="nav" id="nav">
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#education" class="nav-link">Education</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#resume" class="nav-link">Resume</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-    <main class="main">
-      <section class="intro">
-        <p class="tagline">Software Engineer</p>
-        <p class="summary">
+  <main class="main">
+    <section class="hero">
+      <div class="container">
+        <h1 class="hero-title">Aarav Jit</h1>
+        <p class="hero-tagline">Software Engineer</p>
+        <p class="hero-summary">
           I build web applications, automation tools, and AI-powered utilities.
           Currently pursuing a CS degree while shipping production-quality side projects.
         </p>
-        <p class="status">Open to full-time software engineering roles.</p>
-      </section>
+        <p class="hero-status">Open to full-time software engineering roles.</p>
+      </div>
+    </section>
 
-      <section id="experience" class="section">
-        <h2>Experience</h2>
-        <div class="experience-item">
+    <section id="experience" class="section">
+      <div class="container">
+        <h2 class="section-title">Experience</h2>
+        <div class="experience-entry">
           <div class="experience-header">
-            <h3>Walmart</h3>
+            <h3 class="experience-company">Walmart</h3>
             <span class="experience-meta">Part-time · Present</span>
           </div>
           <ul class="experience-list">
@@ -56,93 +52,111 @@
             <li>Maintain consistent attendance and reliability in a fast-paced retail environment</li>
           </ul>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="projects" class="section">
-        <h2>Projects</h2>
+    <section id="projects" class="section">
+      <div class="container">
+        <h2 class="section-title">Projects</h2>
 
-        <article class="project">
-          <h3>Deal AI</h3>
-          <p class="project-what">AI agent that crawls marketplaces, scores listings for quality and fraud risk, and ranks the best deals.</p>
-          <p class="project-why">Reduces hours of manual comparison shopping to seconds by combining vision models, pricing heuristics, and trust signals.</p>
-          <p class="project-stack">Next.js, OpenAI Vision, Playwright, Vector Search</p>
-          <p class="project-status">In progress</p>
+        <article class="project-entry">
+          <div class="project-header">
+            <h3 class="project-name">Deal AI</h3>
+            <span class="project-status">In progress</span>
+          </div>
+          <p class="project-description">AI agent that crawls marketplaces, scores listings for quality and fraud risk, and ranks the best deals.</p>
+          <p class="project-impact">Reduces hours of manual comparison shopping to seconds by combining vision models, pricing heuristics, and trust signals.</p>
+          <p class="project-tech">Next.js, OpenAI Vision, Playwright, Vector Search</p>
         </article>
 
-        <article class="project">
-          <h3>Automation Toolkit</h3>
-          <p class="project-what">Collection of scripts for dev environment setup, repository health checks, and workflow automation.</p>
-          <p class="project-why">Eliminates repetitive setup tasks and enforces consistency across projects through codified processes.</p>
-          <p class="project-stack">Python, Bash, Playwright, GitHub Actions</p>
-          <p class="project-link"><a href="https://github.com/aaravjit" target="_blank" rel="noreferrer">View on GitHub</a></p>
+        <article class="project-entry">
+          <div class="project-header">
+            <h3 class="project-name">Automation Toolkit</h3>
+            <a href="https://github.com/aaravjit" target="_blank" rel="noreferrer" class="project-link">GitHub →</a>
+          </div>
+          <p class="project-description">Collection of scripts for dev environment setup, repository health checks, and workflow automation.</p>
+          <p class="project-impact">Eliminates repetitive setup tasks and enforces consistency across projects through codified processes.</p>
+          <p class="project-tech">Python, Bash, Playwright, GitHub Actions</p>
         </article>
 
-        <article class="project">
-          <h3>This Portfolio</h3>
-          <p class="project-what">Minimal, single-page portfolio designed for clarity and fast scanning.</p>
-          <p class="project-why">Demonstrates frontend fundamentals: semantic HTML, responsive CSS, accessible markup, and clean typography.</p>
-          <p class="project-stack">HTML, CSS, JavaScript</p>
-          <p class="project-link"><a href="https://aaravjit.github.io" target="_blank" rel="noreferrer">Live</a></p>
+        <article class="project-entry">
+          <div class="project-header">
+            <h3 class="project-name">This Portfolio</h3>
+            <a href="https://aaravjit.github.io" target="_blank" rel="noreferrer" class="project-link">Live →</a>
+          </div>
+          <p class="project-description">Minimal, single-page portfolio designed for clarity and fast scanning.</p>
+          <p class="project-impact">Demonstrates frontend fundamentals: semantic HTML, responsive CSS, accessible markup, and clean typography.</p>
+          <p class="project-tech">HTML, CSS, JavaScript</p>
         </article>
-      </section>
+      </div>
+    </section>
 
-      <section id="education" class="section">
-        <h2>Education</h2>
-        <div class="education-item">
-          <h3>California State University, Sacramento</h3>
+    <section id="education" class="section">
+      <div class="container">
+        <h2 class="section-title">Education</h2>
+        <div class="education-entry">
+          <h3 class="education-school">California State University, Sacramento</h3>
           <p class="education-degree">Bachelor of Science in Computer Science</p>
           <p class="education-date">Expected Graduation: 2026</p>
-          <p class="education-coursework">Coursework: Data Structures, Algorithms, Operating Systems, Database Systems, Software Engineering</p>
+          <p class="education-coursework">Data Structures, Algorithms, Operating Systems, Database Systems, Software Engineering</p>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="skills" class="section">
-        <h2>Skills</h2>
+    <section id="skills" class="section">
+      <div class="container">
+        <h2 class="section-title">Skills</h2>
         <div class="skills-grid">
-          <div class="skill-category">
-            <h4>Languages</h4>
-            <p>JavaScript, TypeScript, Python, Java, SQL</p>
+          <div class="skill-group">
+            <h4 class="skill-label">Languages</h4>
+            <p class="skill-items">JavaScript, TypeScript, Python, Java, SQL</p>
           </div>
-          <div class="skill-category">
-            <h4>Frontend</h4>
-            <p>React, Next.js, HTML, CSS, Tailwind</p>
+          <div class="skill-group">
+            <h4 class="skill-label">Frontend</h4>
+            <p class="skill-items">React, Next.js, HTML, CSS, Tailwind</p>
           </div>
-          <div class="skill-category">
-            <h4>Backend</h4>
-            <p>Node.js, Express, PostgreSQL, REST APIs</p>
+          <div class="skill-group">
+            <h4 class="skill-label">Backend</h4>
+            <p class="skill-items">Node.js, Express, PostgreSQL, REST APIs</p>
           </div>
-          <div class="skill-category">
-            <h4>Tooling</h4>
-            <p>Git, GitHub Actions, Docker, VS Code</p>
+          <div class="skill-group">
+            <h4 class="skill-label">Tooling</h4>
+            <p class="skill-items">Git, GitHub Actions, Docker, VS Code</p>
           </div>
-          <div class="skill-category">
-            <h4>Systems</h4>
-            <p>Linux, Bash, Playwright, Browser Automation</p>
+          <div class="skill-group">
+            <h4 class="skill-label">Systems</h4>
+            <p class="skill-items">Linux, Bash, Playwright, Browser Automation</p>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="resume" class="section">
-        <h2>Resume</h2>
-        <p class="resume-text">
-          <a href="./resume.pdf" target="_blank" rel="noreferrer" class="resume-link">Download Resume (PDF)</a>
+    <section id="resume" class="section">
+      <div class="container">
+        <h2 class="section-title">Resume</h2>
+        <p class="resume-cta">
+          <a href="./resume.pdf" target="_blank" rel="noreferrer" class="btn">Download Resume (PDF)</a>
         </p>
-      </section>
+      </div>
+    </section>
 
-      <section id="contact" class="section">
-        <h2>Contact</h2>
+    <section id="contact" class="section section-last">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
         <ul class="contact-list">
           <li><a href="mailto:aaravjit16@gmail.com">aaravjit16@gmail.com</a></li>
           <li><a href="https://github.com/aaravjit" target="_blank" rel="noreferrer">github.com/aaravjit</a></li>
           <li><a href="https://www.linkedin.com/in/aarav-jit-499a93293/" target="_blank" rel="noreferrer">LinkedIn</a></li>
         </ul>
-      </section>
-    </main>
+      </div>
+    </section>
+  </main>
 
-    <footer class="footer">
-      <span>&copy; <span id="year"></span></span>
-    </footer>
-  </div>
+  <footer class="footer">
+    <div class="container">
+      <span>&copy; <span id="year"></span> Aarav Jit</span>
+    </div>
+  </footer>
 
   <script src="./script.js"></script>
 </body>
