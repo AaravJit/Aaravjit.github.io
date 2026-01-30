@@ -1,0 +1,137 @@
+{
+  "name": "Aarav Jit",
+  "headline": "Reliable team member focused on accuracy, customer service, and on-time results.",
+  "location": "Sacramento, CA",
+  "contact": {
+    "email": "aaravjit16@gmail.com",
+    "github": "https://github.com/aaravjit",
+    "linkedin": "https://www.linkedin.com/in/aarav-jit-499a93293/",
+    "resumePdf": "/resume.pdf"
+  },
+  "universal_summary": "Detail-oriented team member with experience collaborating across teams, following safety procedures, and keeping operations on schedule. Known for steady communication, accuracy under pressure, and a customer-first mindset.",
+  "tech_summary": "Software-focused problem solver with experience building web apps, automation scripts, and data-driven workflows. Comfortable translating requirements into reliable, accessible user experiences and efficient tooling.",
+  "target_roles": [
+    "Delivery Driver",
+    "Stocking Associate",
+    "Warehouse Team Member",
+    "Customer Service",
+    "Entry-level Office/Admin",
+    "Retail Associate"
+  ],
+  "skills_universal": [
+    "Reliability & attendance",
+    "Teamwork and collaboration",
+    "Clear communication",
+    "Customer service",
+    "Safety-first mindset",
+    "Time management",
+    "Attention to detail",
+    "Adaptability in fast-paced environments"
+  ],
+  "skills_tools": [
+    "Point-of-sale systems",
+    "Inventory tracking",
+    "Microsoft Excel",
+    "Google Workspace",
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Python",
+    "Git/GitHub"
+  ],
+  "experience": [
+    {
+      "company": "Customer-Facing & Operations Teams",
+      "title": "Team Member",
+      "dates": "2022 – Present",
+      "bullets": [
+        "Maintained accuracy under time-sensitive deadlines while supporting daily operations.",
+        "Followed safety procedures and handled merchandise carefully to reduce errors and damage.",
+        "Communicated clearly with teammates and customers to keep tasks moving smoothly.",
+        "Resolved routine issues quickly and escalated blockers to keep service on track."
+      ],
+      "keywords": [
+        "accuracy",
+        "customer service",
+        "teamwork",
+        "safety"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Workflow Automation Toolkit",
+      "type": "Work Sample",
+      "problem": "Teams needed faster, repeatable setup for common tasks and system checks.",
+      "actions": [
+        "Built reusable scripts to standardize setup and reduce manual steps.",
+        "Documented runbooks so others could execute tasks without extra training.",
+        "Organized scripts into a simple, consistent command structure."
+      ],
+      "results": [
+        "Reduced setup time and improved consistency across tasks.",
+        "Made onboarding easier for new collaborators."
+      ],
+      "links": [
+        {
+          "label": "View on GitHub",
+          "url": "https://github.com/aaravjit"
+        }
+      ],
+      "tools": "Python · Bash · GitHub Actions"
+    },
+    {
+      "name": "Deal AI",
+      "type": "Project",
+      "problem": "Shoppers need quick, reliable signals to identify quality listings.",
+      "actions": [
+        "Prototyped an analysis pipeline to score listings with vision and pricing data.",
+        "Built a searchable interface to compare results in one place.",
+        "Used automation to keep data refreshed with minimal manual effort."
+      ],
+      "results": [
+        "Surfaced higher-quality listings faster for review.",
+        "Created a repeatable workflow for evaluating deals."
+      ],
+      "links": [
+        {
+          "label": "View on GitHub",
+          "url": "https://github.com/aaravjit"
+        }
+      ],
+      "tools": "Next.js · OpenAI Vision API · Playwright · TypeScript"
+    },
+    {
+      "name": "Portfolio Website",
+      "type": "Work Sample",
+      "problem": "A personal site was needed to share qualifications and work examples quickly.",
+      "actions": [
+        "Designed a clean, mobile-first layout with clear sections.",
+        "Optimized for fast loads and accessibility best practices.",
+        "Published as a static site for reliable hosting."
+      ],
+      "results": [
+        "Delivered a simple, easy-to-navigate profile for hiring managers."
+      ],
+      "links": [
+        {
+          "label": "Live Site",
+          "url": "https://aaravjit.github.io"
+        },
+        {
+          "label": "View on GitHub",
+          "url": "https://github.com/AaravJit/Aaravjit.github.io"
+        }
+      ],
+      "tools": "Next.js · TypeScript · CSS"
+    }
+  ],
+  "education": [
+    {
+      "school": "California State University, Sacramento",
+      "degree": "B.S. in Computer Science",
+      "dates": "Expected May 2026",
+      "details": "Relevant coursework: Data Structures & Algorithms, Operating Systems, Database Systems, Software Engineering"
+    }
+  ]
+}

@@ -1,125 +1,225 @@
+"use client";
+
+import { useMemo, useState } from "react";
+import profile from "../data/profile.json";
+
+type ResumeView = "general" | "tech";
+
+type Project = (typeof profile.projects)[number];
+
+type ExperienceEntry = (typeof profile.experience)[number];
+
+type EducationEntry = (typeof profile.education)[number];
+
+const projectOrderMap: Record<ResumeView, string[]> = {
+  general: ["Work Sample", "Project"],
+  tech: ["Project", "Work Sample"],
+};
+
 export default function Home() {
   const currentYear = new Date().getFullYear();
+  const [view, setView] = useState<ResumeView>("general");
+
+  const orderedProjects = useMemo(() => {
+    const order = projectOrderMap[view];
+
+    return [...profile.projects].sort((a, b) => {
+      const aIndex = order.indexOf(a.type);
+      const bIndex = order.indexOf(b.type);
+      return aIndex - bIndex;
+    });
+  }, [view]);
+
+  const summary = view === "general" ? profile.universal_summary : profile.tech_summary;
+  const isGeneral = view === "general";
+
+  const experienceSection = (
+    <section id="experience" className="section">
+      <div className="container">
+        <h2 className="section-title">Work Experience</h2>
+        <div className="experience-list">
+          {profile.experience.map((item: ExperienceEntry) => (
+            <article key={`${item.company}-${item.title}`} className="experience-card">
+              <div className="experience-header">
+                <div>
+                  <h3 className="experience-title">{item.title}</h3>
+                  <p className="experience-company">{item.company}</p>
+                </div>
+                <span className="experience-dates">{item.dates}</span>
+              </div>
+              <ul className="experience-bullets">
+                {item.bullets.map((bullet) => (
+                  <li key={bullet}>{bullet}</li>
+                ))}
+              </ul>
+              <div className="experience-keywords">
+                {item.keywords.map((keyword) => (
+                  <span key={keyword} className="badge">
+                    {keyword}
+                  </span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+
+  const projectsSection = (
+    <section id="projects" className="section">
+      <div className="container">
+        <h2 className="section-title">Work Samples / Projects</h2>
+        <div className="project-grid">
+          {orderedProjects.map((project: Project) => (
+            <article key={project.name} className="project-card">
+              <div className="project-header">
+                <h3 className="project-name">{project.name}</h3>
+                <span className="project-status">{project.type}</span>
+              </div>
+              <div className="project-block">
+                <p className="project-label">Problem</p>
+                <p className="project-description">{project.problem}</p>
+              </div>
+              <div className="project-block">
+                <p className="project-label">Actions</p>
+                <ul className="project-list">
+                  {project.actions.map((action) => (
+                    <li key={action}>{action}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="project-block">
+                <p className="project-label">Results</p>
+                <ul className="project-list">
+                  {project.results.map((result) => (
+                    <li key={result}>{result}</li>
+                  ))}
+                </ul>
+              </div>
+              {project.tools ? <p className="project-tech">{project.tools}</p> : null}
+              <div className="project-links">
+                {project.links.map((link) => (
+                  <a key={link.url} href={link.url} target="_blank" rel="noreferrer" className="project-link">
+                    {link.label} →
+                  </a>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 
   return (
     <>
       <header className="header">
         <div className="container header-inner">
-          <a href="#" className="logo">Aarav Jit</a>
+          <a href="#top" className="logo">{profile.name}</a>
           <nav className="nav">
-            <a href="#about" className="nav-link">About</a>
-            <a href="#projects" className="nav-link">Projects</a>
+            <a href="#resume" className="nav-link">Resume</a>
             <a href="#skills" className="nav-link">Skills</a>
+            <a href="#experience" className="nav-link">Experience</a>
+            <a href="#projects" className="nav-link">Work Samples</a>
             <a href="#education" className="nav-link">Education</a>
             <a href="#contact" className="nav-link">Contact</a>
           </nav>
         </div>
       </header>
 
-      <main className="main">
+      <main id="top" className="main">
         <section className="hero">
           <div className="container">
-            <h1 className="hero-title">Aarav Jit</h1>
-            <p className="hero-tagline">Computer Science Student & Software Developer</p>
-            <p className="hero-summary">
-              Building modern web applications and automation tools while pursuing a Computer Science degree.
-              Passionate about solving real-world problems through clean, efficient code.
-            </p>
+            <div className="hero-badges">
+              <span className="badge">Open to multiple role types</span>
+              <span className="badge">Based in {profile.location}</span>
+            </div>
+            <h1 className="hero-title">{profile.name}</h1>
+            <p className="hero-tagline">{profile.headline}</p>
+            <p className="hero-summary">{summary}</p>
             <div className="hero-actions">
-              <a href="/resume.pdf" target="_blank" rel="noreferrer" className="btn btn-primary">
-                View Resume
-              </a>
-              <a href="https://github.com/aaravjit" target="_blank" rel="noreferrer" className="btn">
-                GitHub
-              </a>
-              <a href="https://www.linkedin.com/in/aarav-jit-499a93293/" target="_blank" rel="noreferrer" className="btn">
-                LinkedIn
-              </a>
-              <a href="mailto:aaravjit16@gmail.com" className="btn">
-                Email
+              <button
+                type="button"
+                className={`btn ${isGeneral ? "btn-primary" : ""}`}
+                onClick={() => setView("general")}
+                aria-pressed={isGeneral}
+              >
+                General Resume
+              </button>
+              <button
+                type="button"
+                className={`btn ${!isGeneral ? "btn-primary" : ""}`}
+                onClick={() => setView("tech")}
+                aria-pressed={!isGeneral}
+              >
+                Tech Resume
+              </button>
+              <a href={profile.contact.resumePdf} target="_blank" rel="noreferrer" className="btn">
+                Download Resume (PDF)
               </a>
             </div>
+            {isGeneral ? (
+              <div className="target-roles">
+                <p className="target-label">Target roles</p>
+                <div className="chip-group">
+                  {profile.target_roles.map((role) => (
+                    <span key={role} className="chip">
+                      {role}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ) : null}
           </div>
         </section>
 
-        <section id="about" className="section">
+        <section id="resume" className="section">
           <div className="container">
-            <h2 className="section-title">About Me</h2>
-            <div className="about-content">
-              <p className="about-paragraph">
-                I'm a Computer Science student at California State University, Sacramento, with a strong interest in
-                software engineering, systems programming, and web development. I enjoy building practical tools
-                that solve real problems and make workflows more efficient.
-              </p>
-              <p className="about-paragraph">
-                My experience spans full-stack web development, browser automation, and AI integration. I'm
-                comfortable working with modern frameworks like Next.js and React, and I have a solid foundation
-                in data structures, algorithms, and system design principles.
-              </p>
-              <p className="about-paragraph">
-                I'm familiar with Linux environments and open-source workflows, and I believe in writing clean,
-                maintainable code. Currently, I'm looking for opportunities to contribute to meaningful projects
-                and continue growing as a software developer.
-              </p>
+            <h2 className="section-title">Resume Overview</h2>
+            <div className="resume-tabs" role="tablist" aria-label="Resume view">
+              <button
+                type="button"
+                role="tab"
+                aria-selected={isGeneral}
+                className={`tab ${isGeneral ? "tab-active" : ""}`}
+                onClick={() => setView("general")}
+              >
+                General Resume
+              </button>
+              <button
+                type="button"
+                role="tab"
+                aria-selected={!isGeneral}
+                className={`tab ${!isGeneral ? "tab-active" : ""}`}
+                onClick={() => setView("tech")}
+              >
+                Tech Resume
+              </button>
             </div>
-          </div>
-        </section>
-
-        <section id="projects" className="section">
-          <div className="container">
-            <h2 className="section-title">Projects</h2>
-
-            <article className="project-card">
-              <div className="project-header">
-                <h3 className="project-name">Deal AI</h3>
-                <span className="project-status">In Development</span>
-              </div>
-              <p className="project-description">
-                AI-powered marketplace crawler that analyzes listings, scores them for quality and fraud risk,
-                and ranks the best deals using computer vision and pricing algorithms.
-              </p>
-              <p className="project-tech">Next.js · OpenAI Vision API · Playwright · TypeScript</p>
-              <div className="project-links">
-                <a href="https://github.com/aaravjit" target="_blank" rel="noreferrer" className="project-link">
-                  View on GitHub →
-                </a>
-              </div>
-            </article>
-
-            <article className="project-card">
-              <div className="project-header">
-                <h3 className="project-name">Automation Toolkit</h3>
-              </div>
-              <p className="project-description">
-                Collection of Python and Bash scripts for development environment setup, repository health
-                checks, and workflow automation. Eliminates repetitive setup tasks across projects.
-              </p>
-              <p className="project-tech">Python · Bash · Playwright · GitHub Actions</p>
-              <div className="project-links">
-                <a href="https://github.com/aaravjit" target="_blank" rel="noreferrer" className="project-link">
-                  View on GitHub →
-                </a>
-              </div>
-            </article>
-
-            <article className="project-card">
-              <div className="project-header">
-                <h3 className="project-name">Developer Portfolio</h3>
-              </div>
-              <p className="project-description">
-                Modern, responsive portfolio website built with Next.js and TypeScript. Features clean
-                design, semantic HTML, and optimized static site generation for GitHub Pages deployment.
-              </p>
-              <p className="project-tech">Next.js · TypeScript · CSS · GitHub Pages</p>
-              <div className="project-links">
-                <a href="https://aaravjit.github.io" target="_blank" rel="noreferrer" className="project-link">
-                  Live Site →
-                </a>
-                <a href="https://github.com/AaravJit/Aaravjit.github.io" target="_blank" rel="noreferrer" className="project-link">
-                  View on GitHub →
-                </a>
-              </div>
-            </article>
+            <div className="resume-panel">
+              <h3 className="resume-title">{isGeneral ? "General Summary" : "Tech Summary"}</h3>
+              <p className="resume-summary">{summary}</p>
+              {isGeneral ? (
+                <div className="resume-highlight">
+                  <h4 className="resume-subtitle">What I bring</h4>
+                  <ul>
+                    <li>Reliable attendance and steady performance in busy shifts.</li>
+                    <li>Customer-first communication with a focus on accuracy.</li>
+                    <li>Safety-minded handling of people, products, and equipment.</li>
+                  </ul>
+                </div>
+              ) : (
+                <div className="resume-highlight">
+                  <h4 className="resume-subtitle">What I bring</h4>
+                  <ul>
+                    <li>Front-end development with accessible, mobile-first UI.</li>
+                    <li>Automation mindset for repeatable workflows.</li>
+                    <li>Clear documentation and collaboration in Git-based teams.</li>
+                  </ul>
+                </div>
+              )}
+            </div>
           </div>
         </section>
 
@@ -128,36 +228,53 @@ export default function Home() {
             <h2 className="section-title">Skills</h2>
             <div className="skills-grid">
               <div className="skill-group">
-                <h4 className="skill-label">Languages</h4>
-                <p className="skill-items">JavaScript, TypeScript, Python, Java, SQL, Bash</p>
+                <h4 className="skill-label">Universal strengths</h4>
+                <ul className="pill-list">
+                  {profile.skills_universal.map((skill) => (
+                    <li key={skill} className="pill">
+                      {skill}
+                    </li>
+                  ))}
+                </ul>
               </div>
               <div className="skill-group">
-                <h4 className="skill-label">Frameworks & Libraries</h4>
-                <p className="skill-items">React, Next.js, Node.js, Express</p>
-              </div>
-              <div className="skill-group">
-                <h4 className="skill-label">Tools & Technologies</h4>
-                <p className="skill-items">Git, GitHub, GitHub Actions, Docker, VS Code</p>
-              </div>
-              <div className="skill-group">
-                <h4 className="skill-label">Systems & Platforms</h4>
-                <p className="skill-items">Linux, Bash, Browser Automation, PostgreSQL</p>
+                <h4 className="skill-label">Tools & tech</h4>
+                <ul className="pill-list">
+                  {profile.skills_tools.map((skill) => (
+                    <li key={skill} className="pill">
+                      {skill}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>
         </section>
 
+        {isGeneral ? (
+          <>
+            {experienceSection}
+            {projectsSection}
+          </>
+        ) : (
+          <>
+            {projectsSection}
+            {experienceSection}
+          </>
+        )}
+
         <section id="education" className="section">
           <div className="container">
             <h2 className="section-title">Education</h2>
-            <div className="education-entry">
-              <h3 className="education-school">California State University, Sacramento</h3>
-              <p className="education-degree">Bachelor of Science in Computer Science</p>
-              <p className="education-date">Expected Graduation: May 2026</p>
-              <p className="education-coursework">
-                Relevant Coursework: Data Structures & Algorithms, Operating Systems, Database Systems,
-                Software Engineering, Object-Oriented Programming
-              </p>
+            <div className="education-list">
+              {profile.education.map((item: EducationEntry) => (
+                <article key={item.school} className="education-entry">
+                  <h3 className="education-school">{item.school}</h3>
+                  <p className="education-degree">{item.degree}</p>
+                  <p className="education-date">{item.dates}</p>
+                  <p className="education-coursework">{item.details}</p>
+                </article>
+              ))}
             </div>
           </div>
         </section>
@@ -166,29 +283,46 @@ export default function Home() {
           <div className="container">
             <h2 className="section-title">Contact</h2>
             <p className="contact-intro">
-              I'm always interested in new opportunities and collaborations. Feel free to reach out!
+              Open to opportunities across operations, customer service, logistics, and tech roles. Reach out for
+              availability or a tailored resume.
             </p>
+            <div className="contact-actions">
+              <a href={profile.contact.resumePdf} target="_blank" rel="noreferrer" className="btn btn-primary">
+                Download Resume (PDF)
+              </a>
+              <a href={`mailto:${profile.contact.email}`} className="btn">
+                Email
+              </a>
+            </div>
             <ul className="contact-list">
               <li>
                 <span className="contact-label">Email:</span>
-                <a href="mailto:aaravjit16@gmail.com">aaravjit16@gmail.com</a>
+                <a href={`mailto:${profile.contact.email}`}>{profile.contact.email}</a>
               </li>
               <li>
                 <span className="contact-label">GitHub:</span>
-                <a href="https://github.com/aaravjit" target="_blank" rel="noreferrer">github.com/aaravjit</a>
+                <a href={profile.contact.github} target="_blank" rel="noreferrer">
+                  {profile.contact.github.replace("https://", "")}
+                </a>
               </li>
               <li>
                 <span className="contact-label">LinkedIn:</span>
-                <a href="https://www.linkedin.com/in/aarav-jit-499a93293/" target="_blank" rel="noreferrer">linkedin.com/in/aarav-jit-499a93293</a>
+                <a href={profile.contact.linkedin} target="_blank" rel="noreferrer">
+                  {profile.contact.linkedin.replace("https://", "")}
+                </a>
               </li>
             </ul>
           </div>
         </section>
       </main>
 
+      <a href={profile.contact.resumePdf} className="sticky-resume" aria-label="Download resume">
+        Resume PDF
+      </a>
+
       <footer className="footer">
         <div className="container">
-          <span>&copy; {currentYear} Aarav Jit. Built with Next.js and deployed on GitHub Pages.</span>
+          <span>&copy; {currentYear} {profile.name}. Built with Next.js and deployed on GitHub Pages.</span>
         </div>
       </footer>
     </>
