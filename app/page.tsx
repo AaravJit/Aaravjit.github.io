@@ -1,17 +1,11 @@
-const targetRoles = [
-  "Technical Specialist",
-  "Apple Retail",
-  "Customer Technical Support",
-  "Product Specialist",
-  "Retail Technology Support",
-];
-
 const technicalStrengths = [
-  "Comfortable troubleshooting Windows, Arch Linux, dual-boot setups, hardware issues, drivers, and device configuration.",
-  "Experience building and configuring PCs, installing components, and diagnosing common hardware and software problems.",
-  "Able to explain technical issues in simple language for non-technical users.",
-  "Familiar with GitHub, command-line tools, Python, JavaScript/TypeScript, and web deployment.",
-  "Strong interest in consumer technology, Apple products, customer support, and repair/service workflows.",
+  "Retail fulfillment and customer-facing operations.",
+  "Online order picking, accuracy, speed, and inventory workflows.",
+  "Windows and Arch Linux troubleshooting.",
+  "PC building, component installation, and hardware/software setup.",
+  "Command line basics, GitHub, Python, JavaScript/TypeScript, and web deployment.",
+  "Practical mechanical interest through motorcycles, cars, and aviation maintenance.",
+  "Clear communication, reliability, adaptability, and learning by doing.",
 ];
 
 const workExperience = [
@@ -21,10 +15,10 @@ const workExperience = [
     locationDates: "Citrus Heights, CA · June 2024 – Present",
     bullets: [
       "Pick and prepare online grocery orders accurately in a fast-paced, time-sensitive environment.",
+      "Use handheld systems and inventory workflows to locate items, track orders, and maintain accuracy.",
       "Communicate with team members and customers to keep order flow smooth during peak demand.",
       "Handle substitutions, item availability issues, and customer-facing service situations with attention to detail.",
       "Trusted across departments because of reliability, adaptability, and ability to learn systems quickly.",
-      "Maintain accuracy while using handheld devices, inventory tools, and fulfillment workflows.",
     ],
   },
   {
@@ -43,28 +37,27 @@ const workExperience = [
 const projects = [
   {
     name: "Deal AI — Marketplace Listing Analysis Tool",
-    type: "Personal Project",
+    type: "Personal Project / Prototype",
     description:
-      "Prototype tool for analyzing online marketplace listings using listing details, pricing signals, and AI-assisted review.",
+      "A prototype concept for helping users review online marketplace listings faster using listing details, pricing signals, and AI-assisted analysis.",
     bullets: [
-      "Designed the concept for a tool that helps users compare marketplace listings faster.",
-      "Built a searchable interface for reviewing potential deals in one place.",
-      "Experimented with AI-based listing analysis using product images and listing text.",
-      "Explored automation workflows for collecting and refreshing listing data.",
+      "Designed the idea around a real problem: comparing marketplace listings quickly and spotting better deals.",
+      "Built or planned a searchable interface for reviewing listings in one place.",
+      "Experimented with AI-assisted review using listing text, images, and pricing context.",
+      "Used the project to practice product thinking, automation, and web development.",
     ],
-    shows: "Product thinking · AI tool integration · Web development · Real-world problem solving",
     tech: "Next.js · TypeScript · OpenAI Vision API · Playwright",
     links: [],
   },
   {
     name: "Portfolio Website",
     type: "Personal Website",
-    description: "Personal site used to present resume details, project samples, and contact information clearly.",
+    description: "A personal website used to organize my resume, project work samples, and contact information.",
     bullets: [
-      "Designed and deployed a personal portfolio to organize my resume, projects, and contact links.",
-      "Built a responsive layout for desktop and mobile viewing.",
-      "Hosted the site through GitHub Pages for easy access by employers.",
-      "Used the project to practice clean structure, deployment, and technical presentation.",
+      "Designed and deployed a personal website to organize my resume, projects, and contact links.",
+      "Built a clean layout for desktop and mobile viewing.",
+      "Hosted the site through GitHub Pages for easy access from my resume.",
+      "Used the project to practice web deployment, layout, and technical presentation.",
     ],
     tech: "Next.js · TypeScript · CSS · GitHub Pages",
     links: [
@@ -125,35 +118,18 @@ export default function Home() {
       </header>
 
       <main id="top" className="main">
-        <section id="about" className="hero">
+        <section className="hero">
           <div className="container">
-            <p className="target-label">Role Focus</p>
-            <div className="chip-group">
-              {targetRoles.map((role) => (
-                <span key={role} className="chip">
-                  {role}
-                </span>
-              ))}
-            </div>
-            <h1 className="hero-title">Customer-Focused Technical Support Candidate</h1>
+            <h1 className="hero-title">Student, Builder, and Hands-On Problem Solver</h1>
             <p className="hero-tagline">
-              Hands-on with consumer technology, troubleshooting, Linux/Windows systems, and customer-facing retail
-              operations.
+              Retail fulfillment experience, technical projects, troubleshooting skills, and a growing path toward
+              aviation maintenance and technology.
             </p>
-            <p className="hero-summary">
-              I&apos;m a Sacramento-based customer-facing team member with hands-on experience in fast-paced retail
-              fulfillment and a strong personal background in technology. I&apos;ve worked in online order fulfillment at
-              Walmart and Target, where accuracy, speed, communication, and reliability mattered every shift. Outside
-              of work, I build web projects, troubleshoot Linux and Windows systems, and create tools that solve real
-              problems.
-            </p>
-
             <div className="hero-actions">
               <a href="/resume.pdf" target="_blank" rel="noreferrer" className="btn btn-primary">
                 Download Resume
               </a>
             </div>
-
             <ul className="top-links">
               <li>
                 <span>Email:</span> <a href="mailto:aaravjit16@gmail.com">aaravjit16@gmail.com</a>
@@ -180,13 +156,27 @@ export default function Home() {
           </div>
         </section>
 
+        <section id="about" className="section">
+          <div className="container">
+            <h2 className="section-title">About Me</h2>
+            <div className="experience-card about-content">
+              <p className="about-paragraph">
+                I&apos;m based in Sacramento and I&apos;m currently building experience across work, school, and personal
+                projects. I&apos;ve worked in fast-paced online order fulfillment at Walmart and Target, where accuracy,
+                speed, reliability, and communication mattered every shift. Outside of work, I&apos;m hands-on with
+                technology, Linux/Windows systems, PC building, web projects, motorcycles, cars, and aviation
+                maintenance. I learn best by doing, troubleshooting, and figuring things out directly.
+              </p>
+            </div>
+          </div>
+        </section>
+
         <section id="resume" className="section">
           <div className="container">
-            <h2 className="section-title">Apple-Focused Resume</h2>
+            <h2 className="section-title">Resume</h2>
             <div className="resume-panel">
               <p className="resume-summary">
-                Focused on Apple Retail and customer-facing technical support roles where reliability, communication,
-                and practical troubleshooting matter every day.
+                A quick overview of my work experience, education, technical skills, and projects.
               </p>
               <a href="/resume.pdf" target="_blank" rel="noreferrer" className="btn btn-primary">
                 Download Resume
@@ -197,7 +187,7 @@ export default function Home() {
 
         <section id="technical-strengths" className="section">
           <div className="container">
-            <h2 className="section-title">Technical Strengths</h2>
+            <h2 className="section-title">Technical &amp; Practical Strengths</h2>
             <div className="experience-card">
               <ul className="experience-bullets">
                 {technicalStrengths.map((item) => (
@@ -248,7 +238,6 @@ export default function Home() {
                       <li key={bullet}>{bullet}</li>
                     ))}
                   </ul>
-                  {project.shows ? <p className="project-meta"><strong>What it shows:</strong> {project.shows}</p> : null}
                   <p className="project-meta">
                     <strong>Tech:</strong> {project.tech}
                   </p>
@@ -269,7 +258,7 @@ export default function Home() {
 
         <section id="education" className="section">
           <div className="container">
-            <h2 className="section-title">Education</h2>
+            <h2 className="section-title">Education &amp; Career Direction</h2>
             <div className="experience-list">
               {education.map((item) => (
                 <article key={item.school} className="experience-card">
@@ -278,6 +267,14 @@ export default function Home() {
                   <p className="education-coursework">{item.details}</p>
                 </article>
               ))}
+              <article className="experience-card">
+                <h3 className="education-school">Career Direction</h3>
+                <p className="education-coursework">
+                  I&apos;m interested in work that combines technical problem solving, hands-on learning, customer
+                  service, and real-world systems. My current direction includes aviation maintenance, technology
+                  support, and practical projects that let me keep building useful skills.
+                </p>
+              </article>
             </div>
           </div>
         </section>
@@ -285,9 +282,6 @@ export default function Home() {
         <section id="contact" className="section">
           <div className="container">
             <h2 className="section-title">Contact</h2>
-            <p className="contact-intro">
-              I&apos;m looking for Apple Retail and customer-facing technical support opportunities in the Sacramento area.
-            </p>
             <div className="contact-actions">
               <a href="/resume.pdf" target="_blank" rel="noreferrer" className="btn btn-primary">
                 Download Resume
@@ -324,7 +318,7 @@ export default function Home() {
         </section>
       </main>
 
-      <a href="/resume.pdf" className="sticky-resume" aria-label="Download Apple-focused resume">
+      <a href="/resume.pdf" className="sticky-resume" aria-label="Download resume PDF">
         Resume PDF
       </a>
 
