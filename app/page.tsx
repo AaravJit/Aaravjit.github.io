@@ -150,7 +150,7 @@ export default function Home() {
 
             <div className="hero-actions">
               <a href="/resume.pdf" target="_blank" rel="noreferrer" className="btn btn-primary">
-                Download Apple-Focused Resume
+                Download Resume
               </a>
             </div>
 
@@ -189,7 +189,7 @@ export default function Home() {
                 and practical troubleshooting matter every day.
               </p>
               <a href="/resume.pdf" target="_blank" rel="noreferrer" className="btn btn-primary">
-                Download Apple-Focused Resume
+                Download Resume
               </a>
             </div>
           </div>
@@ -290,7 +290,7 @@ export default function Home() {
             </p>
             <div className="contact-actions">
               <a href="/resume.pdf" target="_blank" rel="noreferrer" className="btn btn-primary">
-                Download Apple-Focused Resume
+                Download Resume
               </a>
               <a href="mailto:aaravjit16@gmail.com" className="btn">
                 Email Me
