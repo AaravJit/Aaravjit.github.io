@@ -95,9 +95,6 @@ export default function Home() {
             <a href="#about" className="nav-link">
               About
             </a>
-            <a href="#resume" className="nav-link">
-              Resume
-            </a>
             <a href="#technical-strengths" className="nav-link">
               Strengths
             </a>
@@ -167,20 +164,6 @@ export default function Home() {
                 technology, Linux/Windows systems, PC building, web projects, motorcycles, cars, and aviation
                 maintenance. I learn best by doing, troubleshooting, and figuring things out directly.
               </p>
-            </div>
-          </div>
-        </section>
-
-        <section id="resume" className="section">
-          <div className="container">
-            <h2 className="section-title">Resume</h2>
-            <div className="resume-panel">
-              <p className="resume-summary">
-                A quick overview of my work experience, education, technical skills, and projects.
-              </p>
-              <a href="/resume.pdf" target="_blank" rel="noreferrer" className="btn btn-primary">
-                Download Resume
-              </a>
             </div>
           </div>
         </section>
@@ -283,10 +266,7 @@ export default function Home() {
           <div className="container">
             <h2 className="section-title">Contact</h2>
             <div className="contact-actions">
-              <a href="/resume.pdf" target="_blank" rel="noreferrer" className="btn btn-primary">
-                Download Resume
-              </a>
-              <a href="mailto:aaravjit16@gmail.com" className="btn">
+              <a href="mailto:aaravjit16@gmail.com" className="btn btn-primary">
                 Email Me
               </a>
             </div>
