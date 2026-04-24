@@ -1,277 +1,280 @@
-"use client";
+const targetRoles = [
+  "Technical Specialist",
+  "Apple Retail",
+  "Customer Technical Support",
+  "Product Specialist",
+  "Retail Technology Support",
+];
 
-import { useMemo, useState } from "react";
-import profile from "../data/profile.json";
+const technicalStrengths = [
+  "Comfortable troubleshooting Windows, Arch Linux, dual-boot setups, hardware issues, drivers, and device configuration.",
+  "Experience building and configuring PCs, installing components, and diagnosing common hardware and software problems.",
+  "Able to explain technical issues in simple language for non-technical users.",
+  "Familiar with GitHub, command-line tools, Python, JavaScript/TypeScript, and web deployment.",
+  "Strong interest in consumer technology, Apple products, customer support, and repair/service workflows.",
+];
 
-type ResumeView = "general" | "tech";
+const workExperience = [
+  {
+    company: "Walmart",
+    title: "Online Grocery Pickup Associate",
+    locationDates: "Citrus Heights, CA · June 2024 – Present",
+    bullets: [
+      "Pick and prepare online grocery orders accurately in a fast-paced, time-sensitive environment.",
+      "Communicate with team members and customers to keep order flow smooth during peak demand.",
+      "Handle substitutions, item availability issues, and customer-facing service situations with attention to detail.",
+      "Trusted across departments because of reliability, adaptability, and ability to learn systems quickly.",
+      "Maintain accuracy while using handheld devices, inventory tools, and fulfillment workflows.",
+    ],
+  },
+  {
+    company: "Target",
+    title: "Fulfillment Expert",
+    locationDates: "Sacramento, CA · November 2023 – January 2024",
+    bullets: [
+      "Picked and packed online and in-store fulfillment orders during high-volume seasonal demand.",
+      "Used handheld fulfillment systems to locate products, confirm accuracy, and meet order deadlines.",
+      "Supported team workflow by moving quickly while maintaining product and order accuracy.",
+      "Helped maintain a clean, organized, and customer-ready retail environment.",
+    ],
+  },
+];
 
-type Project = (typeof profile.projects)[number];
+const projects = [
+  {
+    name: "Deal AI — Marketplace Listing Analysis Tool",
+    type: "Personal Project",
+    description:
+      "Prototype tool for analyzing online marketplace listings using listing details, pricing signals, and AI-assisted review.",
+    bullets: [
+      "Designed the concept for a tool that helps users compare marketplace listings faster.",
+      "Built a searchable interface for reviewing potential deals in one place.",
+      "Experimented with AI-based listing analysis using product images and listing text.",
+      "Explored automation workflows for collecting and refreshing listing data.",
+    ],
+    shows: "Product thinking · AI tool integration · Web development · Real-world problem solving",
+    tech: "Next.js · TypeScript · OpenAI Vision API · Playwright",
+    links: [],
+  },
+  {
+    name: "Portfolio Website",
+    type: "Personal Website",
+    description: "Personal site used to present resume details, project samples, and contact information clearly.",
+    bullets: [
+      "Designed and deployed a personal portfolio to organize my resume, projects, and contact links.",
+      "Built a responsive layout for desktop and mobile viewing.",
+      "Hosted the site through GitHub Pages for easy access by employers.",
+      "Used the project to practice clean structure, deployment, and technical presentation.",
+    ],
+    tech: "Next.js · TypeScript · CSS · GitHub Pages",
+    links: [
+      { label: "Live Site", href: "https://aaravjit.github.io/" },
+      { label: "GitHub Repo", href: "https://github.com/AaravJit/Aaravjit.github.io" },
+    ],
+  },
+];
 
-type ExperienceEntry = (typeof profile.experience)[number];
-
-type EducationEntry = (typeof profile.education)[number];
-
-const projectOrderMap: Record<ResumeView, string[]> = {
-  general: ["Work Sample", "Project"],
-  tech: ["Project", "Work Sample"],
-};
+const education = [
+  {
+    school: "California State University, Sacramento",
+    program: "Computer Science Coursework",
+    details:
+      "Completed coursework in programming fundamentals and data structures. Continued building technical skills through personal projects, Linux system use, and web development.",
+  },
+  {
+    school: "Sacramento City College",
+    program: "Aviation Maintenance Technology Program",
+    details: "Enrolled / pursuing FAA A&P pathway",
+  },
+];
 
 export default function Home() {
   const currentYear = new Date().getFullYear();
-  const [view, setView] = useState<ResumeView>("general");
-
-  const orderedProjects = useMemo(() => {
-    const order = projectOrderMap[view];
-
-    return [...profile.projects].sort((a, b) => {
-      const aIndex = order.indexOf(a.type);
-      const bIndex = order.indexOf(b.type);
-      return aIndex - bIndex;
-    });
-  }, [view]);
-
-  const summary = view === "general" ? profile.universal_summary : profile.tech_summary;
-  const isGeneral = view === "general";
-
-  const experienceSection = (
-    <section id="experience" className="section">
-      <div className="container">
-        <h2 className="section-title">Work Experience</h2>
-        <div className="experience-list">
-          {profile.experience.map((item: ExperienceEntry) => (
-            <article key={`${item.company}-${item.title}`} className="experience-card">
-              <div className="experience-header">
-                <div>
-                  <h3 className="experience-title">{item.title}</h3>
-                  <p className="experience-company">{item.company}</p>
-                </div>
-                <span className="experience-dates">{item.dates}</span>
-              </div>
-              <ul className="experience-bullets">
-                {item.bullets.map((bullet) => (
-                  <li key={bullet}>{bullet}</li>
-                ))}
-              </ul>
-              <div className="experience-keywords">
-                {item.keywords.map((keyword) => (
-                  <span key={keyword} className="badge">
-                    {keyword}
-                  </span>
-                ))}
-              </div>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-
-  const projectsSection = (
-    <section id="projects" className="section">
-      <div className="container">
-        <h2 className="section-title">Work Samples / Projects</h2>
-        <div className="project-grid">
-          {orderedProjects.map((project: Project) => (
-            <article key={project.name} className="project-card">
-              <div className="project-header">
-                <h3 className="project-name">{project.name}</h3>
-                <span className="project-status">{project.type}</span>
-              </div>
-              <div className="project-block">
-                <p className="project-label">Problem</p>
-                <p className="project-description">{project.problem}</p>
-              </div>
-              <div className="project-block">
-                <p className="project-label">Actions</p>
-                <ul className="project-list">
-                  {project.actions.map((action) => (
-                    <li key={action}>{action}</li>
-                  ))}
-                </ul>
-              </div>
-              <div className="project-block">
-                <p className="project-label">Results</p>
-                <ul className="project-list">
-                  {project.results.map((result) => (
-                    <li key={result}>{result}</li>
-                  ))}
-                </ul>
-              </div>
-              {project.tools ? <p className="project-tech">{project.tools}</p> : null}
-              <div className="project-links">
-                {project.links.map((link) => (
-                  <a key={link.url} href={link.url} target="_blank" rel="noreferrer" className="project-link">
-                    {link.label} →
-                  </a>
-                ))}
-              </div>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
 
   return (
     <>
       <header className="header">
         <div className="container header-inner">
-          <a href="#top" className="logo">{profile.name}</a>
+          <a href="#top" className="logo">
+            Aarav Jit
+          </a>
           <nav className="nav">
-            <a href="#resume" className="nav-link">Resume</a>
-            <a href="#skills" className="nav-link">Skills</a>
-            <a href="#experience" className="nav-link">Experience</a>
-            <a href="#projects" className="nav-link">Work Samples</a>
-            <a href="#education" className="nav-link">Education</a>
-            <a href="#contact" className="nav-link">Contact</a>
+            <a href="#about" className="nav-link">
+              About
+            </a>
+            <a href="#resume" className="nav-link">
+              Resume
+            </a>
+            <a href="#technical-strengths" className="nav-link">
+              Strengths
+            </a>
+            <a href="#work-experience" className="nav-link">
+              Experience
+            </a>
+            <a href="#projects" className="nav-link">
+              Projects
+            </a>
+            <a href="#education" className="nav-link">
+              Education
+            </a>
+            <a href="#contact" className="nav-link">
+              Contact
+            </a>
           </nav>
         </div>
       </header>
 
       <main id="top" className="main">
-        <section className="hero">
+        <section id="about" className="hero">
           <div className="container">
-            <div className="hero-badges">
-              <span className="badge">Open to multiple role types</span>
-              <span className="badge">Based in {profile.location}</span>
+            <p className="target-label">Role Focus</p>
+            <div className="chip-group">
+              {targetRoles.map((role) => (
+                <span key={role} className="chip">
+                  {role}
+                </span>
+              ))}
             </div>
-            <h1 className="hero-title">{profile.name}</h1>
-            <p className="hero-tagline">{profile.headline}</p>
-            <p className="hero-summary">{summary}</p>
+            <h1 className="hero-title">Customer-Focused Technical Support Candidate</h1>
+            <p className="hero-tagline">
+              Hands-on with consumer technology, troubleshooting, Linux/Windows systems, and customer-facing retail
+              operations.
+            </p>
+            <p className="hero-summary">
+              I&apos;m a Sacramento-based customer-facing team member with hands-on experience in fast-paced retail
+              fulfillment and a strong personal background in technology. I&apos;ve worked in online order fulfillment at
+              Walmart and Target, where accuracy, speed, communication, and reliability mattered every shift. Outside
+              of work, I build web projects, troubleshoot Linux and Windows systems, and create tools that solve real
+              problems.
+            </p>
+
             <div className="hero-actions">
-              <button
-                type="button"
-                className={`btn ${isGeneral ? "btn-primary" : ""}`}
-                onClick={() => setView("general")}
-                aria-pressed={isGeneral}
-              >
-                General Resume
-              </button>
-              <button
-                type="button"
-                className={`btn ${!isGeneral ? "btn-primary" : ""}`}
-                onClick={() => setView("tech")}
-                aria-pressed={!isGeneral}
-              >
-                Tech Resume
-              </button>
-              <a href={profile.contact.resumePdf} target="_blank" rel="noreferrer" className="btn">
-                Download Resume (PDF)
+              <a href="/resume.pdf" target="_blank" rel="noreferrer" className="btn btn-primary">
+                Download Apple-Focused Resume
               </a>
             </div>
-            {isGeneral ? (
-              <div className="target-roles">
-                <p className="target-label">Target roles</p>
-                <div className="chip-group">
-                  {profile.target_roles.map((role) => (
-                    <span key={role} className="chip">
-                      {role}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ) : null}
+
+            <ul className="top-links">
+              <li>
+                <span>Email:</span> <a href="mailto:aaravjit16@gmail.com">aaravjit16@gmail.com</a>
+              </li>
+              <li>
+                <span>LinkedIn:</span>{" "}
+                <a href="https://www.linkedin.com/in/aarav-jit-499a93293/" target="_blank" rel="noreferrer">
+                  linkedin.com/in/aarav-jit-499a93293
+                </a>
+              </li>
+              <li>
+                <span>GitHub:</span>{" "}
+                <a href="https://github.com/aaravjit" target="_blank" rel="noreferrer">
+                  github.com/aaravjit
+                </a>
+              </li>
+              <li>
+                <span>Portfolio:</span>{" "}
+                <a href="https://aaravjit.github.io/" target="_blank" rel="noreferrer">
+                  aaravjit.github.io
+                </a>
+              </li>
+            </ul>
           </div>
         </section>
 
         <section id="resume" className="section">
           <div className="container">
-            <h2 className="section-title">Resume Overview</h2>
-            <div className="resume-tabs" role="tablist" aria-label="Resume view">
-              <button
-                type="button"
-                role="tab"
-                aria-selected={isGeneral}
-                className={`tab ${isGeneral ? "tab-active" : ""}`}
-                onClick={() => setView("general")}
-              >
-                General Resume
-              </button>
-              <button
-                type="button"
-                role="tab"
-                aria-selected={!isGeneral}
-                className={`tab ${!isGeneral ? "tab-active" : ""}`}
-                onClick={() => setView("tech")}
-              >
-                Tech Resume
-              </button>
-            </div>
+            <h2 className="section-title">Apple-Focused Resume</h2>
             <div className="resume-panel">
-              <h3 className="resume-title">{isGeneral ? "General Summary" : "Tech Summary"}</h3>
-              <p className="resume-summary">{summary}</p>
-              {isGeneral ? (
-                <div className="resume-highlight">
-                  <h4 className="resume-subtitle">What I bring</h4>
-                  <ul>
-                    <li>Reliable attendance and steady performance in busy shifts.</li>
-                    <li>Customer-first communication with a focus on accuracy.</li>
-                    <li>Safety-minded handling of people, products, and equipment.</li>
-                  </ul>
-                </div>
-              ) : (
-                <div className="resume-highlight">
-                  <h4 className="resume-subtitle">What I bring</h4>
-                  <ul>
-                    <li>Front-end development with accessible, mobile-first UI.</li>
-                    <li>Automation mindset for repeatable workflows.</li>
-                    <li>Clear documentation and collaboration in Git-based teams.</li>
-                  </ul>
-                </div>
-              )}
+              <p className="resume-summary">
+                Focused on Apple Retail and customer-facing technical support roles where reliability, communication,
+                and practical troubleshooting matter every day.
+              </p>
+              <a href="/resume.pdf" target="_blank" rel="noreferrer" className="btn btn-primary">
+                Download Apple-Focused Resume
+              </a>
             </div>
           </div>
         </section>
 
-        <section id="skills" className="section">
+        <section id="technical-strengths" className="section">
           <div className="container">
-            <h2 className="section-title">Skills</h2>
-            <div className="skills-grid">
-              <div className="skill-group">
-                <h4 className="skill-label">Universal strengths</h4>
-                <ul className="pill-list">
-                  {profile.skills_universal.map((skill) => (
-                    <li key={skill} className="pill">
-                      {skill}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="skill-group">
-                <h4 className="skill-label">Tools & tech</h4>
-                <ul className="pill-list">
-                  {profile.skills_tools.map((skill) => (
-                    <li key={skill} className="pill">
-                      {skill}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            <h2 className="section-title">Technical Strengths</h2>
+            <div className="experience-card">
+              <ul className="experience-bullets">
+                {technicalStrengths.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
             </div>
           </div>
         </section>
 
-        {isGeneral ? (
-          <>
-            {experienceSection}
-            {projectsSection}
-          </>
-        ) : (
-          <>
-            {projectsSection}
-            {experienceSection}
-          </>
-        )}
+        <section id="work-experience" className="section">
+          <div className="container">
+            <h2 className="section-title">Work Experience</h2>
+            <div className="experience-list">
+              {workExperience.map((role) => (
+                <article key={`${role.company}-${role.title}`} className="experience-card">
+                  <div className="experience-header">
+                    <div>
+                      <p className="experience-company">{role.company}</p>
+                      <h3 className="experience-title">{role.title}</h3>
+                    </div>
+                    <span className="experience-dates">{role.locationDates}</span>
+                  </div>
+                  <ul className="experience-bullets">
+                    {role.bullets.map((bullet) => (
+                      <li key={bullet}>{bullet}</li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="projects" className="section">
+          <div className="container">
+            <h2 className="section-title">Projects / Work Samples</h2>
+            <div className="experience-list">
+              {projects.map((project) => (
+                <article key={project.name} className="experience-card">
+                  <div className="project-header">
+                    <h3 className="project-name">{project.name}</h3>
+                    <span className="project-status">{project.type}</span>
+                  </div>
+                  <p className="project-description">{project.description}</p>
+                  <ul className="project-list">
+                    {project.bullets.map((bullet) => (
+                      <li key={bullet}>{bullet}</li>
+                    ))}
+                  </ul>
+                  {project.shows ? <p className="project-meta"><strong>What it shows:</strong> {project.shows}</p> : null}
+                  <p className="project-meta">
+                    <strong>Tech:</strong> {project.tech}
+                  </p>
+                  {project.links.length > 0 ? (
+                    <div className="project-links">
+                      {project.links.map((link) => (
+                        <a key={link.href} href={link.href} target="_blank" rel="noreferrer" className="project-link">
+                          {link.label} →
+                        </a>
+                      ))}
+                    </div>
+                  ) : null}
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
 
         <section id="education" className="section">
           <div className="container">
             <h2 className="section-title">Education</h2>
-            <div className="education-list">
-              {profile.education.map((item: EducationEntry) => (
-                <article key={item.school} className="education-entry">
+            <div className="experience-list">
+              {education.map((item) => (
+                <article key={item.school} className="experience-card">
                   <h3 className="education-school">{item.school}</h3>
-                  <p className="education-degree">{item.degree}</p>
-                  <p className="education-date">{item.dates}</p>
+                  <p className="education-degree">{item.program}</p>
                   <p className="education-coursework">{item.details}</p>
                 </article>
               ))}
@@ -283,32 +286,37 @@ export default function Home() {
           <div className="container">
             <h2 className="section-title">Contact</h2>
             <p className="contact-intro">
-              Open to opportunities across operations, customer service, logistics, and tech roles. Reach out for
-              availability or a tailored resume.
+              I&apos;m looking for Apple Retail and customer-facing technical support opportunities in the Sacramento area.
             </p>
             <div className="contact-actions">
-              <a href={profile.contact.resumePdf} target="_blank" rel="noreferrer" className="btn btn-primary">
-                Download Resume (PDF)
+              <a href="/resume.pdf" target="_blank" rel="noreferrer" className="btn btn-primary">
+                Download Apple-Focused Resume
               </a>
-              <a href={`mailto:${profile.contact.email}`} className="btn">
-                Email
+              <a href="mailto:aaravjit16@gmail.com" className="btn">
+                Email Me
               </a>
             </div>
             <ul className="contact-list">
               <li>
-                <span className="contact-label">Email:</span>
-                <a href={`mailto:${profile.contact.email}`}>{profile.contact.email}</a>
+                <span className="contact-label">Email</span>
+                <a href="mailto:aaravjit16@gmail.com">aaravjit16@gmail.com</a>
               </li>
               <li>
-                <span className="contact-label">GitHub:</span>
-                <a href={profile.contact.github} target="_blank" rel="noreferrer">
-                  {profile.contact.github.replace("https://", "")}
+                <span className="contact-label">LinkedIn</span>
+                <a href="https://www.linkedin.com/in/aarav-jit-499a93293/" target="_blank" rel="noreferrer">
+                  https://www.linkedin.com/in/aarav-jit-499a93293/
                 </a>
               </li>
               <li>
-                <span className="contact-label">LinkedIn:</span>
-                <a href={profile.contact.linkedin} target="_blank" rel="noreferrer">
-                  {profile.contact.linkedin.replace("https://", "")}
+                <span className="contact-label">GitHub</span>
+                <a href="https://github.com/aaravjit" target="_blank" rel="noreferrer">
+                  https://github.com/aaravjit
+                </a>
+              </li>
+              <li>
+                <span className="contact-label">Portfolio</span>
+                <a href="https://aaravjit.github.io/" target="_blank" rel="noreferrer">
+                  https://aaravjit.github.io/
                 </a>
               </li>
             </ul>
@@ -316,13 +324,13 @@ export default function Home() {
         </section>
       </main>
 
-      <a href={profile.contact.resumePdf} className="sticky-resume" aria-label="Download resume">
+      <a href="/resume.pdf" className="sticky-resume" aria-label="Download Apple-focused resume">
         Resume PDF
       </a>
 
       <footer className="footer">
         <div className="container">
-          <span>&copy; {currentYear} {profile.name}. Built with Next.js and deployed on GitHub Pages.</span>
+          <span>&copy; {currentYear} Aarav Jit. Built with Next.js and deployed on GitHub Pages.</span>
         </div>
       </footer>
     </>
