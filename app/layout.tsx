@@ -2,23 +2,23 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Aarav Jit — Reliable Team Member & Software Problem Solver',
+  title: 'Aarav Jit | IT Support & Cybersecurity Student',
   description:
-    'Reliable team member focused on accuracy, customer service, and on-time results. Open to operations, service, logistics, and tech roles.',
+    'Portfolio of Aarav Jit, an entry-level IT support and cybersecurity student with hands-on experience in Linux, Windows, troubleshooting, networking fundamentals, Bash, Git, and system configuration.',
   metadataBase: new URL('https://aaravjit.github.io'),
   openGraph: {
-    title: 'Aarav Jit — Reliable Team Member & Software Problem Solver',
+    title: 'Aarav Jit | IT Support & Cybersecurity Student',
     description:
-      'Reliable team member focused on accuracy, customer service, and on-time results. Open to operations, service, logistics, and tech roles.',
+      'Portfolio of Aarav Jit, an entry-level IT support and cybersecurity student with hands-on experience in Linux, Windows, troubleshooting, networking fundamentals, Bash, Git, and system configuration.',
     url: 'https://aaravjit.github.io',
     siteName: 'Aarav Jit Portfolio',
     type: 'website',
   },
   twitter: {
     card: 'summary',
-    title: 'Aarav Jit — Reliable Team Member & Software Problem Solver',
+    title: 'Aarav Jit | IT Support & Cybersecurity Student',
     description:
-      'Reliable team member focused on accuracy, customer service, and on-time results. Open to operations, service, logistics, and tech roles.',
+      'Portfolio of Aarav Jit, an entry-level IT support and cybersecurity student with hands-on experience in Linux, Windows, troubleshooting, networking fundamentals, Bash, Git, and system configuration.',
   },
 };
 

@@ -1,85 +1,66 @@
-const technicalStrengths = [
-  "Retail fulfillment and customer-facing operations.",
-  "Online order picking, accuracy, speed, and inventory workflows.",
-  "Windows and Arch Linux troubleshooting.",
-  "PC building, component installation, and hardware/software setup.",
-  "Command line basics, GitHub, Python, JavaScript/TypeScript, and web deployment.",
-  "Practical mechanical interest through motorcycles, cars, and aviation maintenance.",
-  "Clear communication, reliability, adaptability, and learning by doing.",
-];
-
-const workExperience = [
+const skillGroups = [
   {
-    company: "Walmart",
-    title: "Online Grocery Pickup Associate",
-    locationDates: "Citrus Heights, CA · June 2024 – Present",
-    bullets: [
-      "Pick and prepare online grocery orders accurately in a fast-paced, time-sensitive environment.",
-      "Use handheld systems and inventory workflows to locate items, track orders, and maintain accuracy.",
-      "Communicate with team members and customers to keep order flow smooth during peak demand.",
-      "Handle substitutions, item availability issues, and customer-facing service situations with attention to detail.",
-      "Trusted across departments because of reliability, adaptability, and ability to learn systems quickly.",
+    title: "Operating Systems",
+    note: "Hands-on personal experience and current learning",
+    items: ["Windows 10/11", "Arch Linux", "Linux desktop environments", "Linux command line", "Windows PowerShell fundamentals"],
+  },
+  {
+    title: "Troubleshooting",
+    note: "Hands-on personal experience",
+    items: [
+      "Software installation and configuration", "PC hardware troubleshooting", "Storage and memory diagnostics",
+      "User accounts and permissions", "Processes and services", "Log inspection", "Network connectivity troubleshooting",
+      "Documentation and escalation",
     ],
   },
   {
-    company: "Target",
-    title: "Fulfillment Expert",
-    locationDates: "Sacramento, CA · November 2023 – January 2024",
-    bullets: [
-      "Picked and packed online and in-store fulfillment orders during high-volume seasonal demand.",
-      "Used handheld fulfillment systems to locate products, confirm accuracy, and meet order deadlines.",
-      "Supported team workflow by moving quickly while maintaining product and order accuracy.",
-      "Helped maintain a clean, organized, and customer-ready retail environment.",
+    title: "Networking Fundamentals",
+    note: "Foundational knowledge and upcoming coursework",
+    items: ["TCP/IP", "IPv4 addressing", "DNS", "DHCP", "ICMP", "Ethernet", "Wi-Fi", "Common ports and protocols"],
+  },
+  {
+    title: "Tools & Technologies",
+    note: "Hands-on use and fundamentals",
+    items: [
+      "Bash", "Git", "GitHub", "PowerShell", "systemd", "journalctl", "NetworkManager", "Windows Task Manager",
+      "Device Manager", "Event Viewer", "HTML", "CSS", "JavaScript", "React", "Next.js", "Python",
     ],
   },
 ];
 
-const projects = [
-  {
-    name: "Deal AI — Marketplace Listing Analysis Tool",
-    type: "Personal Project / Prototype",
-    description:
-      "A prototype concept for helping users review online marketplace listings faster using listing details, pricing signals, and AI-assisted analysis.",
-    bullets: [
-      "Designed the idea around a real problem: comparing marketplace listings quickly and spotting better deals.",
-      "Built or planned a searchable interface for reviewing listings in one place.",
-      "Experimented with AI-assisted review using listing text, images, and pricing context.",
-      "Used the project to practice product thinking, automation, and web development.",
-    ],
-    tech: "Next.js · TypeScript · OpenAI Vision API · Playwright",
-    links: [],
-  },
-  {
-    name: "Portfolio Website",
-    type: "Personal Website",
-    description: "A personal website used to organize my resume, project work samples, and contact information.",
-    bullets: [
-      "Designed and deployed a personal website to organize my resume, projects, and contact links.",
-      "Built a clean layout for desktop and mobile viewing.",
-      "Hosted the site through GitHub Pages for easy access from my resume.",
-      "Used the project to practice web deployment, layout, and technical presentation.",
-    ],
-    tech: "Next.js · TypeScript · CSS · GitHub Pages",
-    links: [
-      { label: "Live Site", href: "https://aaravjit.github.io/" },
-      { label: "GitHub Repo", href: "https://github.com/AaravJit/Aaravjit.github.io" },
-    ],
-  },
+const hyprlandHighlights = [
+  "Bash-based installation workflow",
+  "Intel, AMD, and NVIDIA configuration paths",
+  "Deployment on desktop and HP OmniBook laptop hardware",
+  "Arch Linux package management and Hyprland configuration",
+  "Git-based version control and reusable configuration files",
+  "Hardware-specific troubleshooting and installation documentation",
 ];
 
-const education = [
-  {
-    school: "California State University, Sacramento",
-    program: "Computer Science Coursework",
-    details:
-      "Completed coursework in programming fundamentals and data structures. Continued building technical skills through personal projects, Linux system use, and web development.",
-  },
-  {
-    school: "Sacramento City College",
-    program: "Aviation Maintenance Technology Program",
-    details: "Enrolled / pursuing FAA A&P pathway",
-  },
+const currentLabs = [
+  "Windows and Linux troubleshooting lab",
+  "Networking and DNS troubleshooting exercises",
+  "Windows Server administration practice",
+  "PowerShell and Bash support scripts",
+  "Documentation of common help-desk scenarios",
 ];
+
+const walmartBullets = [
+  "Communicate directly with customers to resolve order issues, explain substitutions, and coordinate timely order handoffs.",
+  "Use internal inventory and order-management systems while maintaining accuracy during high-volume periods.",
+  "Identify routine operational problems, follow documented procedures, and escalate issues that require management support.",
+  "Coordinate with multiple team members when missing items, delayed orders, or staging issues affect customer service.",
+  "Prioritize urgent tasks while maintaining accuracy and clear communication.",
+];
+
+const coursework = [
+  "CISN 340 — Introduction to Networks",
+  "CISN 341 — Switching, Routing, and Wireless Essentials",
+  "CISN 300 — Network Systems Administration",
+  "CISS 310 — Network Security Fundamentals",
+];
+
+const externalProps = { target: "_blank", rel: "noopener noreferrer" } as const;
 
 export default function Home() {
   const currentYear = new Date().getFullYear();
@@ -88,116 +69,69 @@ export default function Home() {
     <>
       <header className="header">
         <div className="container header-inner">
-          <a href="#top" className="logo">
-            Aarav Jit
-          </a>
-          <nav className="nav">
-            <a href="#about" className="nav-link">
-              About
-            </a>
-            <a href="#technical-strengths" className="nav-link">
-              Strengths
-            </a>
-            <a href="#work-experience" className="nav-link">
-              Experience
-            </a>
-            <a href="#projects" className="nav-link">
-              Projects
-            </a>
-            <a href="#education" className="nav-link">
-              Education
-            </a>
-            <a href="#contact" className="nav-link">
-              Contact
-            </a>
+          <a href="#top" className="logo">Aarav Jit</a>
+          <nav className="nav" aria-label="Primary navigation">
+            <a href="#about" className="nav-link">About</a>
+            <a href="#skills" className="nav-link">Skills</a>
+            <a href="#projects" className="nav-link">Projects</a>
+            <a href="#experience" className="nav-link">Experience</a>
+            <a href="#education" className="nav-link">Education</a>
+            <a href="/resume.pdf" className="nav-link" {...externalProps}>Resume</a>
+            <a href="#contact" className="nav-link">Contact</a>
           </nav>
         </div>
       </header>
 
       <main id="top" className="main">
-        <section className="hero">
+        <section className="hero" aria-labelledby="hero-title">
           <div className="container">
-            <h1 className="hero-title">Student, Builder, and Hands-On Problem Solver</h1>
-            <p className="hero-tagline">
-              Retail fulfillment experience, technical projects, troubleshooting skills, and a growing path toward
-              aviation maintenance and technology.
+            <h1 id="hero-title" className="hero-title">Aarav Jit</h1>
+            <p className="hero-tagline">Entry-Level IT Support &amp; Cybersecurity Student</p>
+            <p className="hero-summary">
+              Cybersecurity and networking student building hands-on experience with Windows, Linux, troubleshooting,
+              system configuration, Bash automation, Git, and computer hardware. Currently seeking an entry-level help
+              desk, IT support, desktop support, or technical support opportunity.
             </p>
             <div className="hero-actions">
-              <a href="/resume.pdf" target="_blank" rel="noreferrer" className="btn btn-primary">
-                Download Resume
-              </a>
+              <a href="#projects" className="btn btn-primary">View Projects</a>
+              <a href="/resume.pdf" className="btn" {...externalProps}>View Resume</a>
+              <a href="https://github.com/AaravJit" className="btn" {...externalProps}>GitHub</a>
+              <a href="#contact" className="btn">Contact Me</a>
             </div>
-            <ul className="top-links">
-              <li>
-                <span>Email:</span> <a href="mailto:aaravjit16@gmail.com">aaravjit16@gmail.com</a>
-              </li>
-              <li>
-                <span>LinkedIn:</span>{" "}
-                <a href="https://www.linkedin.com/in/aarav-jit-499a93293/" target="_blank" rel="noreferrer">
-                  linkedin.com/in/aarav-jit-499a93293
-                </a>
-              </li>
-              <li>
-                <span>GitHub:</span>{" "}
-                <a href="https://github.com/aaravjit" target="_blank" rel="noreferrer">
-                  github.com/aaravjit
-                </a>
-              </li>
-              <li>
-                <span>Portfolio:</span>{" "}
-                <a href="https://aaravjit.github.io/" target="_blank" rel="noreferrer">
-                  aaravjit.github.io
-                </a>
-              </li>
-            </ul>
+            {/* TODO: Replace public/resume.pdf after its education, projects, and career positioning are verified. */}
+            <p className="resume-notice"><strong>Resume update:</strong> The downloadable PDF is being revised to match this portfolio.</p>
           </div>
         </section>
 
         <section id="about" className="section">
           <div className="container">
-            <h2 className="section-title">About Me</h2>
+            <h2 className="section-title">About</h2>
             <div className="experience-card about-content">
               <p className="about-paragraph">
-                I&apos;m based in Sacramento and I&apos;m currently building experience across work, school, and personal
-                projects. I&apos;ve worked in fast-paced online order fulfillment at Walmart and Target, where accuracy,
-                speed, reliability, and communication mattered every shift. Outside of work, I&apos;m hands-on with
-                technology, Linux/Windows systems, PC building, web projects, motorcycles, cars, and aviation
-                maintenance. I learn best by doing, troubleshooting, and figuring things out directly.
+                I am a cybersecurity and networking student at American River College with hands-on experience configuring
+                Linux systems, troubleshooting software and hardware issues, writing Bash scripts, and deploying reusable
+                desktop environments across different hardware configurations.
+              </p>
+              <p className="about-paragraph">
+                My professional experience in high-volume customer service has taught me how to communicate clearly,
+                prioritize urgent issues, follow established procedures, and stay accurate under pressure. I am now applying
+                those skills toward an entry-level IT support role while continuing to build practical experience in
+                networking, Windows administration, Linux, and cybersecurity fundamentals.
               </p>
             </div>
           </div>
         </section>
 
-        <section id="technical-strengths" className="section">
+        <section id="skills" className="section">
           <div className="container">
-            <h2 className="section-title">Technical &amp; Practical Strengths</h2>
-            <div className="experience-card">
-              <ul className="experience-bullets">
-                {technicalStrengths.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section id="work-experience" className="section">
-          <div className="container">
-            <h2 className="section-title">Work Experience</h2>
-            <div className="experience-list">
-              {workExperience.map((role) => (
-                <article key={`${role.company}-${role.title}`} className="experience-card">
-                  <div className="experience-header">
-                    <div>
-                      <p className="experience-company">{role.company}</p>
-                      <h3 className="experience-title">{role.title}</h3>
-                    </div>
-                    <span className="experience-dates">{role.locationDates}</span>
-                  </div>
-                  <ul className="experience-bullets">
-                    {role.bullets.map((bullet) => (
-                      <li key={bullet}>{bullet}</li>
-                    ))}
+            <h2 className="section-title">Technical Skills</h2>
+            <div className="skills-grid">
+              {skillGroups.map((group) => (
+                <article className="experience-card skill-card" key={group.title}>
+                  <h3 className="skill-label">{group.title}</h3>
+                  <p className="skill-note">{group.note}</p>
+                  <ul className="pill-list">
+                    {group.items.map((item) => <li className="pill" key={item}>{item}</li>)}
                   </ul>
                 </article>
               ))}
@@ -207,56 +141,94 @@ export default function Home() {
 
         <section id="projects" className="section">
           <div className="container">
-            <h2 className="section-title">Projects / Work Samples</h2>
-            <div className="experience-list">
-              {projects.map((project) => (
-                <article key={project.name} className="experience-card">
-                  <div className="project-header">
-                    <h3 className="project-name">{project.name}</h3>
-                    <span className="project-status">{project.type}</span>
-                  </div>
-                  <p className="project-description">{project.description}</p>
-                  <ul className="project-list">
-                    {project.bullets.map((bullet) => (
-                      <li key={bullet}>{bullet}</li>
-                    ))}
-                  </ul>
-                  <p className="project-meta">
-                    <strong>Tech:</strong> {project.tech}
-                  </p>
-                  {project.links.length > 0 ? (
-                    <div className="project-links">
-                      {project.links.map((link) => (
-                        <a key={link.href} href={link.href} target="_blank" rel="noreferrer" className="project-link">
-                          {link.label} →
-                        </a>
-                      ))}
-                    </div>
-                  ) : null}
-                </article>
-              ))}
+            <h2 className="section-title">Featured Project</h2>
+            <article className="experience-card featured-project">
+              <p className="project-status">Portable Arch Linux and Hyprland Environment</p>
+              <h3 className="project-name featured-project-name">Aarav Hyprland</h3>
+              <p className="project-description">
+                Developed a reusable Hyprland environment for Arch Linux with an installable GitHub repository and
+                configuration paths for Intel, AMD, and NVIDIA graphics. Successfully deployed and tested the setup on
+                both desktop and HP OmniBook laptop hardware.
+              </p>
+              <ul className="project-list">
+                {hyprlandHighlights.map((item) => <li key={item}>{item}</li>)}
+              </ul>
+              <div className="project-links">
+                <a className="btn btn-primary" href="https://github.com/AaravJit/aarav-hyprland" {...externalProps}>View Repository</a>
+                <a className="btn" href="https://github.com/AaravJit/aarav-hyprland#readme" {...externalProps}>View Documentation</a>
+              </div>
+            </article>
+
+            <h2 className="section-title additional-title">Additional Projects</h2>
+            <div className="additional-projects">
+              <article className="experience-card">
+                <h3 className="project-name">WrenchAI</h3>
+                <p className="project-description">
+                  A deployed aviation-maintenance study platform featuring practice questions, mock exams, flashcards,
+                  progress tracking, and account-based access.
+                </p>
+                <div className="project-links">
+                  <a className="project-link" href="https://wrenchai.app/" {...externalProps}>View Live Site →</a>
+                </div>
+              </article>
+              <article className="experience-card compact-project">
+                <h3 className="project-name">Portfolio Website</h3>
+                <p className="project-description">A responsive personal portfolio developed with Next.js and deployed through GitHub Pages.</p>
+                <div className="project-links">
+                  <a className="project-link" href="https://github.com/AaravJit/Aaravjit.github.io" {...externalProps}>View Repository →</a>
+                </div>
+              </article>
             </div>
+          </div>
+        </section>
+
+        <section id="building" className="section">
+          <div className="container">
+            <h2 className="section-title">Currently Building</h2>
+            <div className="experience-card">
+              <p className="section-intro">Planned and in-progress practice—not completed professional projects.</p>
+              <ul className="experience-bullets">
+                {currentLabs.map((item) => <li key={item}>{item}</li>)}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="experience" className="section">
+          <div className="container">
+            <h2 className="section-title">Experience</h2>
+            <article className="experience-card">
+              <div className="experience-header">
+                <div>
+                  <p className="experience-company">Walmart</p>
+                  <h3 className="experience-title">Online Grocery Pickup Associate</h3>
+                </div>
+                <span className="experience-dates">June 2024–Present</span>
+              </div>
+              <ul className="experience-bullets">
+                {walmartBullets.map((bullet) => <li key={bullet}>{bullet}</li>)}
+              </ul>
+            </article>
           </div>
         </section>
 
         <section id="education" className="section">
           <div className="container">
-            <h2 className="section-title">Education &amp; Career Direction</h2>
+            <h2 className="section-title">Education</h2>
             <div className="experience-list">
-              {education.map((item) => (
-                <article key={item.school} className="experience-card">
-                  <h3 className="education-school">{item.school}</h3>
-                  <p className="education-degree">{item.program}</p>
-                  <p className="education-coursework">{item.details}</p>
-                </article>
-              ))}
               <article className="experience-card">
-                <h3 className="education-school">Career Direction</h3>
-                <p className="education-coursework">
-                  I&apos;m interested in work that combines technical problem solving, hands-on learning, customer
-                  service, and real-world systems. My current direction includes aviation maintenance, technology
-                  support, and practical projects that let me keep building useful skills.
-                </p>
+                <h3 className="education-school">American River College</h3>
+                <p className="education-degree">Cybersecurity and Information Assurance, Associate Degree Program</p>
+                <p className="education-date">Beginning Fall 2026</p>
+                <h4 className="coursework-title">Upcoming coursework</h4>
+                <ul className="experience-bullets coursework-list">
+                  {coursework.map((course) => <li key={course}>{course}</li>)}
+                </ul>
+              </article>
+              <article className="experience-card prior-education">
+                <h3 className="education-school">California State University, Sacramento</h3>
+                <p className="education-degree">Prior Computer Science coursework</p>
+                <p className="education-coursework">Coursework only; no degree claimed.</p>
               </article>
             </div>
           </div>
@@ -265,47 +237,22 @@ export default function Home() {
         <section id="contact" className="section">
           <div className="container">
             <h2 className="section-title">Contact</h2>
+            <p className="contact-intro">Interested in discussing an entry-level help desk, IT support, desktop support, or technical support opportunity?</p>
             <div className="contact-actions">
-              <a href="mailto:aaravjit16@gmail.com" className="btn btn-primary">
-                Email Me
-              </a>
+              <a href="mailto:aaravjit16@gmail.com" className="btn btn-primary">Email Me</a>
+              <a href="https://www.linkedin.com/in/aarav-jit-499a93293/" className="btn" {...externalProps}>LinkedIn</a>
+              <a href="https://github.com/AaravJit" className="btn" {...externalProps}>GitHub</a>
             </div>
             <ul className="contact-list">
-              <li>
-                <span className="contact-label">Email</span>
-                <a href="mailto:aaravjit16@gmail.com">aaravjit16@gmail.com</a>
-              </li>
-              <li>
-                <span className="contact-label">LinkedIn</span>
-                <a href="https://www.linkedin.com/in/aarav-jit-499a93293/" target="_blank" rel="noreferrer">
-                  https://www.linkedin.com/in/aarav-jit-499a93293/
-                </a>
-              </li>
-              <li>
-                <span className="contact-label">GitHub</span>
-                <a href="https://github.com/aaravjit" target="_blank" rel="noreferrer">
-                  https://github.com/aaravjit
-                </a>
-              </li>
-              <li>
-                <span className="contact-label">Portfolio</span>
-                <a href="https://aaravjit.github.io/" target="_blank" rel="noreferrer">
-                  https://aaravjit.github.io/
-                </a>
-              </li>
+              <li><span className="contact-label">Email</span><a href="mailto:aaravjit16@gmail.com">aaravjit16@gmail.com</a></li>
+              <li><span className="contact-label">Location</span><span>Sacramento, California</span></li>
             </ul>
           </div>
         </section>
       </main>
 
-      <a href="/resume.pdf" className="sticky-resume" aria-label="Download resume PDF">
-        Resume PDF
-      </a>
-
       <footer className="footer">
-        <div className="container">
-          <span>&copy; {currentYear} Aarav Jit. Built with Next.js and deployed on GitHub Pages.</span>
-        </div>
+        <div className="container"><span>&copy; {currentYear} Aarav Jit. Built with Next.js and deployed on GitHub Pages.</span></div>
       </footer>
     </>
   );

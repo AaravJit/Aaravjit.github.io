@@ -1,59 +1,47 @@
 {
   "name": "Aarav Jit",
-  "headline": "Student, builder, and hands-on problem solver.",
+  "headline": "Entry-Level IT Support & Cybersecurity Student",
   "location": "Sacramento, CA",
   "contact": {
     "email": "aaravjit16@gmail.com",
-    "github": "https://github.com/aaravjit",
+    "github": "https://github.com/AaravJit",
     "linkedin": "https://www.linkedin.com/in/aarav-jit-499a93293/",
     "portfolio": "https://aaravjit.github.io/",
-    "resumePdf": "/resume.pdf"
+    "resumePdf": "/resume.pdf",
+    "resumeStatus": "Replacement pending content verification"
   },
-  "about": "I’m based in Sacramento and I’m currently building experience across work, school, and personal projects. I’ve worked in fast-paced online order fulfillment at Walmart and Target, where accuracy, speed, reliability, and communication mattered every shift. Outside of work, I’m hands-on with technology, Linux/Windows systems, PC building, web projects, motorcycles, cars, and aviation maintenance. I learn best by doing, troubleshooting, and figuring things out directly.",
-  "technical_practical_strengths": [
-    "Retail fulfillment and customer-facing operations",
-    "Online order picking, accuracy, speed, and inventory workflows",
-    "Windows and Arch Linux troubleshooting",
-    "PC building, component installation, and hardware/software setup",
-    "Command line basics, GitHub, Python, JavaScript/TypeScript, and web deployment",
-    "Practical mechanical interest through motorcycles, cars, and aviation maintenance",
-    "Clear communication, reliability, adaptability, and learning by doing"
-  ],
-  "work_experience": [
-    {
-      "company": "Walmart",
-      "title": "Online Grocery Pickup Associate",
-      "location": "Citrus Heights, CA",
-      "dates": "June 2024 – Present"
-    },
-    {
-      "company": "Target",
-      "title": "Fulfillment Expert",
-      "location": "Sacramento, CA",
-      "dates": "November 2023 – January 2024"
-    }
-  ],
-  "projects": [
-    {
-      "name": "Deal AI — Marketplace Listing Analysis Tool",
-      "type": "Personal Project / Prototype",
-      "tech": "Next.js · TypeScript · OpenAI Vision API · Playwright"
-    },
-    {
-      "name": "Portfolio Website",
-      "type": "Personal Website",
-      "tech": "Next.js · TypeScript · CSS · GitHub Pages"
-    }
-  ],
   "education": [
     {
-      "school": "California State University, Sacramento",
-      "program": "Computer Science Coursework"
+      "school": "American River College",
+      "program": "Cybersecurity and Information Assurance, Associate Degree Program",
+      "status": "Beginning Fall 2026",
+      "courseworkStatus": "Upcoming",
+      "coursework": [
+        "CISN 340 — Introduction to Networks",
+        "CISN 341 — Switching, Routing, and Wireless Essentials",
+        "CISN 300 — Network Systems Administration",
+        "CISS 310 — Network Security Fundamentals"
+      ]
     },
     {
-      "school": "Sacramento City College",
-      "program": "Aviation Maintenance Technology Program",
-      "status": "Enrolled / pursuing FAA A&P pathway"
+      "school": "California State University, Sacramento",
+      "program": "Prior Computer Science coursework",
+      "degreeClaimed": false
     }
+  ],
+  "workExperience": [{
+    "company": "Walmart",
+    "title": "Online Grocery Pickup Associate",
+    "dates": "June 2024–Present"
+  }],
+  "projects": [
+    {
+      "name": "Aarav Hyprland",
+      "subtitle": "Portable Arch Linux and Hyprland Environment",
+      "repository": "https://github.com/AaravJit/aarav-hyprland",
+      "featured": true
+    },
+    { "name": "WrenchAI", "liveSite": "https://wrenchai.app/" },
+    { "name": "Portfolio Website", "repository": "https://github.com/AaravJit/Aaravjit.github.io" }
   ]
 }
