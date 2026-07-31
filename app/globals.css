@@ -48,7 +48,7 @@
   --space-24: 6rem;
 
   /* Layout */
-  --container-max: 680px;
+  --container-max: 860px;
   --container-padding: 24px;
 }
 
@@ -132,7 +132,7 @@ ul, ol {
 .nav {
   display: flex;
   align-items: center;
-  gap: var(--space-6);
+  gap: var(--space-5);
 }
 
 .nav-link {
@@ -189,7 +189,7 @@ ul, ol {
 .hero-summary {
   font-size: var(--font-size-lg);
   color: var(--color-text-secondary);
-  max-width: 540px;
+  max-width: 720px;
   margin-bottom: var(--space-4);
   line-height: 1.7;
 }
@@ -285,6 +285,25 @@ ul, ol {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: var(--space-8);
+}
+
+.additional-title {
+  margin-top: var(--space-12);
+}
+
+.section-intro,
+.resume-notice,
+.skill-note {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.resume-notice {
+  max-width: 620px;
+}
+
+.section-intro {
+  margin-bottom: var(--space-5);
 }
 
 /* ==========================================================================
@@ -402,6 +421,38 @@ ul, ol {
   letter-spacing: var(--letter-spacing-tight);
 }
 
+.featured-project {
+  border-color: #bfdbfe;
+  background: #f8fbff;
+}
+
+.featured-project-name {
+  font-size: var(--font-size-2xl);
+  margin: var(--space-1) 0 var(--space-4);
+}
+
+.featured-project .project-list {
+  columns: 2;
+  display: block;
+  margin-bottom: var(--space-6);
+}
+
+.featured-project .project-list li {
+  break-inside: avoid;
+  margin-bottom: var(--space-2);
+}
+
+.additional-projects {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.compact-project {
+  background: var(--color-bg);
+}
+
 .project-status {
   font-size: var(--font-size-xs);
   color: var(--color-text-muted);
@@ -491,6 +542,20 @@ ul, ol {
   line-height: 1.7;
 }
 
+.coursework-title {
+  font-size: var(--font-size-sm);
+  margin: var(--space-5) 0 var(--space-2);
+}
+
+.coursework-list,
+.experience-card .experience-bullets:last-child {
+  margin-bottom: 0;
+}
+
+.prior-education {
+  padding: var(--space-5) var(--space-6);
+}
+
 /* ==========================================================================
    Experience Section
    ========================================================================== */
@@ -558,15 +623,23 @@ ul, ol {
    ========================================================================== */
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-6);
 }
 
+.skill-card {
+  min-width: 0;
+}
+
 .skill-label {
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-lg);
   font-weight: 600;
   color: var(--color-text);
   margin-bottom: var(--space-2);
+}
+
+.skill-note {
+  margin-bottom: var(--space-4);
 }
 
 .skill-items {
@@ -751,9 +824,6 @@ ul, ol {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .sticky-resume {
-    display: inline-flex;
-  }
 }
 
 @media (max-width: 480px) {
@@ -800,6 +870,14 @@ ul, ol {
 
   .skills-grid {
     grid-template-columns: 1fr;
+  }
+
+  .additional-projects {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-project .project-list {
+    columns: 1;
   }
 
   .resume-tabs {
