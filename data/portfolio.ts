@@ -31,10 +31,11 @@ export const projects = {
     name: 'WrenchAI',
     category: 'Aviation maintenance study platform',
     status: 'live' as const,
-    tags: ['Web application', 'Account-based'],
-    liveSite: 'https://wrenchai.app/',
+    tags: ['Base44', 'AI-assisted', 'Study platform', 'Account-based'],
+    caseStudy: '/projects/wrenchai/',
+    liveSite: 'https://wrenchai.base44.app/',
     description:
-      'An account-based study experience with practice questions, mock exams, flashcards, progress tracking, and structured aviation-maintenance learning workflows.',
+      'A live aviation-maintenance study platform with account-based learning, verbal-exam practice, written test preparation, practical prep, progress tracking, and structured study workflows.',
   },
 } as const;
 

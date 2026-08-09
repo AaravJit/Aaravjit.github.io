@@ -13,14 +13,14 @@ export const metadata: Metadata = {
     url: 'https://aaravjit.github.io',
     siteName: 'Aarav Jit Portfolio',
     type: 'website',
-    images: [{ url: '/social-preview.svg', width: 1200, height: 630, alt: 'Aarav Jit — Software, Linux and Systems' }],
+    images: [{ url: '/social-preview.png', width: 1200, height: 630, alt: 'Aarav Jit — Software, Linux and Systems' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Aarav Jit | Software, Linux & Systems',
     description:
       'Cybersecurity student with a computer science foundation building software, Linux environments, and hands-on systems projects.',
-    images: ['/social-preview.svg'],
+    images: ['/social-preview.png'],
   },
   alternates: { canonical: 'https://aaravjit.github.io/' },
 };

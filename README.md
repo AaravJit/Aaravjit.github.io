@@ -2,7 +2,7 @@
 
 A responsive technical portfolio built with Next.js and TypeScript, focused on software, Linux, systems, networking, and current cybersecurity education.
 
-The site highlights hands-on technical projects, professional experience, current coursework, and ongoing lab development.
+The site highlights three primary projects—Aarav Hyprland, Pathway, and WrenchAI—alongside professional experience, current coursework, and hands-on technical work.
 
 ## Live Site
 
@@ -13,7 +13,7 @@ The site highlights hands-on technical projects, professional experience, curren
 * **Aarav Hyprland** — A reusable Arch Linux and Hyprland environment with a Bash-based installation workflow and separate configuration paths for Intel, AMD, and NVIDIA graphics.
 * **Hyprland Case Study** — A detailed overview of the project’s purpose, environment, deployment process, technical challenges, screenshots, and planned improvements.
 * **Pathway** — An in-development AI-assisted career platform presented through an internal product case study.
-* **WrenchAI** — A live, account-based aviation maintenance study platform.
+* **WrenchAI** — A live, account-based aviation maintenance study platform presented with real product screenshots and a deployed-product case study.
 * **Technical Skills** — Windows, Linux, troubleshooting, networking fundamentals, Bash, Git, system services, logs, and hardware configuration.
 * **Career Portfolio** — Software and systems projects, technical skills, experience, education, resume, and contact information for early-career technology opportunities.
 
@@ -37,7 +37,8 @@ app/
 ├── globals.css
 └── projects/
     ├── aarav-hyprland/page.tsx
-    └── pathway/page.tsx
+    ├── pathway/page.tsx
+    └── wrenchai/page.tsx
 
 components/
 ├── Navigation.tsx
@@ -49,7 +50,13 @@ data/
 public/
 ├── resume.pdf
 ├── hyprlandproof.png
-└── hyprlandproofterminal.png
+├── hyprlandproofterminal.png
+├── social-preview.svg
+├── social-preview.png
+├── wrenchai-landing.png
+├── wrenchai-dashboard.png
+├── wrenchai-written-test-prep.png
+└── wrenchai-practical-prep.png
 ```
 
 ### Key Files
@@ -57,6 +64,7 @@ public/
 * `app/page.tsx` — Main portfolio page and content structure
 * `app/projects/aarav-hyprland/page.tsx` — Aarav Hyprland case study
 * `app/projects/pathway/page.tsx` — Pathway software product case study
+* `app/projects/wrenchai/page.tsx` — WrenchAI deployed product case study
 * `components/Navigation.tsx` — Responsive navigation and active-section tracking
 * `app/globals.css` — Dark visual system, responsive layouts, and accessibility styles
 * `data/portfolio.ts` — Typed source of truth for shared profile, project, education, and experience facts
@@ -96,6 +104,12 @@ The Pathway case study is available at:
 http://localhost:3000/projects/pathway/
 ```
 
+The WrenchAI case study is available at:
+
+```text
+http://localhost:3000/projects/wrenchai/
+```
+
 ## Production Build
 
 Create the static production export:
@@ -114,6 +128,7 @@ Run the following validation commands before publishing changes:
 
 ```bash
 npx tsc --noEmit
+npm run lint
 npm run build
 git diff --check
 ```
@@ -149,7 +164,7 @@ The portfolio includes:
 
 ## Social Preview
 
-The site uses a purpose-built SVG social card that matches the dark grid and terminal-inspired visual system.
+The site uses a 1200 × 630 PNG social card for broad Open Graph and social-platform compatibility. The matching SVG remains in `public/` as the editable source.
 
 ## Contact
 

@@ -12,10 +12,10 @@ export default function NotFound() {
       gap: '1rem'
     }}>
       <h1 style={{ fontSize: '2rem', fontWeight: 600 }}>Page Not Found</h1>
-      <p style={{ color: 'var(--color-text-secondary)' }}>
-        The page you're looking for doesn't exist.
+      <p style={{ color: 'var(--secondary)' }}>
+        The page you&apos;re looking for doesn&apos;t exist.
       </p>
-      <Link href="/" className="btn">
+      <Link href="/" className="button primary">
         Go Home
       </Link>
     </div>
