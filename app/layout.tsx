@@ -2,24 +2,27 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Aarav Jit | Computer Science, Linux & Software',
+  title: 'Aarav Jit | Software, Linux & Systems',
   description:
-    'Portfolio of Aarav Jit, a computer science and cybersecurity student building software, Linux environments, automation workflows, and hands-on systems projects.',
+    'Portfolio of Aarav Jit, a cybersecurity student with prior computer science coursework building software, Linux environments, and hands-on systems projects.',
   metadataBase: new URL('https://aaravjit.github.io'),
   openGraph: {
-    title: 'Aarav Jit | Computer Science, Linux & Software',
+    title: 'Aarav Jit | Software, Linux & Systems',
     description:
-      'Computer science and cybersecurity student building software, Linux environments, automation workflows, and hands-on systems projects.',
+      'Cybersecurity student with a computer science foundation building software, Linux environments, and hands-on systems projects.',
     url: 'https://aaravjit.github.io',
     siteName: 'Aarav Jit Portfolio',
     type: 'website',
+    images: [{ url: '/social-preview.svg', width: 1200, height: 630, alt: 'Aarav Jit — Software, Linux and Systems' }],
   },
   twitter: {
-    card: 'summary',
-    title: 'Aarav Jit | Computer Science, Linux & Software',
+    card: 'summary_large_image',
+    title: 'Aarav Jit | Software, Linux & Systems',
     description:
-      'Computer science and cybersecurity student building software, Linux environments, automation workflows, and hands-on systems projects.',
+      'Cybersecurity student with a computer science foundation building software, Linux environments, and hands-on systems projects.',
+    images: ['/social-preview.svg'],
   },
+  alternates: { canonical: 'https://aaravjit.github.io/' },
 };
 
 export default function RootLayout({
