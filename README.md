@@ -1,6 +1,6 @@
 # Aarav Jit — Technical Portfolio
 
-A responsive technical portfolio built with Next.js and TypeScript, focused on entry-level IT support, desktop support, systems troubleshooting, networking fundamentals, Linux, and cybersecurity education.
+A responsive technical portfolio built with Next.js and TypeScript, focused on computer science, software, Linux, systems, networking, and cybersecurity education.
 
 The site highlights hands-on technical projects, professional experience, current coursework, and ongoing lab development.
 
@@ -13,7 +13,7 @@ The site highlights hands-on technical projects, professional experience, curren
 * **Aarav Hyprland** — A reusable Arch Linux and Hyprland environment with a Bash-based installation workflow and separate configuration paths for Intel, AMD, and NVIDIA graphics.
 * **Hyprland Case Study** — A detailed overview of the project’s purpose, environment, deployment process, technical challenges, screenshots, and planned improvements.
 * **Technical Skills** — Windows, Linux, troubleshooting, networking fundamentals, Bash, Git, system services, logs, and hardware configuration.
-* **Career Portfolio** — Experience, education, resume, current learning roadmap, and contact information for entry-level IT opportunities.
+* **Career Portfolio** — Software and systems projects, technical skills, experience, education, resume, and contact information for early-career technology opportunities.
 
 ## Technology Stack
 
@@ -56,7 +56,7 @@ public/
 * `components/Navigation.tsx` — Responsive navigation and active-section tracking
 * `app/globals.css` — Dark visual system, responsive layouts, and accessibility styles
 * `data/profile.json` — Supporting profile and portfolio information
-* `public/resume.pdf` — Downloadable IT-support resume
+* `public/resume.pdf` — Downloadable current resume
 
 ## Local Development
 
@@ -136,18 +136,6 @@ The portfolio includes:
 * Descriptive image alternative text
 * Static, performance-focused deployment
 * No unnecessary UI frameworks or large client-side dependencies
-
-## Current Development
-
-The portfolio will continue to expand with documented hands-on labs covering:
-
-* Windows and Linux troubleshooting
-* DNS and network diagnostics
-* Windows Server administration
-* PowerShell and Bash support scripts
-* Common help-desk scenarios and resolutions
-
-These labs will be added as they are completed and verified.
 
 ## Social Preview
 
