@@ -4,9 +4,8 @@ import { useEffect, useState } from 'react';
 
 const links = [
   ['about', 'About'],
-  ['skills', 'Skills'],
   ['projects', 'Projects'],
-  ['building', 'Roadmap'],
+  ['skills', 'Skills'],
   ['experience', 'Experience'],
   ['education', 'Education'],
   ['contact', 'Contact'],
@@ -47,7 +46,7 @@ export default function Navigation() {
           {links.map(([id, label]) => (
             <a key={id} href={`/#${id}`} className={active === id ? 'active' : ''} aria-current={active === id ? 'location' : undefined} onClick={() => setOpen(false)}>{label}</a>
           ))}
-          <a className="nav-resume" href="/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+          <a className="nav-resume" href="/resume.pdf" target="_blank" rel="noopener noreferrer">Resume ↗</a>
         </nav>
       </div>
     </header>

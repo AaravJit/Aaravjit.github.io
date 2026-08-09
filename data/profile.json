@@ -1,6 +1,6 @@
 {
   "name": "Aarav Jit",
-  "headline": "Entry-Level IT Support & Cybersecurity Student",
+  "headline": "Computer Science Student | Linux, Software & Systems",
   "location": "Sacramento, CA",
   "contact": {
     "email": "aaravjit16@gmail.com",
@@ -29,11 +29,20 @@
       "degreeClaimed": false
     }
   ],
-  "workExperience": [{
-    "company": "Walmart",
-    "title": "Online Grocery Pickup Associate",
-    "dates": "June 2024–Present"
-  }],
+  "workExperience": [
+    {
+      "company": "Walmart",
+      "title": "Online Grocery Pickup / Digital Fulfillment Associate",
+      "location": "Citrus Heights, CA",
+      "dates": "June 2024–Present"
+    },
+    {
+      "company": "Target",
+      "title": "Seasonal Fulfillment Expert",
+      "location": "Sacramento, CA",
+      "dates": "November 2023–January 2024"
+    }
+  ],
   "projects": [
     {
       "name": "Aarav Hyprland",
