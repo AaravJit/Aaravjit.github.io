@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const links = [
   ['about', 'About'],
@@ -14,6 +14,7 @@ const links = [
 export default function Navigation() {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState('');
+  const menuButton = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const sections = links.map(([id]) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
@@ -29,16 +30,21 @@ export default function Navigation() {
   }, []);
 
   useEffect(() => {
-    const close = (event: KeyboardEvent) => event.key === 'Escape' && setOpen(false);
+    const close = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && open) {
+        setOpen(false);
+        menuButton.current?.focus();
+      }
+    };
     window.addEventListener('keydown', close);
     return () => window.removeEventListener('keydown', close);
-  }, []);
+  }, [open]);
 
   return (
     <header className="site-header">
       <div className="container nav-shell">
         <a href="/#top" className="logo" aria-label="Aarav Jit home">AJ<span>.</span></a>
-        <button className="menu-button" type="button" aria-expanded={open} aria-controls="primary-nav" onClick={() => setOpen(!open)}>
+        <button ref={menuButton} className="menu-button" type="button" aria-expanded={open} aria-controls="primary-nav" onClick={() => setOpen(!open)}>
           <span className="sr-only">{open ? 'Close' : 'Open'} navigation menu</span>
           <span aria-hidden="true">{open ? '×' : 'Menu'}</span>
         </button>

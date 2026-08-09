@@ -1,6 +1,6 @@
 # Aarav Jit — Technical Portfolio
 
-A responsive technical portfolio built with Next.js and TypeScript, focused on computer science, software, Linux, systems, networking, and cybersecurity education.
+A responsive technical portfolio built with Next.js and TypeScript, focused on software, Linux, systems, networking, and current cybersecurity education.
 
 The site highlights hands-on technical projects, professional experience, current coursework, and ongoing lab development.
 
@@ -12,6 +12,8 @@ The site highlights hands-on technical projects, professional experience, curren
 
 * **Aarav Hyprland** — A reusable Arch Linux and Hyprland environment with a Bash-based installation workflow and separate configuration paths for Intel, AMD, and NVIDIA graphics.
 * **Hyprland Case Study** — A detailed overview of the project’s purpose, environment, deployment process, technical challenges, screenshots, and planned improvements.
+* **Pathway** — An in-development AI-assisted career platform presented through an internal product case study.
+* **WrenchAI** — A live, account-based aviation maintenance study platform.
 * **Technical Skills** — Windows, Linux, troubleshooting, networking fundamentals, Bash, Git, system services, logs, and hardware configuration.
 * **Career Portfolio** — Software and systems projects, technical skills, experience, education, resume, and contact information for early-career technology opportunities.
 
@@ -34,14 +36,15 @@ app/
 ├── layout.tsx
 ├── globals.css
 └── projects/
-    └── aarav-hyprland/
-        └── page.tsx
+    ├── aarav-hyprland/page.tsx
+    └── pathway/page.tsx
 
 components/
-└── Navigation.tsx
+├── Navigation.tsx
+└── ProjectUI.tsx
 
 data/
-└── profile.json
+└── portfolio.ts
 
 public/
 ├── resume.pdf
@@ -53,9 +56,10 @@ public/
 
 * `app/page.tsx` — Main portfolio page and content structure
 * `app/projects/aarav-hyprland/page.tsx` — Aarav Hyprland case study
+* `app/projects/pathway/page.tsx` — Pathway software product case study
 * `components/Navigation.tsx` — Responsive navigation and active-section tracking
 * `app/globals.css` — Dark visual system, responsive layouts, and accessibility styles
-* `data/profile.json` — Supporting profile and portfolio information
+* `data/portfolio.ts` — Typed source of truth for shared profile, project, education, and experience facts
 * `public/resume.pdf` — Downloadable current resume
 
 ## Local Development
@@ -84,6 +88,12 @@ The Aarav Hyprland case study is available at:
 
 ```text
 http://localhost:3000/projects/aarav-hyprland/
+```
+
+The Pathway case study is available at:
+
+```text
+http://localhost:3000/projects/pathway/
 ```
 
 ## Production Build
@@ -139,9 +149,7 @@ The portfolio includes:
 
 ## Social Preview
 
-The site currently uses text-based Open Graph and Twitter metadata.
-
-A purpose-built social preview image should be created before image metadata is added. The existing Hyprland screenshots use an ultrawide aspect ratio and should not be cropped into a standard social card.
+The site uses a purpose-built SVG social card that matches the dark grid and terminal-inspired visual system.
 
 ## Contact
 
