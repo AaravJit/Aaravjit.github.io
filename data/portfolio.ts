@@ -111,7 +111,7 @@ export const skills = [
     title: 'Networking',
     items: ['TCP/IP', 'IPv4', 'DNS', 'DHCP', 'ICMP', 'Ethernet', 'Wi-Fi', 'Common ports and protocols'],
     usedIn: 'Studying through American River College’s Cybersecurity program, starting with Introduction to Networks and Network Security Fundamentals.',
-    evidence: [{ label: 'Education', href: '#education' }],
+    evidence: [{ label: 'ARC coursework', href: '#education' }],
   },
 ] as const;
 
