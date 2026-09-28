@@ -49,14 +49,14 @@ data/
 
 public/
 ├── resume.pdf
-├── hyprlandproof.png
-├── hyprlandproofterminal.png
+├── hyprlandproof.webp
+├── hyprlandproofterminal.webp
 ├── social-preview.svg
 ├── social-preview.png
-├── wrenchai-landing.png
-├── wrenchai-dashboard.png
-├── wrenchai-written-test-prep.png
-└── wrenchai-practical-prep.png
+├── wrenchai-landing.webp
+├── wrenchai-dashboard.webp
+├── wrenchai-written-test-prep.webp
+└── wrenchai-practical-prep.webp
 ```
 
 ### Key Files
