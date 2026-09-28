@@ -1,7 +1,9 @@
 import Link from 'next/link';
 
-export function ProjectStatus({ status }: { status: 'live' | 'development' }) {
-  const label = status === 'live' ? 'Live' : 'In development';
+const statusLabels = { live: 'Live', development: 'In development', prototype: 'Prototype' } as const;
+
+export function ProjectStatus({ status }: { status: keyof typeof statusLabels }) {
+  const label = statusLabels[status];
   return <span className={`project-status ${status}`} aria-label={`Project status: ${label}`}><i aria-hidden="true" />{label}</span>;
 }
 
@@ -14,7 +16,7 @@ export function CaseStudyHeader({ label, title, description, tags, status, actio
   title: string;
   description: string;
   tags: readonly string[];
-  status?: 'live' | 'development';
+  status?: keyof typeof statusLabels;
   action?: { href: string; label: string };
 }) {
   return <header className="case-hero"><div className="container">
