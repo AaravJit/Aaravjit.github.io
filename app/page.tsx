@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Navigation from '../components/Navigation';
 import { ProjectStatus, TechnologyTags } from '../components/ProjectUI';
-import { education, experience, projects, site, skills } from '../data/portfolio';
+import { education, experience, moreProjects, projects, site, skills } from '../data/portfolio';
 
 const external = { target: '_blank', rel: 'noopener noreferrer' } as const;
 
@@ -26,6 +26,15 @@ export default function Home() {
         <article className="product-card"><div className="product-card-top"><p>{projects.pathway.category}</p><ProjectStatus status={projects.pathway.status} /></div><div className="product-diagram" aria-label="Pathway guided workflow"><span>Resume</span><i>→</i><span>Job</span><i>→</i><span>Analyze</span><i>→</i><span>Tailor</span></div><h3>{projects.pathway.name}</h3><p>{projects.pathway.description}</p><TechnologyTags tags={projects.pathway.tags} /><div className="product-card-actions"><Link href={projects.pathway.caseStudy}>View Case Study <span>→</span></Link></div></article>
         <article className="product-card"><div className="product-card-top"><p>{projects.wrenchAI.category}</p><ProjectStatus status={projects.wrenchAI.status} /></div><div className="product-card-visual"><Image src="/wrenchai-dashboard.webp" width={1600} height={1071} sizes="(max-width: 600px) calc(100vw - 64px), (max-width: 1200px) 45vw, 520px" alt="WrenchAI dashboard showing study navigation, performance tabs, and General, Airframe, and Powerplant practice sections" /></div><h3>{projects.wrenchAI.name}</h3><p>{projects.wrenchAI.description}</p><TechnologyTags tags={projects.wrenchAI.tags} /><div className="product-card-actions"><Link href={projects.wrenchAI.caseStudy}>View Case Study <span>→</span></Link><a href={projects.wrenchAI.liveSite} {...external}>View Live Site <span>↗</span></a></div></article>
       </div>
+      <div className="additional-heading"><div><p className="project-kicker">Breadth</p><h3>More projects</h3></div><span>{moreProjects.length} repositories · problem, decisions, status</span></div>
+      <div className="more-projects">{moreProjects.map((item) => <article className="mini-project" key={item.name}>
+        <div className="product-card-top"><p>{item.category}</p><ProjectStatus status={item.status} /></div>
+        <h3>{item.name}</h3><p>{item.problem}</p>
+        <p className="mini-label">Key decisions</p><ul>{item.decisions.map((decision) => <li key={decision}>{decision}</li>)}</ul>
+        <p className="mini-label">Where it stands</p><p>{item.outcome}</p>
+        <TechnologyTags tags={item.tags} />
+        <div className="product-card-actions">{item.caseStudy && <Link href={item.caseStudy}>Case Study <span>→</span></Link>}<a href={item.repository} {...external}>Repository <span>↗</span></a></div>
+      </article>)}</div>
     </div></section>
 
     <section id="skills" className="section skills-section"><div className="container"><Heading number="03 — Skills" intro="Each group links to the project where I actually used it.">Technical toolkit</Heading><div className="skills-grid">{skills.map((group) => <article className="skill-group" key={group.title}><div className="skill-top"><span aria-hidden="true">{group.symbol}</span><h3>{group.title}</h3></div><ul>{group.items.map((item) => <li key={item}>{item}</li>)}</ul><p className="skill-used">{group.usedIn}</p><p className="skill-evidence"><span>Evidence</span>{group.evidence.map((link) => link.href.startsWith('http') ? <a key={link.href} href={link.href} {...external}>{link.label} ↗</a> : <Link key={link.href} href={link.href}>{link.label} →</Link>)}</p></article>)}</div></div></section>

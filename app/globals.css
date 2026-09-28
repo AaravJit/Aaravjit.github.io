@@ -17,3 +17,16 @@
 .case-hero-action{margin-top:1.75rem}.case-two-col>*,.case-product-grid>*{min-width:0}.case-intro{margin-bottom:2.5rem}.case-product-grid{display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);gap:3.5rem;align-items:center}.case-product-grid.reverse>figure{order:-1}.product-evidence{min-width:0}.evidence-wide{margin-top:2.5rem}.product-evidence img{width:100%;height:auto;border:1px solid var(--border);border-radius:6px;background:var(--bg);box-shadow:var(--shadow)}.product-evidence figcaption{margin-top:.7rem;color:var(--muted);font:500 .72rem/1.6 var(--mono)}.wrench-principles{margin-top:2.5rem}.case-section .project-status{margin-top:1rem}
 @media(max-width:850px){.case-product-grid{grid-template-columns:minmax(0,1fr);gap:2rem}.case-product-grid.reverse>figure{order:0}}
 @media(max-width:600px){.product-card-actions{align-items:flex-start;flex-direction:column;gap:.55rem}.product-card-visual{margin:1.2rem 0}.evidence-wide{margin-top:2rem}}
+.project-status.prototype{color:var(--muted)}
+.more-projects{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.mini-project{display:flex;flex-direction:column;min-width:0;padding:1.5rem;background:var(--card);border:1px solid var(--border);border-radius:7px}
+.mini-project h3{font-size:1.3rem;margin:.6rem 0 .45rem}
+.mini-project>p{color:var(--secondary);font-size:.86rem}
+.mini-project .mini-label{margin:1.1rem 0 .35rem;color:var(--muted);font:700 .62rem var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.mini-project ul:not(.tag-list){display:grid;gap:.4rem}
+.mini-project ul:not(.tag-list) li{position:relative;padding-left:1rem;color:var(--secondary);font-size:.82rem}
+.mini-project ul:not(.tag-list) li:before{content:"";position:absolute;left:0;top:.6rem;width:4px;height:4px;background:var(--blue)}
+.mini-project .tag-list{margin-bottom:0}
+.mini-project .product-card-actions{padding-top:1.2rem}
+@media(max-width:1000px){.more-projects{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.more-projects{grid-template-columns:minmax(0,1fr)}.additional-heading{flex-direction:column;align-items:flex-start;gap:.5rem}}
