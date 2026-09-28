@@ -102,15 +102,16 @@ export const moreProjects: readonly {
   },
   {
     name: 'Deal AI',
-    category: 'Web app · marketplace assistant',
+    category: 'Web app · vehicle deal finder',
     status: 'prototype',
-    problem: 'Buyers on Facebook Marketplace or Craigslist guess at fair prices. Deal AI takes a listing screenshot and returns a deal score, scam flags, and a counter-offer to send.',
+    problem: 'Good car and motorcycle deals on Craigslist, eBay, and OfferUp go fast, and buyers guess at fair prices. Version 1 scored a single listing screenshot. Version 2 turns listings into a ranked feed with deal and risk scores and an AI write-up.',
     decisions: [
-      'A server route sends the screenshot to an OpenAI vision model so the API key never reaches the browser.',
-      'Daily upload quotas are enforced in a Firestore transaction so parallel requests cannot overspend.',
+      'Every source plugs into one adapter base class that upserts on (source, listing id), so re-imports never create duplicates.',
+      'Ingestion and scoring run as scheduled background jobs (every 15 and 5 minutes), so page requests never wait on them.',
+      'Free-tier unlocks go through one Postgres function that locks the user’s row, so two clicks cannot spend the same unlock twice.',
     ],
-    outcome: 'Working upload, analysis, deal history, and Stripe checkout. A second version is in progress.',
-    tags: ['Next.js', 'OpenAI', 'Firebase', 'Stripe'],
+    outcome: 'Version 1 works end to end: screenshot upload, OpenAI analysis, deal history, and Stripe checkout. Version 2 has the Supabase schema with row-level security, scoring, unlocks, and Stripe billing. Its live marketplace adapters are still stubs.',
+    tags: ['Next.js', 'Supabase', 'OpenAI', 'Stripe', 'Netlify'],
     repository: 'https://github.com/AaravJit/dealai-web',
   },
   {
