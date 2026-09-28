@@ -9,7 +9,8 @@ export const metadata: Metadata = {
   title: 'Pathway Case Study | Aarav Jit',
   description: 'A grounded case study of an AI-assisted workflow for job fit analysis, resume tailoring, preview, and document output.',
   alternates: { canonical: `${site.url}/projects/pathway/` },
-  openGraph: { title: 'Pathway Case Study | Aarav Jit', description: 'An AI-assisted application workflow from resume and job posting through analysis, tailoring, preview, and download.', url: `${site.url}/projects/pathway/`, type: 'article' },
+  openGraph: { title: 'Pathway Case Study | Aarav Jit', description: 'An AI-assisted application workflow from resume and job posting through analysis, tailoring, preview, and download.', url: `${site.url}/projects/pathway/`, type: 'article', images: [{ url: '/social-preview.png', width: 1200, height: 630, alt: 'Aarav Jit — Software, Linux and Systems' }] },
+  twitter: { card: 'summary_large_image', title: 'Pathway Case Study | Aarav Jit', description: 'An AI-assisted application workflow from resume and job posting through analysis, tailoring, preview, and download.', images: ['/social-preview.png'] },
 };
 
 const steps = ['Resume', 'Job Posting', 'Fit Analysis', 'Tailoring', 'Preview', 'Download'];
