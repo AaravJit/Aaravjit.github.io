@@ -87,7 +87,7 @@ export default function PathwayCaseStudy() {
     <section className="case-section"><div className="container case-two-col"><div><p className="case-label">04 — Engineering story</p><h2>Dropping a headless browser to make PDFs</h2></div><div className="case-prose">
       <EngineeringStory steps={[
         ['Before', 'The first renderer built an HTML resume and printed it to PDF with Playwright, running a bundled Chromium (@sparticuz/chromium) inside a Vercel serverless function.'],
-        ['Problem', 'That meant shipping and cold-starting a whole browser just to lay out one page of text, and it was the heaviest, most fragile dependency in the app.'],
+        ['Problem', 'That meant bundling and starting a whole browser just to lay out one page of text, which made it by far the heaviest dependency in the app.'],
         ['Change', 'I rewrote the render route on pdf-lib: it embeds Helvetica, measures each word with widthOfTextAtSize to wrap lines, and adds pages when the cursor reaches the bottom margin.'],
         ['Result', 'Two dependencies removed, 450 lines deleted for 275 added, and the output is identical wherever the function runs, because there is no browser involved.'],
       ]} />

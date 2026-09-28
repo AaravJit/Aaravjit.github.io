@@ -103,7 +103,7 @@ export default function HyprlandCaseStudy() {
     <section className="case-section"><div className="container case-two-col"><div><p className="case-label">04 — Engineering story</p><h2>The detector that found AMD everywhere</h2></div><div className="case-prose">
       <p>The first version of <a href={file('tools/detect-hardware.py')} {...external}><code>detect-hardware.py</code></a> identified GPU vendors by searching each <code>lspci</code> display-controller line for vendor names.</p>
       <EngineeringStory steps={[
-        ['Symptom', 'Machines with no AMD hardware were reported as having more than one GPU vendor, so the installer stopped and asked which GPU drives Hyprland, and --yes runs failed outright.'],
+        ['Symptom', 'On a machine with no AMD hardware, the detector reported two GPU vendors. That sends the installer into its "Multiple GPU vendors detected" prompt, and unattended --yes runs exit instead of installing.'],
         ['Cause', 'The AMD check included the substring "ati". lspci names vendors as "NVIDIA Corporation" and "Intel Corporation", and "Corporation" contains "ati", so every NVIDIA or Intel line also matched AMD.'],
         ['Fix', 'Identify the vendor from the PCI vendor ID lspci -nn prints ([10de:…] NVIDIA, [1002:…] AMD, [8086:…] Intel), and fall back to word-boundary regexes only when no ID is present.'],
         ['Result', 'Each controller line maps to exactly one vendor, and the multi-GPU prompt only appears on machines that really have two vendors.'],

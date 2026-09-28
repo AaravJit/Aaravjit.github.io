@@ -33,7 +33,7 @@ const role = [
   'Picked the problem and organized the whole product around the three A&P knowledge areas: General, Airframe, and Powerplant.',
   'Specified each study mode (verbal practice, written tests, weak-spot drill, practical prep) and how they share one dashboard and navigation.',
   'Defined the account, session, and progress data the dashboard reads from.',
-  'Tested each flow end to end on the live app and iterated on the specs until it behaved correctly.',
+  'Tested each flow end to end on the live app.',
 ] as const;
 
 const productPrinciples = [
