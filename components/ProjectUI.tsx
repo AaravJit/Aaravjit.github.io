@@ -32,3 +32,19 @@ export function ExploreProject({ href, name, detail }: { href: string; name: str
     <p id="explore-title">Explore another project</p><Link href={href}><span>{detail}</span><b>{name} →</b></Link>
   </div></section>;
 }
+
+export function RoleBlock({ summary, items }: { summary: string; items: readonly string[] }) {
+  return <div className="role-block"><p className="role-summary">{summary}</p><ul>{items.map((item) => <li key={item}>{item}</li>)}</ul></div>;
+}
+
+export function CodeSample({ file, href, code, caption }: { file: string; href?: string; code: string; caption?: string }) {
+  return <figure className="code-sample">
+    <div className="code-sample-bar"><code>{file}</code>{href && <a href={href} target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>}</div>
+    <pre tabIndex={0}><code>{code}</code></pre>
+    {caption && <figcaption>{caption}</figcaption>}
+  </figure>;
+}
+
+export function EngineeringStory({ steps }: { steps: readonly (readonly [string, string])[] }) {
+  return <dl className="story-steps">{steps.map(([term, text]) => <div key={term}><dt>{term}</dt><dd>{text}</dd></div>)}</dl>;
+}
