@@ -12,7 +12,8 @@ export const metadata: Metadata = {
   title: 'RoadPing Case Study | Aarav Jit',
   description: 'How RoadPing shows nearby drivers on a live map and carries push-to-talk voice without ever exposing anyone’s exact location.',
   alternates: { canonical: `${site.url}/projects/roadping/` },
-  openGraph: { title: 'RoadPing Case Study | Aarav Jit', description: 'A live, map-first voice app for nearby drivers, built on Supabase, PostGIS, and Agora with privacy enforced on the server.', url: `${site.url}/projects/roadping/`, type: 'article', images: ['/social-preview.png'] },
+  openGraph: { title: 'RoadPing Case Study | Aarav Jit', description: 'A live, map-first voice app for nearby drivers, built on Supabase, PostGIS, and Agora with privacy enforced on the server.', url: `${site.url}/projects/roadping/`, type: 'article', images: [{ url: '/social-preview.png', width: 1200, height: 630, alt: 'Aarav Jit — Software, Linux and Systems' }] },
+  twitter: { card: 'summary_large_image', title: 'RoadPing Case Study | Aarav Jit', description: 'A live, map-first voice app for nearby drivers, built on Supabase, PostGIS, and Agora with privacy enforced on the server.', images: ['/social-preview.png'] },
 };
 
 const flow = ['Sign in', 'Add vehicle', 'Start RoadPing', 'Heartbeat', 'Nearby query', 'Hold to talk'];
