@@ -90,14 +90,14 @@ on_exit() {
 trap on_exit EXIT`;
 
 export default function HyprlandCaseStudy() {
-  return <><Navigation /><main className="case-study"><CaseStudyHeader label="Linux systems case study" title={project.name} description="My daily Arch Linux and Hyprland desktop, rebuilt as an installer that detects the hardware, renders the right configuration, validates it before touching anything, and rolls itself back if something fails." tags={project.tags} action={{ href: project.repository, label: 'View Repository ↗' }} />
+  return <><Navigation /><main className="case-study"><CaseStudyHeader label="Linux systems case study" title={project.name} description="The Arch Linux and Hyprland desktop I used daily, rebuilt as an installer that detects the hardware, renders the right configuration, validates it before touching anything, and rolls itself back if something fails." tags={project.tags} action={{ href: project.repository, label: 'View Repository ↗' }} />
     <section className="case-section"><div className="container case-two-col"><div><p className="case-label">01 — Overview</p><h2>One desktop, any of my machines</h2></div><div className="case-prose">
-      <p>I run Hyprland on an NVIDIA desktop and an HP OmniBook laptop. Monitor names, GPU environment variables, battery and brightness widgets, and absolute paths all differ between the two, so a config copied from one machine breaks on the other.</p>
+      <p>I ran Hyprland on an NVIDIA desktop and an HP OmniBook laptop. Monitor names, GPU environment variables, battery and brightness widgets, and absolute paths all differ between the two, so a config copied from one machine breaks on the other.</p>
       <p>This repository replaces the hand-editing. One command detects the machine, renders a complete configuration for it into a staging directory, validates every Lua, JSON, and TOML file, prints an installation plan, and only then installs, with a backup it can restore from.</p>
     </div></div></section>
     <section className="case-section tint"><div className="container case-two-col"><div><p className="case-label">02 — My role</p><h2>What I built</h2></div><div className="case-prose">
       <RoleBlock summary="Solo project. I designed it, own every file in the repository, and did all of the testing." items={role} />
-      <p style={{ marginTop: '1.3rem' }}>I use AI coding assistants for parts of the implementation; the later theme and settings-panel work landed through reviewed agent branches. Every change was run and debugged on my own hardware before it merged.</p>
+      <p style={{ marginTop: '1.3rem' }}>I used AI coding assistants for parts of the implementation; the later theme and settings-panel work landed through reviewed agent branches. Every change was run and debugged on my own hardware before it merged.</p>
     </div></div></section>
     <section className="case-section dark"><div className="container"><p className="case-label">03 — Screenshots</p><h2>The installed desktop</h2><figure><Image src="/hyprlandproof.webp" width={1920} height={804} sizes="100vw" alt="Configured Hyprland desktop with application launcher and system panels on Arch Linux" priority /><figcaption>The installed environment on my ultrawide desktop.</figcaption></figure><figure><Image src="/hyprlandproofterminal.webp" width={1920} height={804} sizes="100vw" alt="Terminal windows open in the Aarav Hyprland Arch Linux environment" /><figcaption>Kitty terminals themed from the wallpaper by Matugen.</figcaption></figure></div></section>
     <section className="case-section"><div className="container case-two-col"><div><p className="case-label">04 — Engineering story</p><h2>The detector that found AMD everywhere</h2></div><div className="case-prose">
@@ -133,7 +133,7 @@ cd aarav-hyprland
       <a className="button primary" href={`${project.repository}#readme`} {...external}>Read the full install guide ↗</a>
     </div></div></section>
     <section className="case-section dark"><div className="container case-two-col"><div><p className="case-label">07 — Status</p><h2>What&apos;s next</h2></div><div className="case-prose">
-      <p>Installed and in daily use on my NVIDIA desktop and HP OmniBook. The AMD and generic paths render and pass validation from fixtures but haven&apos;t been installed on real AMD hardware yet. Next on the roadmap is a first tagged release.</p>
+      <p>Installed and used daily on my NVIDIA desktop and HP OmniBook while Linux was my main OS. The AMD and generic paths render and pass validation from fixtures but haven&apos;t been installed on real AMD hardware yet. Next on the roadmap is a first tagged release.</p>
       <a className="text-link" href={project.repository} {...external}>View repository ↗</a>
     </div></div></section>
     <ExploreProject href={projects.pathway.caseStudy} name="Pathway" detail="Software product case study" />
