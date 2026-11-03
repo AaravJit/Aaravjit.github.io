@@ -171,7 +171,6 @@ The site uses a 1200 × 630 PNG social card for broad Open Graph and social-plat
 * Portfolio: [aaravjit.github.io](https://aaravjit.github.io/)
 * GitHub: [github.com/AaravJit](https://github.com/AaravJit)
 * LinkedIn: [Aarav Jit](https://www.linkedin.com/in/aarav-jit-499a93293/)
-* Email: [aaravjit16@gmail.com](mailto:aaravjit16@gmail.com)
 
 ## License
 

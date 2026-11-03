@@ -2,7 +2,6 @@ export const site = {
   name: 'Aarav Jit',
   headline: 'Cybersecurity Student · Software, Linux & Systems Builder',
   location: 'Sacramento, California',
-  email: 'aaravjit16@gmail.com',
   github: 'https://github.com/AaravJit',
   linkedin: 'https://www.linkedin.com/in/aarav-jit-499a93293/',
   url: 'https://aaravjit.github.io',
