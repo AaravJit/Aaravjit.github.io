@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import { DEFAULT_CONFIG, simulate, type Jitter, type SimConfig, type SimResult, type Strategy } from '../../lib/scheduler/simulate';
+import { controlRanges as r, presets } from '../../lib/scheduler/presets';
 import { configFromSearch, configToSearch } from '../../lib/scheduler/url';
 
 const strategies: { value: Strategy; label: string }[] = [
@@ -15,12 +16,6 @@ const jitters: { value: Jitter; label: string }[] = [
   { value: 'full', label: 'Full' },
 ];
 
-export const presets: { name: string; description: string; config: Partial<SimConfig> }[] = [
-  { name: 'Balanced', description: 'Default: four workers keep up with arrivals; some attempts fail and retry.', config: {} },
-  { name: 'Overloaded', description: 'Arrivals outpace two workers, so a queue builds. Compare FIFO with shortest-first.', config: { workers: 2, arrivalRate: 24, failureRate: 0.05 } },
-  { name: 'Flaky dependency', description: 'Forty percent of attempts fail. Watch retries consume capacity and some jobs dead-letter.', config: { failureRate: 0.4, maxAttempts: 3 } },
-  { name: 'Retry storm', description: 'A burst of jobs fails together and retries with no jitter, so the retries line up in the worker timeline. Switch jitter to Full to spread them out.', config: { jobCount: 150, arrivalRate: 400, workers: 24, failureRate: 0.5, maxAttempts: 4, backoffBaseMs: 500, backoffCapMs: 4000, jitter: 'none' } },
-];
 
 const ms = (value: number) => (value >= 1000 ? `${(value / 1000).toFixed(2)} s` : `${Math.round(value)} ms`);
 
@@ -154,14 +149,14 @@ export default function SchedulerLab() {
             {presetNote && <p className="small muted" aria-live="polite">{presetNote}</p>}
           </div>
           <Segmented legend="Scheduling strategy" name="strategy" options={strategies} value={config.strategy} onChange={(v) => set('strategy', v)} />
-          <Range label="Workers" value={config.workers} min={1} max={16} step={1} format={String} onChange={(v) => set('workers', v)} />
-          <Range label="Arrival rate" value={config.arrivalRate} min={2} max={400} step={1} format={(v) => `${v} jobs/s`} onChange={(v) => set('arrivalRate', v)} />
-          <Range label="Median job time" value={config.medianServiceMs} min={20} max={800} step={10} format={ms} onChange={(v) => set('medianServiceMs', v)} />
-          <Range label="Jobs" value={config.jobCount} min={20} max={400} step={10} format={String} onChange={(v) => set('jobCount', v)} />
-          <Range label="Attempt failure rate" value={config.failureRate} min={0} max={0.6} step={0.01} format={(v) => `${Math.round(v * 100)}%`} onChange={(v) => set('failureRate', v)} />
-          <Range label="Max attempts per job" value={config.maxAttempts} min={1} max={6} step={1} format={String} onChange={(v) => set('maxAttempts', v)} />
-          <Range label="Backoff base" value={config.backoffBaseMs} min={0} max={1000} step={10} format={ms} onChange={(v) => set('backoffBaseMs', v)} />
-          <Range label="Backoff cap" value={config.backoffCapMs} min={0} max={5000} step={50} format={ms} onChange={(v) => set('backoffCapMs', v)} />
+          <Range label="Workers" value={config.workers} min={r.workers.min} max={r.workers.max} step={r.workers.step} format={String} onChange={(v) => set('workers', v)} />
+          <Range label="Arrival rate" value={config.arrivalRate} min={r.arrivalRate.min} max={r.arrivalRate.max} step={r.arrivalRate.step} format={(v) => `${v} jobs/s`} onChange={(v) => set('arrivalRate', v)} />
+          <Range label="Median job time" value={config.medianServiceMs} min={r.medianServiceMs.min} max={r.medianServiceMs.max} step={r.medianServiceMs.step} format={ms} onChange={(v) => set('medianServiceMs', v)} />
+          <Range label="Jobs" value={config.jobCount} min={r.jobCount.min} max={r.jobCount.max} step={r.jobCount.step} format={String} onChange={(v) => set('jobCount', v)} />
+          <Range label="Attempt failure rate" value={config.failureRate} min={r.failureRate.min} max={r.failureRate.max} step={r.failureRate.step} format={(v) => `${Math.round(v * 100)}%`} onChange={(v) => set('failureRate', v)} />
+          <Range label="Max attempts per job" value={config.maxAttempts} min={r.maxAttempts.min} max={r.maxAttempts.max} step={r.maxAttempts.step} format={String} onChange={(v) => set('maxAttempts', v)} />
+          <Range label="Backoff base" value={config.backoffBaseMs} min={r.backoffBaseMs.min} max={r.backoffBaseMs.max} step={r.backoffBaseMs.step} format={ms} onChange={(v) => set('backoffBaseMs', v)} />
+          <Range label="Backoff cap" value={config.backoffCapMs} min={r.backoffCapMs.min} max={r.backoffCapMs.max} step={r.backoffCapMs.step} format={ms} onChange={(v) => set('backoffCapMs', v)} />
           <Segmented legend="Backoff jitter" name="jitter" options={jitters} value={config.jitter} onChange={(v) => set('jitter', v)} />
           <div className="control">
             <label htmlFor="seed">Random seed</label>
