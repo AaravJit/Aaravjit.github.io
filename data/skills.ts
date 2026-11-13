@@ -48,7 +48,7 @@ export const skillGroups: readonly SkillGroup[] = [
     id: 'linux',
     title: 'Linux and operating systems',
     skills: [
-      { name: 'Arch Linux', level: 'built', evidence: { label: 'Daily driver on two machines', href: '/projects/aarav-hyprland/' } },
+      { name: 'Arch Linux', level: 'built', evidence: { label: 'Former daily driver on two machines', href: '/projects/aarav-hyprland/' } },
       { name: 'systemd user units and drop-ins', level: 'built', evidence: hypr('Session-scoped ExecCondition drop-ins', '/tree/main/systemd/user') },
       { name: 'journalctl and service debugging', level: 'built', evidence: { label: 'Hyprland case study', href: '/projects/aarav-hyprland/' } },
       { name: 'Package management (pacman)', level: 'built', evidence: hypr('Package manifests', '/tree/main/packages') },
