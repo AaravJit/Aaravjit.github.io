@@ -4,6 +4,10 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  # Monthly rebuild so the static (pre-JavaScript) text of every date stays current.
+  # Durations shown in the browser are recalculated live and don't depend on this.
+  schedule:
+    - cron: "17 12 1 * *"
 
 permissions:
   contents: read
@@ -24,14 +28,15 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "22"
           cache: "npm"
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
-        run: npm run build
+      # Includes the static build; nothing deploys unless every check passes.
+      - name: Verify and build
+        run: npm run verify
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
