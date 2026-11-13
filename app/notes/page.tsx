@@ -21,7 +21,7 @@ export default function NotesPage() {
           {notes.map((note) => (
             <li key={note.slug}>
               <Link href={`/notes/${note.slug}/`}>
-                <time className="when" dateTime={note.published}>{formatPartialDate(parsePartialDate(note.published), 'short')}</time>
+                <time className="when" dateTime={note.published ?? note.written}>{formatPartialDate(parsePartialDate(note.published ?? note.written), 'short')}</time>
                 <div>
                   <h2>{note.title}</h2>
                   <p>{note.summary}</p>

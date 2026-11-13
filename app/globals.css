@@ -489,7 +489,7 @@ figcaption { color: var(--ink-3); font-size: 0.86rem; margin-top: 0.6rem; }
   .rise-2 { animation-delay: 0.06s; }
   .rise-3 { animation-delay: 0.12s; }
   .rise-4 { animation-delay: 0.18s; }
-  @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  @keyframes rise { from { transform: translateY(8px); } to { transform: none; } }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
 
@@ -503,3 +503,24 @@ figcaption { color: var(--ink-3); font-size: 0.86rem; margin-top: 0.6rem; }
   .card, .panel, .resume-list li { break-inside: avoid; }
 }
 fieldset.control { border: 0; padding: 0; margin: 0; min-width: 0; }
+
+/* Mobile first paint: the decorative grid and the hero entrance motion cost paint time on slow phones
+   without adding content, so phones skip them. */
+@media (max-width: 720px) {
+  .hero::before { display: none; }
+  .hero .rise { animation: none; }
+}
+
+/* ------------------------------------------------------------------ recruiter roles */
+.role-jump { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.9rem; margin: -1rem 0 2.2rem; }
+.role-jump a { font-size: 0.92rem; }
+.role-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+@media (max-width: 900px) { .role-grid { grid-template-columns: minmax(0, 1fr); } }
+.role-card { scroll-margin-top: 80px; }
+.role-card h3 { font-size: 1.25rem; }
+.role-card h4 { font-size: 0.95rem; margin-top: 0.4rem; }
+.role-card .kv > div { grid-template-columns: 130px minmax(0, 1fr); }
+@media (max-width: 560px) { .role-card .kv > div { grid-template-columns: minmax(0, 1fr); } }
+.role-projects { display: grid; gap: 0.45rem; padding-left: 1.1rem; font-size: 0.92rem; color: var(--ink-2); }
+.role-card .links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.2rem; margin-top: auto; padding-top: 0.4rem; font-size: 0.92rem; }
+@media print { .role-card { break-inside: avoid; } }

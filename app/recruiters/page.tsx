@@ -5,14 +5,20 @@ import { LiveRange } from '../../components/time/Live';
 import { external, PageHead } from '../../components/ui';
 import { decisions } from '../../data/decisions';
 import { buildDisclosure, profile } from '../../data/profile';
-import { featuredProjects } from '../../data/projects';
-import { defaultResume, resumeVariants } from '../../data/resume';
+import { featuredProjects, projects } from '../../data/projects';
+import { defaultResume, recruiterRoleOrder, resumeProjects, resumeVariants } from '../../data/resume';
 import { education, employment } from '../../data/timeline';
 
 export const metadata: Metadata = {
   title: 'Recruiter summary',
   description: 'One-page summary of Aarav Jit for recruiters: verified experience and education, engineering specialties, evidence, and role-specific résumés.',
   alternates: { canonical: '/recruiters/' },
+};
+
+const roles = recruiterRoleOrder.map((id) => resumeVariants.find((v) => v.id === id)!);
+const projectLink = (slug: string) => {
+  const project = projects.find((p) => p.slug === slug);
+  return project?.caseStudy ?? `/work/#${slug}`;
 };
 
 export default function RecruitersPage() {
@@ -28,6 +34,10 @@ export default function RecruitersPage() {
           <a className="btn" href={profile.github} {...external}>GitHub ↗</a>
           <PrintButton />
         </div>
+        <nav className="role-jump no-print" aria-label="Qualifications by role">
+          <span className="small muted">Qualifications by role:</span>
+          {roles.map((v) => <a key={v.id} href={`#role-${v.id}`}>{v.label}</a>)}
+        </nav>
         <div className="recruiter-grid">
           <div>
             <h2 style={{ fontSize: '1.3rem', marginBottom: '1rem' }}>Summary</h2>
@@ -77,10 +87,10 @@ export default function RecruitersPage() {
             <h2 id="resumes" style={{ fontSize: '1.3rem', marginBottom: '1rem' }}>Résumé versions</h2>
             <p className="small muted" style={{ marginBottom: '1rem' }}>Same verified history, different emphasis. Generated from the same data as this site.</p>
             <ul className="resume-list">
-              {resumeVariants.map((v) => (
+              {roles.map((v) => (
                 <li key={v.id}>
                   <div><b>{v.label}{v.id === defaultResume ? ' (default)' : ''}</b><span>{v.headline}</span></div>
-                  <div className="links"><a href={`/resume/${v.file}`} download>PDF</a><Link href={`/resume/${v.id}/`}>View</Link></div>
+                  <div className="links"><a href={`/resume/${v.file}`} download>PDF</a><Link href={`/resume/${v.id}/`}>View</Link><a href={`#role-${v.id}`}>Qualifications</a></div>
                 </li>
               ))}
             </ul>
@@ -88,6 +98,33 @@ export default function RecruitersPage() {
             <p className="small">The quickest way to reach me is a LinkedIn message. My GitHub shows the public source for most projects; Pathway’s is private and I’m glad to walk through it in an interview.</p>
           </aside>
         </div>
+        <section className="section-tight" aria-labelledby="by-role" style={{ borderTop: '1px solid var(--line)', marginTop: 'clamp(2.5rem, 5vw, 4rem)' }}>
+          <h2 id="by-role" style={{ fontSize: '1.6rem', marginBottom: '0.6rem' }}>Qualifications by role</h2>
+          <p className="muted" style={{ marginBottom: '1.6rem', maxWidth: 720 }}>Each role below stands on its own: the skills that apply, the projects that show them, and the matching résumé. The history is the same in all four; only the emphasis changes.</p>
+          <div className="role-grid">
+            {roles.map((v) => (
+              <article key={v.id} id={`role-${v.id}`} className="card role-card" aria-labelledby={`role-${v.id}-title`}>
+                <p className="kicker">{v.headline}</p>
+                <h3 id={`role-${v.id}-title`}>{v.label}</h3>
+                <p>{v.summary}</p>
+                <dl className="kv">
+                  {v.skills.map((skill) => <div key={skill.label}><dt>{skill.label}</dt><dd>{skill.items}</dd></div>)}
+                </dl>
+                <h4>Projects that show it</h4>
+                <ul className="role-projects">
+                  {v.projects.map((slug) => {
+                    const rp = resumeProjects[slug];
+                    return <li key={slug}><Link href={projectLink(slug)}>{rp.name.split(':')[0]}</Link>: {rp.bullets[0]}</li>;
+                  })}
+                </ul>
+                <div className="links">
+                  <a href={`/resume/${v.file}`} download>{v.label} résumé (PDF)</a>
+                  <Link href={`/resume/${v.id}/`}>View in browser</Link>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
       </div>
     </>
   );

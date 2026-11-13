@@ -7,7 +7,7 @@ import { profile } from '../data/profile';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-inter' });
-const mono = JetBrains_Mono({ subsets: ['latin'], display: 'swap', variable: '--font-mono', weight: ['400', '500'] });
+const mono = JetBrains_Mono({ subsets: ['latin'], display: 'swap', variable: '--font-mono', weight: ['400', '500'], preload: false });
 
 const description = 'Aarav Jit builds software and the systems underneath it: Linux installers with rollback, cloud-backed apps with database-enforced security, and tested engineering experiments. Cybersecurity student at American River College.';
 

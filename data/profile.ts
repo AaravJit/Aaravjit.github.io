@@ -13,6 +13,8 @@ export const profile = {
   github: 'https://github.com/AaravJit',
   githubUser: 'AaravJit',
   linkedin: 'https://www.linkedin.com/in/aarav-jit-499a93293/',
+  /** Professional email. Shown on the résumés only (Aarav's decision, 2026-11-13); the phone number stays private. */
+  resumeEmail: 'aaravjit16@gmail.com',
   portfolioRepo: 'https://github.com/AaravJit/Aaravjit.github.io',
   intro:
     'I build practical software and the systems underneath it: Linux environments that install and roll back safely, cloud-backed apps whose security lives in the database, and automation that makes the work repeatable.',

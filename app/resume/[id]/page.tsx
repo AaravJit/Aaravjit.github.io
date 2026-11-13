@@ -39,7 +39,7 @@ export default async function ResumePage({ params }: { params: Promise<{ id: str
         <header className={styles.head}>
           <h1>{profile.name}</h1>
           <p className={styles.headline}>{variant.headline}</p>
-          <p className={styles.contact}>{profile.locationShort} | aaravjit.github.io | github.com/AaravJit | linkedin.com/in/aarav-jit-499a93293</p>
+          <p className={styles.contact}>{profile.locationShort} | <a href={`mailto:${profile.resumeEmail}`}>{profile.resumeEmail}</a> | aaravjit.github.io | github.com/AaravJit | linkedin.com/in/aarav-jit-499a93293</p>
         </header>
 
         <section aria-labelledby="r-summary"><h2 id="r-summary">Summary</h2><p>{variant.summary}</p></section>

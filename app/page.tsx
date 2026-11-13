@@ -67,7 +67,7 @@ export default function Home() {
             <Link className="text-link" href="/work/">All {projects.length} projects →</Link>
           </div>
           <div className="project-list">
-            {featuredProjects.map((project, index) => <ProjectRow key={project.slug} project={project} priority={index === 1} />)}
+            {featuredProjects.map((project) => <ProjectRow key={project.slug} project={project} />)}
           </div>
           <p className="callout" style={{ marginTop: '1.5rem' }}><strong>How I build.</strong> {buildDisclosure.short} <Link href="/about/#how-i-build">More on how I work →</Link></p>
         </div>

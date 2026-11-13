@@ -10,7 +10,7 @@ const file = (path: string) => `${repo}/blob/main/${path}`;
 
 export const metadata: Metadata = {
   title: 'Pull Up case study',
-  description: 'A native Swift iOS app on Supabase whose privacy rules are enforced in Postgres and covered by pgTAP tests, with a written security assessment and a CI-signed build accepted by App Store Connect.',
+  description: 'A native Swift iOS app on Supabase whose privacy rules are enforced in Postgres and covered by pgTAP tests, with a written security assessment and a CI-signed build uploaded to App Store Connect.',
   alternates: { canonical: '/projects/pull-up/' },
   openGraph: { type: 'article', title: 'Pull Up case study', url: '/projects/pull-up/', images: [{ url: '/social-preview.png', width: 1200, height: 630, alt: 'Aarav Jit' }] },
 };
@@ -41,7 +41,7 @@ export default function PullUpCaseStudy() {
   return (
     <CaseStudy
       project={project}
-      lede="A social map and garage for car and motorcycle enthusiasts. Rebuilt from an Expo prototype into a native Swift app on Supabase, where the privacy rules live in Postgres and every security fix comes with a test that fails without it."
+      lede="A social map and garage for car and motorcycle enthusiasts. Rebuilt from an Expo prototype into a native Swift app on Supabase, where the privacy rules live in Postgres and security fixes come with regression tests."
       sections={[
         {
           id: 'problem', label: 'Problem', title: 'A social app built on the most sensitive data a phone has',
@@ -53,7 +53,7 @@ export default function PullUpCaseStudy() {
         {
           id: 'role', label: 'My role', title: 'Product owner and engineering lead, with an agent writing the code',
           body: <>
-            <p>Most commits in the repository are by an AI coding agent (Claude Code) working on branches I reviewed and merged; the commit history shows this. My part:</p>
+            <p>About 300 of the repository’s 341 commits (as of 2026-10-28) are by AI coding agents working on branches I reviewed; my 41 commits are the merges. The commit history shows this. The repository root and its README are still the original Expo prototype; the native Swift app lives in <a href={`${repo}/tree/main/native/ios`} {...external}><code>native/ios</code></a>, and its status is tracked in <a href={file('docs/PROGRESS.md')} {...external}>docs/PROGRESS.md</a>. My part:</p>
             <ul>
               <li>Defined the product and its phases, and the privacy and security requirements each phase had to meet.</li>
               <li>Reviewed and merged every pull request.</li>
@@ -121,7 +121,7 @@ export default function PullUpCaseStudy() {
               <li>30 pgTAP files covering row-level security, privacy, messaging, rate limits, moderation and storage; files 001–014 passed 262 of 262 checks on the hosted staging project on 2026-10-20.</li>
               <li>Two-account API tests over the full local stack (auth, REST, realtime, storage, Edge Functions) run in CI; 133 of 133 passed against staging on 2026-10-18.</li>
               <li>Swift package unit tests and simulator UI journeys run in GitHub Actions and regenerate screenshots of every major screen.</li>
-              <li>Signed build 0.1.0 (233) archived with Apple cloud signing in CI and accepted by App Store Connect on 2026-10-24.</li>
+              <li>Signed build 0.1.0 (233) archived with Apple cloud signing in CI and uploaded on 2026-10-24; App Store Connect accepted the upload (<a href={file('docs/PROGRESS.md')} {...external}>PROGRESS.md</a>). Processing hasn’t been confirmed.</li>
             </ul>
             <ul className="checklist todo">
               <li>No test has run on a physical iPhone yet; the device test plan is written but empty.</li>

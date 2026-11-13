@@ -45,7 +45,7 @@ export const resumeProjects: Record<string, ResumeProject> = {
     bullets: [
       'Led a native Swift rebuild with privacy rules enforced in Postgres row-level security; 30 pgTAP test files, 262 of 262 checks passing on the hosted staging project.',
       'Drove a written security assessment with 19 fixed findings (route leakage, location metadata in uploads, keychain backup class), each Phase 3 fix covered by a regression test.',
-      'Shipped a CI-signed build that App Store Connect accepted (Oct 2026); device testing has not started yet.',
+      'Uploaded a CI-signed build to App Store Connect (Oct 2026); device testing has not started yet.',
     ],
   },
   roadping: {
@@ -148,6 +148,9 @@ export const resumeVariants: readonly ResumeVariant[] = [
     file: 'aarav-jit-resume-security.pdf',
   },
 ];
+
+/** Order the recruiter page lists the roles in, each with its own anchor (#role-<id>). */
+export const recruiterRoleOrder: readonly ResumeId[] = ['it-support', 'systems', 'software', 'security'];
 
 /** The variant served at /resume/aarav-jit-resume.pdf and /resume.pdf. */
 export const defaultResume: ResumeId = 'systems';

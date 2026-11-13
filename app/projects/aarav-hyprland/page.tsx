@@ -78,7 +78,7 @@ export default function HyprlandCaseStudy() {
   return (
     <CaseStudy
       project={project}
-      lede="The Arch Linux and Hyprland desktop I used daily, rebuilt as an installer that detects the hardware, renders the right configuration, validates it before touching anything, and rolls itself back if something fails."
+      lede="My Arch Linux and Hyprland desktop, rebuilt as an installer that detects the hardware, renders the right configuration, validates it before touching anything, and rolls itself back if something fails."
       sections={[
         {
           id: 'problem', label: 'Problem', title: 'One desktop, two very different machines',
@@ -154,7 +154,7 @@ export default function HyprlandCaseStudy() {
           id: 'testing', label: 'Validation', title: 'How it was tested',
           body: <>
             <ul className="checklist">
-              <li>Installed and used daily on my NVIDIA desktop and HP OmniBook while Linux was my main OS.</li>
+              <li>Installed and used on my NVIDIA desktop and HP OmniBook.</li>
               <li>Every install renders and validates in a dry run before anything is written.</li>
               <li>Two JSON hardware fixtures (<a href={file('tests/fixtures/intel-laptop.json')} {...external}>Intel laptop</a>, <a href={file('tests/fixtures/amd-laptop.json')} {...external}>AMD laptop</a>) render and validate profiles for hardware I don’t own.</li>
             </ul>
@@ -171,7 +171,7 @@ export default function HyprlandCaseStudy() {
             <figcaption>The installed environment on my ultrawide desktop.</figcaption>
             <figure className="shot" style={{ marginTop: '1.4rem' }}><Image src="/hyprlandproofterminal.webp" width={1920} height={804} sizes="(max-width: 920px) calc(100vw - 32px), 860px" alt="Terminal windows open in the Aarav Hyprland Arch Linux environment" /></figure>
             <figcaption>Kitty terminals themed from the wallpaper by Matugen.</figcaption>
-            <p>I used this setup as my daily environment while Linux was my main OS. I’ve since moved my daily machine back to Windows 11; the repository remains the reference for how I structure safe, repeatable system changes.</p>
+            <p>The repository is the reference for how I structure safe, repeatable system changes.</p>
           </>,
         },
         {

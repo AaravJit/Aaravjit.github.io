@@ -24,7 +24,7 @@ export const employment: readonly TimelineRecord[] = [
   {
     id: 'walmart',
     kind: 'work',
-    title: 'Online Grocery Pickup / Digital Fulfillment Associate',
+    title: 'Digital Personal Shopper (Online Grocery Pickup)',
     organization: 'Walmart',
     location: 'Citrus Heights, CA',
     start: '2024-06',
@@ -35,7 +35,7 @@ export const employment: readonly TimelineRecord[] = [
       'Resolve order issues and substitutions directly with customers, and escalate problems that need a manager.',
       'Follow documented procedures and coordinate across teams so handoffs stay on time.',
     ],
-    source: 'Résumé (public/resume.pdf, Nov 2026) and earlier portfolio data: "Jun 2024–Present".',
+    source: 'Title confirmed by Aarav (2026-11-13). Start month June 2024 in every record found (Dec 2025 site, earlier résumé); exact day not recorded, so month precision.',
   },
   {
     id: 'target',
@@ -67,7 +67,7 @@ export const education: readonly (TimelineRecord & { program: string; coursework
     end: null,
     summary: 'Associate degree program in progress. No degree has been conferred.',
     coursework: ['Introduction to Networks', 'Switching, Routing, and Wireless Essentials', 'Network Systems Administration', 'Network Security Fundamentals'],
-    source: 'Résumé lists "Fall 2026" as the start term; only the term is recorded, so no month is claimed.',
+    source: 'Enrollment for Fall 2026 confirmed by Aarav (2026-11-13). Only the term is recorded, so no month is claimed.',
   },
   {
     id: 'csus',
@@ -95,5 +95,5 @@ export const milestones: readonly TimelineRecord[] = [
   { id: 'roadping', kind: 'project', title: 'RoadPing', organization: 'Independent project', start: '2026-06', end: null, summary: 'Push-to-talk app for nearby drivers with location privacy enforced in Postgres. In development.', href: '/projects/roadping/', source: 'AaravJit/RoadPing first commit Jun 3, 2026.' },
   { id: 'hyprland', kind: 'project', title: 'Aarav Hyprland published', organization: 'Independent project', start: '2026-07', end: '2026-07', summary: 'Portable Arch Linux desktop installer with hardware detection, dry runs and automatic rollback.', href: '/projects/aarav-hyprland/', source: 'AaravJit/aarav-hyprland commits Jul 29–31, 2026.' },
   { id: 'pull-up', kind: 'project', title: 'Pull Up', organization: 'Independent project', start: '2026-08', end: null, summary: 'Native iOS app on a Supabase backend with a tested privacy and security model. In development.', href: '/projects/pull-up/', source: 'AaravJit/pull-up first commit Aug 18, 2026.' },
-  { id: 'pull-up-upload', kind: 'milestone', title: 'Pull Up 0.1.0 accepted by App Store Connect', organization: 'Pull Up', start: '2026-10-24', end: '2026-10-24', summary: 'First signed build archived in CI and uploaded to App Store Connect. Not yet installed on a device through TestFlight.', href: '/projects/pull-up/', source: 'pull-up docs/PROGRESS.md, TestFlight table, 2026-10-24.' },
+  { id: 'pull-up-upload', kind: 'milestone', title: 'Pull Up 0.1.0 uploaded to App Store Connect', organization: 'Pull Up', start: '2026-10-24', end: '2026-10-24', summary: 'First signed build archived in CI and uploaded to App Store Connect. Not yet installed on a device through TestFlight.', href: '/projects/pull-up/', source: 'pull-up docs/PROGRESS.md, TestFlight table, 2026-10-24.' },
 ];

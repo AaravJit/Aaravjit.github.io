@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { ReactNode } from 'react';
 import { notes } from '../data/notes';
+import { formatPartialDate, parsePartialDate } from '../lib/time/dates';
 import { RelativeTime } from './time/Live';
 import { external } from './ui';
 
@@ -15,7 +16,9 @@ export default function Article({ slug, children }: { slug: string; children: Re
         <p className="lede">{note.summary}</p>
         <p className="article-meta" style={{ marginTop: '1.2rem' }}>
           <span>By Aarav Jit</span>
-          <span>Published <RelativeTime iso={`${note.published}T12:00:00-08:00`} /></span>
+          {note.published
+            ? <span>Published <RelativeTime iso={`${note.published}T12:00:00-08:00`} /></span>
+            : <span>Written <time dateTime={note.written}>{formatPartialDate(parsePartialDate(note.written), 'long')}</time></span>}
         </p>
       </header>
       <div className="wrap wrap-narrow" style={{ paddingBottom: 'clamp(3rem, 7vw, 5rem)' }}>

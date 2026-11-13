@@ -38,7 +38,9 @@ const secretPatterns = [
   [/eyJhbGciOi[0-9A-Za-z_-]{20,}\.[0-9A-Za-z_-]{20,}\.[0-9A-Za-z_-]{10,}/, 'JWT'],
   [/sb_secret_[0-9A-Za-z]{10,}/, 'Supabase secret key'],
   // The public site uses LinkedIn for contact; no email address or phone number should ship.
-  [/\b[A-Za-z0-9._%+-]+@(?!example\.)[A-Za-z0-9-]+\.(?:com|net|org|edu|io|dev|app)\b/, 'email address (public site uses LinkedIn only)'],
+  // Contact on the site is LinkedIn. The résumé pages also show one professional email
+  // (data/profile.ts resumeEmail); any other address, or any phone number, fails the check.
+  [/\b(?!aaravjit16@gmail\.com\b)[A-Za-z0-9._%+-]+@(?!example\.)[A-Za-z0-9-]+\.(?:com|net|org|edu|io|dev|app)\b/, 'email address other than the résumé email'],
   [/\(\d{3}\)\s?\d{3}-\d{4}|\b\d{3}-\d{3}-\d{4}\b/, 'phone number (public site uses LinkedIn only)'],
 ];
 

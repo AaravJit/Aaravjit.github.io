@@ -27,7 +27,7 @@ public/resume/  Generated résumé PDFs and their manifest
 | `npm run dev` | Local dev server |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run lint` | ESLint |
-| `npm test` | Unit tests (dates, scheduler, syntax highlighter: 50 tests) |
+| `npm test` | Unit tests (dates, scheduler, notes data, syntax highlighter: 52 tests) |
 | `npm run build` | Static export to `out/` |
 | `npm run check:site` | After a build: internal links, fragments, metadata, alt text, one h1 per page, secret and personal-data patterns |
 | `npm run resume:pdf` | After a build: prints the four résumé PDFs into `public/resume/` (needs Playwright's Chromium; set `PW_CHROMIUM` to use a specific binary) |
