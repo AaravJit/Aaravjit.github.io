@@ -1,41 +1,19 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import Navigation from '../../../components/Navigation';
-import { CaseStudyHeader, CodeSample, EngineeringStory, ExploreProject, ProjectStatus, RoleBlock } from '../../../components/ProjectUI';
-import { projects, site } from '../../../data/portfolio';
+import ArchitectureDiagram from '../../../components/ArchitectureDiagram';
+import CaseStudy from '../../../components/CaseStudy';
+import { Code, Story } from '../../../components/ui';
+import { projectBySlug } from '../../../data/projects';
 
-const project = projects.pathway;
+const project = projectBySlug('pathway');
+
 export const metadata: Metadata = {
-  title: 'Pathway Case Study | Aarav Jit',
-  description: 'How I built Pathway, a Next.js, OpenAI, Supabase, and Stripe app that compares a resume to a job posting, tailors the resume, and renders a PDF.',
-  alternates: { canonical: `${site.url}/projects/pathway/` },
-  openGraph: {
-    title: 'Pathway Case Study | Aarav Jit',
-    description: 'An AI-assisted job fit and resume tailoring app built with Next.js, OpenAI, Supabase, and Stripe.',
-    url: `${site.url}/projects/pathway/`,
-    type: 'article',
-    images: [{ url: '/pathway-landing.jpg', width: 2160, height: 1350, alt: 'Pathway landing page' }],
-  },
-  twitter: { card: 'summary_large_image', title: 'Pathway Case Study | Aarav Jit', description: 'An AI-assisted job fit and resume tailoring app.', images: ['/pathway-landing.jpg'] },
+  title: 'Pathway case study',
+  description: 'How Pathway compares a resume with a job posting, tailors it without inventing anything, and renders a PDF, on Next.js, OpenAI, Supabase and Stripe.',
+  alternates: { canonical: '/projects/pathway/' },
+  openGraph: { type: 'article', title: 'Pathway case study', url: '/projects/pathway/', images: [{ url: '/pathway-landing.jpg', width: 2160, height: 1350, alt: 'Pathway landing page' }] },
 };
-
-const steps = ['Resume', 'Job Posting', 'Fit Analysis', 'Tailoring', 'Preview', 'Download'];
-const layers = [
-  ['Frontend', 'Next.js 14 App Router · React · TypeScript · Tailwind CSS'],
-  ['API', '19 route handlers for parsing, job fit, generation, rendering, history, usage, and billing'],
-  ['AI', 'OpenAI Responses API returning JSON, validated and sanitized on the server'],
-  ['Data & identity', 'Supabase Auth and Postgres with row-level security on every table'],
-  ['Documents', 'PDF, DOCX, and TXT intake (pdf-parse, mammoth); PDF output drawn with pdf-lib'],
-  ['Payments', 'Stripe Checkout, billing portal, and a signature-verified webhook'],
-] as const;
-
-const role = [
-  'Planned the product and split it into 18 pull requests, from the first mock-backend MVP to the job-fit flow.',
-  'Wrote the job-fit prompt and the server-side validation that every model response passes through.',
-  'Designed the Supabase schema and its row-level security policies.',
-  'Deployed it to Vercel and fixed the build failures that came up there, such as moving pdf-parse to a dynamic import on the Node runtime.',
-] as const;
 
 const sanitize = `function sanitizeResult(value: unknown): JobFitResult {
   const source = value && typeof value === "object" ? (value as Record<string, unknown>) : {};
@@ -71,42 +49,102 @@ create policy "resume_versions_insert_own" on resume_versions
   for insert with check (auth.uid() = user_id);`;
 
 export default function PathwayCaseStudy() {
-  return <><Navigation /><main className="case-study pathway-case"><CaseStudyHeader label="Software product case study" title={project.name} status="development" description="Upload a resume, paste a job posting, and Pathway says whether the role is worth applying to, shows the evidence, tailors the resume for that job without inventing anything, and hands back a PDF." tags={project.tags} />
-    <section className="case-section"><div className="container case-two-col"><div><p className="case-label">01 — The problem</p><h2>Too many tabs between a job post and an application</h2></div><div className="case-prose">
-      <p>Tailoring a resume usually means copying between the posting, the old resume, a chat tool, a document editor, and a PDF exporter. Chat tools also happily add skills the candidate doesn&apos;t have.</p>
-      <p>Pathway does the whole path in one flow, and its prompt and validation are built around one rule: every claim in the output has to trace back to something in the candidate&apos;s own resume.</p>
-    </div></div></section>
-    <section className="case-section dark"><div className="container"><p className="case-label">02 — The product</p><h2>From resume to downloadable PDF</h2><ol className="workflow" aria-label="Pathway product workflow">{steps.map((step, index) => <li key={step}><span>{String(index + 1).padStart(2, '0')}</span><b>{step}</b>{index < steps.length - 1 && <i aria-hidden="true">→</i>}</li>)}</ol>
-      <figure className="product-evidence evidence-wide"><Image src="/pathway-landing.jpg" width={2160} height={1350} sizes="(max-width: 850px) calc(100vw - 48px), 1180px" alt="Pathway landing page with the headline 'A better resume without the homework' and a sample job fit card scoring 82" /><figcaption>Landing page. The job card on the right is the page&apos;s built-in example.</figcaption></figure>
-      <figure className="product-evidence evidence-wide"><Image src="/pathway-job-fit.jpg" width={2160} height={1350} sizes="(max-width: 850px) calc(100vw - 48px), 1180px" alt="Pathway job fit page with a resume upload area and a job posting text box" /><figcaption>The job fit flow: add a PDF, DOCX, or TXT resume once, then paste any job post.</figcaption></figure>
-    </div></section>
-    <section className="case-section tint"><div className="container case-two-col"><div><p className="case-label">03 — My role</p><h2>What I built</h2></div><div className="case-prose">
-      <RoleBlock summary="Solo project since January 2026: 57 commits across 18 merged pull requests." items={role} />
-      <p style={{ marginTop: '1.3rem' }}>I built Pathway with AI coding agents. I wrote the spec for each change, reviewed and merged every pull request, and debugged what broke when it ran for real.</p>
-    </div></div></section>
-    <section className="case-section"><div className="container case-two-col"><div><p className="case-label">04 — Engineering story</p><h2>Dropping a headless browser to make PDFs</h2></div><div className="case-prose">
-      <EngineeringStory steps={[
-        ['Before', 'The first renderer built an HTML resume and printed it to PDF with Playwright, running a bundled Chromium (@sparticuz/chromium) inside a Vercel serverless function.'],
-        ['Problem', 'That meant bundling and starting a whole browser just to lay out one page of text, which made it by far the heaviest dependency in the app.'],
-        ['Change', 'I rewrote the render route on pdf-lib: it embeds Helvetica, measures each word with widthOfTextAtSize to wrap lines, and adds pages when the cursor reaches the bottom margin.'],
-        ['Result', 'Two dependencies removed, 450 lines deleted for 275 added, and the output is identical wherever the function runs, because there is no browser involved.'],
-      ]} />
-      <h3>Treating model output as untrusted input</h3>
-      <p>The job-fit route asks the OpenAI Responses API for strict JSON, but the app never trusts the shape it gets back. Every field is type-checked, the score is clamped to 0–100, the verdict must be one of four values, and each list is capped at six well-formed items. A malformed response degrades to a safe default instead of crashing the page.</p>
-      <CodeSample file="app/api/job-fit/route.ts" code={sanitize} />
-      <p>The prompt carries the same rule as the product. These lines are copied from it:</p>
-      <CodeSample file="job-fit system prompt (excerpt)" code={promptRules} />
-    </div></div></section>
-    <section className="case-section tint"><div className="container"><p className="case-label">05 — Architecture</p><h2>How it fits together</h2><div className="architecture-grid">{layers.map(([title, text], index) => <article key={title}><span>{String(index + 1).padStart(2, '0')}</span><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
-    <section className="case-section"><div className="container case-two-col"><div><p className="case-label">06 — Security</p><h2>Users only ever see their own data</h2></div><div className="case-prose">
-      <p>Resumes are personal data, so access control lives in the database rather than only in the API. Row-level security is enabled on all four tables, and each policy checks <code>auth.uid()</code> against the row&apos;s owner. The Stripe webhook rejects any event whose signature doesn&apos;t verify with <code>stripe.webhooks.constructEvent</code>.</p>
-      <CodeSample file="supabase/migrations/…_pathway_schema.sql" code={rls} />
-    </div></div></section>
-    <section className="case-section dark"><div className="container case-two-col"><div><p className="case-label">07 — Status</p><h2>Working end to end, not launched yet</h2><ProjectStatus status="development" /></div><div className="case-prose">
-      <p>Upload, job fit, tailoring, preview, and PDF download work end to end. Before launch, I need to:</p>
-      <ul><li>Move the free-tier usage counter from a cookie into Supabase. Right now clearing cookies resets it.</li><li>Test Stripe checkout, portal, and webhook flows end to end against live test-mode events.</li><li>Add monitoring and error reporting on the API routes.</li></ul>
-      <p>The repository is private while it&apos;s in development. I&apos;m happy to walk through the code in an interview.</p>
-    </div></div></section>
-    <ExploreProject href={projects.wrenchAI.caseStudy} name="WrenchAI" detail="Live product case study" />
-  </main><footer><div className="container"><b>AJ<span>.</span></b><p>Pathway case study · In development</p><Link href="/">Home</Link></div></footer></>;
+  return (
+    <CaseStudy
+      project={project}
+      lede="Upload a resume, paste a job posting, and Pathway says whether the role is worth applying to, shows the evidence, tailors the resume for that job without inventing anything, and hands back a PDF."
+      sections={[
+        {
+          id: 'problem', label: 'Problem', title: 'Too many tabs between a job post and an application',
+          body: <>
+            <p>Tailoring a resume usually means copying between the posting, the old resume, a chat tool, a document editor and a PDF exporter. Chat tools also happily add skills the candidate doesn’t have, which is the fastest way to fail an interview.</p>
+            <p><strong>Why it matters:</strong> an AI feature is only useful if its output can be trusted. Pathway is built around one rule: every claim in the output has to trace back to the candidate’s own resume.</p>
+            <figure className="shot"><Image src="/pathway-landing.jpg" width={2160} height={1350} sizes="(max-width: 920px) calc(100vw - 32px), 860px" alt="Pathway landing page with the headline 'A better resume without the homework' and a sample job fit card scoring 82" priority /></figure>
+            <figcaption>Landing page. The job card on the right is the page’s built-in example.</figcaption>
+          </>,
+        },
+        {
+          id: 'role', label: 'My role', title: 'What I did',
+          body: <>
+            <ul>
+              <li>Planned the product and split it into 18 pull requests, from the first mock-backend MVP to the job-fit flow (57 commits since January 2026).</li>
+              <li>Wrote the job-fit prompt and the server-side validation every model response passes through.</li>
+              <li>Designed the Supabase schema and its row-level security policies.</li>
+              <li>Deployed to Vercel and fixed the build failures that came up there, such as moving pdf-parse to a dynamic import on the Node runtime.</li>
+            </ul>
+            <p>The code was written by AI coding agents from specs I wrote. I reviewed and merged every pull request and debugged what broke when it ran for real.</p>
+          </>,
+        },
+        {
+          id: 'architecture', label: 'Architecture', title: 'How it fits together',
+          body: <>
+            <ArchitectureDiagram
+              title="Pathway architecture"
+              width={900}
+              height={330}
+              zones={[{ label: 'Vercel (server)', x: 230, y: 10, w: 430, h: 310 }]}
+              nodes={[
+                { id: 'client', label: 'Browser', sub: 'Next.js App Router', x: 20, y: 130, w: 180, detail: 'React UI for upload, job-fit results, tailoring, preview and download. Holds only the user’s Supabase session.' },
+                { id: 'api', label: 'Route handlers', sub: '19 API routes', x: 250, y: 50, w: 190, detail: 'Parsing, job fit, generation, rendering, history, usage and billing. Every model response is validated here before it reaches the client.' },
+                { id: 'parse', label: 'Document intake', sub: 'pdf-parse · mammoth', x: 250, y: 150, w: 190, detail: 'Accepts PDF, DOCX and TXT resumes and extracts text on the server.' },
+                { id: 'render', label: 'PDF renderer', sub: 'pdf-lib', x: 250, y: 250, w: 190, detail: 'Lays out the tailored resume directly with pdf-lib: measured word wrap, page breaks at the margin, no browser.' },
+                { id: 'validate', label: 'Sanitizer', sub: 'type checks · clamps', x: 460, y: 50, w: 180, detail: 'Type-checks every field of the model’s JSON, clamps the score to 0–100, restricts the verdict to four values and caps lists at six items.' },
+                { id: 'openai', label: 'OpenAI', sub: 'Responses API, JSON', x: 700, y: 50, w: 180, detail: 'Asked for strict JSON with a prompt that forbids inventing experience. Treated as untrusted input.' },
+                { id: 'db', label: 'Supabase', sub: 'Auth · Postgres + RLS', x: 700, y: 150, w: 180, detail: 'Auth and Postgres. Row-level security on all four tables; each policy compares auth.uid() with the row owner.' },
+                { id: 'stripe', label: 'Stripe', sub: 'Checkout · webhook', x: 700, y: 250, w: 180, detail: 'Checkout and billing portal. The webhook rejects any event whose signature fails stripe.webhooks.constructEvent.' },
+              ]}
+              edges={[
+                { from: 'client', to: 'api', label: 'HTTPS' },
+                { from: 'client', to: 'parse' },
+                { from: 'api', to: 'validate' },
+                { from: 'validate', to: 'openai' },
+                { from: 'api', to: 'db' },
+                { from: 'api', to: 'render' },
+                { from: 'stripe', to: 'api', label: 'signed' },
+              ]}
+            />
+            <figure className="shot"><Image src="/pathway-job-fit.jpg" width={2160} height={1350} sizes="(max-width: 920px) calc(100vw - 32px), 860px" alt="Pathway job fit page with a resume upload area and a job posting text box" /></figure>
+            <figcaption>The job-fit flow: add a PDF, DOCX or TXT resume once, then paste any job post.</figcaption>
+          </>,
+        },
+        {
+          id: 'decisions', label: 'Decisions', title: 'Treating model output as untrusted input',
+          body: <>
+            <p>The job-fit route asks the OpenAI Responses API for strict JSON, but the app never trusts the shape it gets back. Every field is type-checked, the score is clamped, the verdict must be one of four values, and each list is capped at six well-formed items. A malformed response degrades to a safe default instead of crashing the page.</p>
+            <Code file="app/api/job-fit/route.ts (private repository)" code={sanitize} />
+            <p>The prompt carries the same rule as the product. These lines are copied from it:</p>
+            <Code file="job-fit system prompt (excerpt)" code={promptRules} />
+            <p>Longer write-up: <Link href="/notes/model-output-is-untrusted-input/">Model output is untrusted input</Link>.</p>
+          </>,
+        },
+        {
+          id: 'challenge', label: 'Challenge', title: 'Dropping a headless browser to make PDFs',
+          body: <Story steps={[
+            ['Before', 'The first renderer built an HTML resume and printed it to PDF with Playwright, running a bundled Chromium (@sparticuz/chromium) inside a Vercel serverless function.'],
+            ['Problem', 'That meant bundling and starting a whole browser to lay out one page of text, by far the heaviest dependency in the app.'],
+            ['Change', 'Rewrote the render route on pdf-lib: embed Helvetica, measure each word with widthOfTextAtSize to wrap lines, and add pages when the cursor reaches the bottom margin.'],
+            ['Result', 'Two dependencies removed, 450 lines deleted for 275 added, and the output is identical wherever the function runs.'],
+          ]} />,
+        },
+        {
+          id: 'security', label: 'Security', title: 'Users only ever see their own data',
+          body: <>
+            <p>Resumes are personal data, so access control lives in the database rather than only in the API. Row-level security is enabled on all four tables, and each policy checks <code>auth.uid()</code> against the row’s owner. The Stripe webhook rejects any event whose signature doesn’t verify.</p>
+            <Code file="supabase/migrations/…_pathway_schema.sql (private repository)" code={rls} />
+          </>,
+        },
+        {
+          id: 'status', label: 'Status', title: 'Working end to end, not launched',
+          body: <>
+            <ul className="checklist"><li>Upload, job fit, tailoring, preview and PDF download work end to end.</li></ul>
+            <ul className="checklist todo">
+              <li>Move the free-tier usage counter from a cookie into Supabase. Clearing cookies currently resets it.</li>
+              <li>Test Stripe checkout, portal and webhook flows end to end against live test-mode events.</li>
+              <li>Add monitoring and error reporting on the API routes.</li>
+            </ul>
+          </>,
+        },
+      ]}
+    />
+  );
 }

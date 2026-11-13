@@ -1,23 +1,13 @@
 import Link from 'next/link';
+import { PageHead } from '../components/ui';
 
 export default function NotFound() {
   return (
-    <div className="container" style={{
-      minHeight: '100vh',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      textAlign: 'center',
-      gap: '1rem'
-    }}>
-      <h1 style={{ fontSize: '2rem', fontWeight: 600 }}>Page Not Found</h1>
-      <p style={{ color: 'var(--secondary)' }}>
-        The page you&apos;re looking for doesn&apos;t exist.
-      </p>
-      <Link href="/" className="button primary">
-        Go Home
-      </Link>
-    </div>
+    <>
+      <PageHead eyebrow="404" title="That page doesn’t exist.">
+        It may have moved in the November 2026 redesign. Try the <Link href="/work/">work index</Link>, or press <kbd>Ctrl</kbd> <kbd>K</kbd> to search.
+      </PageHead>
+      <div className="wrap" style={{ paddingBottom: '5rem' }}><Link className="btn btn-primary" href="/">Go home</Link></div>
+    </>
   );
 }
