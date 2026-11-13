@@ -1,33 +1,14 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { describeFailure, selectRepos, type FeedRepo } from '../lib/github';
 import { RelativeTime } from './time/Live';
 import { external } from './ui';
 
-interface Repo {
-  name: string;
-  html_url: string;
-  description: string | null;
-  pushed_at: string;
-  fork: boolean;
-  archived: boolean;
-  private: boolean;
-}
+type State = { kind: 'loading' } | { kind: 'ready'; repos: FeedRepo[] } | { kind: 'unavailable'; reason: string };
 
-type State = { kind: 'loading' } | { kind: 'ready'; repos: Repo[]; fetchedAt: string } | { kind: 'unavailable'; reason: string };
-
-const CACHE_KEY = 'gh-activity-v1';
+const CACHE_KEY = 'gh-activity-v2';
 const CACHE_MS = 15 * 60 * 1000;
-
-/** Keeps only public, non-fork repositories with a valid push timestamp, newest first. */
-export function selectRepos(data: unknown, exclude: readonly string[], limit: number): Repo[] {
-  if (!Array.isArray(data)) return [];
-  return data
-    .filter((r): r is Repo => !!r && typeof r === 'object' && typeof (r as Repo).name === 'string' && typeof (r as Repo).pushed_at === 'string' && !Number.isNaN(Date.parse((r as Repo).pushed_at)))
-    .filter((r) => !r.fork && !r.private && !r.archived && !exclude.includes(r.name))
-    .sort((a, b) => Date.parse(b.pushed_at) - Date.parse(a.pushed_at))
-    .slice(0, limit);
-}
 
 /**
  * Recent public repository activity from the GitHub REST API, fetched in the browser without a
@@ -42,9 +23,13 @@ export default function ActivityFeed({ user, exclude = [], limit = 5 }: { user: 
     const finish = (next: State) => { if (!cancelled) setState(next); };
     try {
       const cached = JSON.parse(sessionStorage.getItem(CACHE_KEY) ?? 'null');
-      if (cached && Date.now() - cached.at < CACHE_MS) {
-        finish({ kind: 'ready', repos: selectRepos(cached.data, exclude, limit), fetchedAt: new Date(cached.at).toISOString() });
-        return () => { cancelled = true; };
+      const age = cached && typeof cached.at === 'number' ? Date.now() - cached.at : Infinity;
+      if (age >= 0 && age < CACHE_MS) {
+        const repos = selectRepos(cached.data, user, exclude, limit);
+        if (repos.length) {
+          finish({ kind: 'ready', repos });
+          return () => { cancelled = true; };
+        }
       }
     } catch {
       // Ignore unreadable cache.
@@ -56,14 +41,14 @@ export default function ActivityFeed({ user, exclude = [], limit = 5 }: { user: 
       signal: controller.signal,
     })
       .then(async (response) => {
-        if (response.status === 403 || response.status === 429) throw new Error('GitHub’s rate limit for this network was reached.');
-        if (!response.ok) throw new Error(`GitHub returned ${response.status}.`);
-        const data = await response.json();
-        try { sessionStorage.setItem(CACHE_KEY, JSON.stringify({ at: Date.now(), data })); } catch { /* storage unavailable */ }
-        const repos = selectRepos(data, exclude, limit);
-        finish(repos.length ? { kind: 'ready', repos, fetchedAt: new Date().toISOString() } : { kind: 'unavailable', reason: 'No public repositories were returned.' });
+        if (!response.ok) { finish({ kind: 'unavailable', reason: describeFailure(null, response.status) }); return; }
+        const data: unknown = await response.json();
+        const repos = selectRepos(data, user, exclude, limit);
+        // Cache only the sanitized fields, never the raw response.
+        try { sessionStorage.setItem(CACHE_KEY, JSON.stringify({ at: Date.now(), data: repos.map((r) => ({ name: r.name, description: r.description, pushed_at: r.pushedAt })) })); } catch { /* storage unavailable */ }
+        finish(repos.length ? { kind: 'ready', repos } : { kind: 'unavailable', reason: 'No public repositories were returned.' });
       })
-      .catch((error: Error) => finish({ kind: 'unavailable', reason: error.name === 'AbortError' ? 'GitHub did not respond in time.' : error.message }))
+      .catch((error: unknown) => finish({ kind: 'unavailable', reason: describeFailure(error) }))
       .finally(() => clearTimeout(timeout));
     return () => { cancelled = true; controller.abort(); clearTimeout(timeout); };
     // exclude and limit are static props on this site.
@@ -81,8 +66,8 @@ export default function ActivityFeed({ user, exclude = [], limit = 5 }: { user: 
       <ul className="activity" aria-label="Recently pushed public repositories">
         {state.repos.map((repo) => (
           <li key={repo.name}>
-            <a href={repo.html_url} {...external}>{repo.name}</a>
-            <RelativeTime iso={repo.pushed_at} />
+            <a href={repo.href} {...external}>{repo.name}</a>
+            <RelativeTime iso={repo.pushedAt} />
             {repo.description && <p>{repo.description}</p>}
           </li>
         ))}

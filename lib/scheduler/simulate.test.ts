@@ -168,4 +168,10 @@ describe('shareable URLs', async () => {
     expect(configFromSearch('?workers=abc&strategy=<script>')).toEqual(DEFAULT_CONFIG);
     expect(configFromSearch('?jobCount=1e9')).toEqual(DEFAULT_CONFIG);
   });
+  it('ignores values outside the sliders and keeps the valid ones', () => {
+    expect(configFromSearch('?workers=64&arrivalRate=30')).toEqual({ ...DEFAULT_CONFIG, arrivalRate: 30 });
+    expect(configFromSearch('?jobCount=2000')).toEqual(DEFAULT_CONFIG);
+    expect(configFromSearch('?seed=-1')).toEqual(DEFAULT_CONFIG);
+    expect(configFromSearch('?seed=7')).toEqual({ ...DEFAULT_CONFIG, seed: 7 });
+  });
 });
