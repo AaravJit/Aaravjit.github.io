@@ -1,0 +1,27 @@
+.page { padding: 2rem var(--gutter) 4rem; background: var(--bg-sunken); }
+.screenNote { max-width: 8.5in; margin: 0 auto 1rem; color: var(--ink-2); font-size: 0.9rem; }
+.sheet {
+  max-width: 8.5in; margin: 0 auto; background: #fff; color: #111; padding: 0.5in 0.6in;
+  font-family: Georgia, 'Times New Roman', serif; font-size: 9.6pt; line-height: 1.2;
+  box-shadow: var(--shadow); border-radius: 4px;
+}
+.sheet a { color: inherit; }
+.head { text-align: center; margin-bottom: 6pt; }
+.head h1 { font-family: inherit; font-size: 19pt; letter-spacing: 0.04em; font-weight: 700; color: #111; text-transform: uppercase; }
+.headline { font-weight: 700; font-size: 10.5pt; margin-top: 2pt; }
+.contact { font-size: 9.5pt; margin-top: 2pt; }
+.sheet h2 { font-family: inherit; font-size: 10.5pt; text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 1px solid #555; padding-bottom: 1pt; margin: 7pt 0 3pt; color: #111; font-weight: 700; }
+.sheet p { margin: 0; }
+.sheet ul { margin: 2pt 0 0 14pt; padding: 0; list-style: disc; }
+.sheet li { margin: 0 0 1.5pt; padding-left: 1pt; }
+.skills { list-style: none !important; margin-left: 0 !important; }
+.entry { margin-top: 4pt; break-inside: avoid; }
+.row { display: flex; justify-content: space-between; gap: 12pt; }
+.row span { white-space: nowrap; }
+.sub { font-style: italic; font-size: 9.5pt; }
+.note { font-size: 9pt; font-style: italic; color: #333; }
+@media print {
+  .page { padding: 0; background: #fff; }
+  .sheet { box-shadow: none; padding: 0; max-width: none; border-radius: 0; }
+}
+@page { size: Letter; margin: 0.35in 0.5in; }

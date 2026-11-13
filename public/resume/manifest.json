@@ -1,0 +1,17 @@
+{
+  "sourceHash": "cc9c36eb62e9d471558414edc4c388eb65398b3c80fd3a1b7f28a3bad80164d7",
+  "sources": [
+    "data/resume.ts",
+    "data/timeline.ts",
+    "data/profile.ts",
+    "app/resume/[id]/page.tsx",
+    "app/resume/[id]/resume.module.css"
+  ],
+  "variants": [
+    "aarav-jit-resume-systems.pdf",
+    "aarav-jit-resume-software.pdf",
+    "aarav-jit-resume-it-support.pdf",
+    "aarav-jit-resume-security.pdf"
+  ],
+  "default": "systems"
+}

@@ -1,52 +1,163 @@
-import Image from 'next/image';
 import Link from 'next/link';
-import Navigation from '../components/Navigation';
-import { ProjectStatus, TechnologyTags } from '../components/ProjectUI';
-import { education, experience, moreProjects, projects, site } from '../data/portfolio';
+import ActivityFeed from '../components/ActivityFeed';
+import ProjectRow from '../components/ProjectRow';
+import { LiveDuration, LiveRange } from '../components/time/Live';
+import { Arrow, external, SectionHead } from '../components/ui';
+import { decisions } from '../data/decisions';
+import { buildDisclosure, profile } from '../data/profile';
+import { domains, featuredProjects, projects, type Domain } from '../data/projects';
+import { education, employment } from '../data/timeline';
 
-const external = { target: '_blank', rel: 'noopener noreferrer' } as const;
-const skills = [
-  { symbol: 'OS', title: 'Operating systems / systems', items: ['Windows 10/11', 'Arch Linux', 'Linux command line', 'Desktop environments', 'PowerShell fundamentals'] },
-  { symbol: '</>', title: 'Development', items: ['Bash', 'Python', 'TypeScript', 'JavaScript', 'Next.js', 'Git', 'GitHub'] },
-  { symbol: '$_', title: 'Linux / administration', items: ['systemd', 'journalctl', 'NetworkManager', 'Package management', 'Processes', 'Services', 'Accounts and permissions'] },
-  { symbol: 'NET', title: 'Networking', items: ['TCP/IP', 'IPv4', 'DNS', 'DHCP', 'ICMP', 'Ethernet', 'Wi-Fi', 'Common ports and protocols'] },
-  { symbol: 'FIX', title: 'Troubleshooting', items: ['Software installation', 'PC hardware', 'Storage diagnostics', 'Memory diagnostics', 'Network connectivity', 'Windows/Linux troubleshooting'] },
-] as const;
-
-function Heading({ number, children, intro }: { number: string; children: React.ReactNode; intro?: string }) {
-  return <div className="section-heading"><p>{number}</p><h2>{children}</h2>{intro && <span>{intro}</span>}</div>;
-}
+const walmart = employment[0];
+const arc = education[0];
 
 export default function Home() {
-  return <><Navigation /><main id="top">
-    <section className="hero" aria-labelledby="hero-title"><div className="container hero-grid">
-      <div className="hero-copy"><p className="eyebrow"><span aria-hidden="true" /> {site.location} · Open to technical opportunities</p><h1 id="hero-title">{site.name}</h1><p className="hero-role">{site.headline}</p><p className="hero-summary">Cybersecurity student with prior computer science coursework building software, Linux environments, automation workflows, and hands-on systems projects. Interested in technology from application software through operating systems, networking, and hardware.</p><div className="hero-actions"><a className="button primary" href="#projects">View Projects</a><a className="button secondary" href="#about">About Me</a></div><div className="social-links" aria-label="Professional links"><a href={site.github} {...external}>GitHub ↗</a><a href={site.linkedin} {...external}>LinkedIn ↗</a><a href="/resume.pdf" {...external}>Resume ↗</a></div></div>
-      <div className="terminal" aria-label="Technical focus presented as terminal output"><div className="terminal-bar"><span /><span /><span /><code>aarav@portfolio:~</code></div><div className="terminal-body"><p><b>aarav@portfolio</b>:~$ whoami</p><output>student · software / systems builder</output><p><b>aarav@portfolio</b>:~$ cat focus.txt</p><output>Linux · Software · Systems · Cybersecurity</output><p><b>aarav@portfolio</b>:~$ git status --short</p><output><em>M</em> building, learning, troubleshooting</output><i className="cursor" aria-hidden="true" /></div></div>
-    </div></section>
+  const byDomain = (domain: Domain) => projects.filter((p) => p.domains.includes(domain) && p.slug !== 'portfolio');
+  return (
+    <>
+      <section className="hero" aria-labelledby="hero-title">
+        <div className="wrap">
+          <p className="eyebrow rise">{profile.location} · Open to early-career roles</p>
+          <h1 id="hero-title" className="rise rise-2" style={{ marginTop: '1.2rem' }}>{profile.name}</h1>
+          <p className="tagline rise rise-2">Software. <span>Systems.</span> Infrastructure.</p>
+          <p className="lede rise rise-3">{profile.intro} {profile.why}</p>
+          <div className="actions rise rise-4">
+            <Link className="btn btn-primary" href="/work/">Explore engineering work <Arrow /></Link>
+            <a className="btn" href="/resume/aarav-jit-resume.pdf" download>Download résumé</a>
+            <a className="btn" href={profile.github} {...external}>GitHub ↗</a>
+            <a className="btn btn-ghost" href={profile.linkedin} {...external}>Contact on LinkedIn ↗</a>
+          </div>
+        </div>
+      </section>
 
-    <section id="about" className="section about"><div className="container about-grid"><Heading number="01 — About">I like figuring out how things actually work.</Heading><div className="about-copy"><p>I am studying cybersecurity after prior computer science coursework, with hands-on Windows and Linux experience spanning command-line work, Arch Linux desktop configuration, PC building, and software and hardware troubleshooting.</p><p>I enjoy following a problem through system layers—processes, services, logs, permissions, networking, and the hardware underneath—and turning what I learn into practical software and repeatable workflows.</p><dl className="quick-facts"><div><dt>Based in</dt><dd>{site.location}</dd></div><div><dt>Current path</dt><dd>Cybersecurity &amp; systems</dd></div><div><dt>Hands-on systems</dt><dd>Windows &amp; Linux</dd></div><div><dt>Building with</dt><dd>Software, Linux &amp; automation</dd></div></dl></div></div></section>
+      <section className="wrap" aria-label="At a glance" style={{ paddingBottom: 'clamp(3rem, 7vw, 5rem)' }}>
+        <dl className="facts">
+          <div className="fact"><dt>{arc.organization} · <LiveRange record={arc} /></dt><dd>Cybersecurity &amp; Information Assurance student</dd></div>
+          <div className="fact"><dt>{walmart.organization} · <LiveDuration record={walmart} /> · high-volume online order fulfillment</dt><dd>Working while I study and build</dd></div>
+          <div className="fact"><dt>Pathway, RoadPing and Pull Up keep access rules in Postgres, not just the API</dt><dd>Row-level security in three apps</dd></div>
+          <div className="fact"><dt>Aarav Hyprland backs up, validates, and rolls back on any failure</dt><dd>A Linux installer that can’t strand a machine</dd></div>
+        </dl>
+      </section>
 
-    <section id="projects" className="section project-section"><div className="container"><Heading number="02 — Projects" intro="Practical work across Linux environments, software products, and deployed applications.">Selected work</Heading>
-      <article className="featured-project"><div className="featured-copy"><p className="project-kicker">{projects.hyprland.category}</p><h3>{projects.hyprland.name}</h3><h4>{projects.hyprland.subtitle}</h4><p>A reusable, Bash-based installation workflow for deploying a personalized Hyprland environment on Arch Linux. It includes Intel, AMD, and NVIDIA configuration paths and has been deployed on desktop hardware and an HP OmniBook laptop.</p><ul className="proof-list"><li><b>01</b><span>Hardware-aware configuration and package management</span></li><li><b>02</b><span>systemd and journalctl setup and troubleshooting</span></li><li><b>03</b><span>Git-tracked configuration, setup guidance, and documentation</span></li></ul><TechnologyTags tags={projects.hyprland.tags} /><div className="project-actions"><Link className="button light" href={projects.hyprland.caseStudy}>View Case Study</Link><a href={projects.hyprland.repository} {...external}>Repository ↗</a></div></div><div className="project-visual"><Image src="/hyprlandproof.webp" width={1920} height={804} sizes="(max-width: 850px) calc(100vw - 64px), 52vw" alt="Configured Hyprland desktop with application launcher and system panels on Arch Linux" priority /><Image className="terminal-shot" src="/hyprlandproofterminal.webp" width={1920} height={804} sizes="(max-width: 850px) calc(100vw - 64px), 30vw" alt="Terminal windows open in the configured Aarav Hyprland desktop environment" /></div></article>
-      <div className="additional-heading"><div><p className="project-kicker">Product engineering</p><h3>Software Products</h3></div><span>One evolving · one deployed</span></div>
-      <div className="project-cards">
-        <article className="product-card"><div className="product-card-top"><p>{projects.pathway.category}</p><ProjectStatus status={projects.pathway.status} /></div><div className="product-diagram" aria-label="Pathway guided workflow"><span>Resume</span><i>→</i><span>Job</span><i>→</i><span>Analyze</span><i>→</i><span>Tailor</span></div><h3>{projects.pathway.name}</h3><p>{projects.pathway.description}</p><TechnologyTags tags={projects.pathway.tags} /><div className="product-card-actions"><Link href={projects.pathway.caseStudy}>View Case Study <span>→</span></Link></div></article>
-        <article className="product-card"><div className="product-card-top"><p>{projects.wrenchAI.category}</p><ProjectStatus status={projects.wrenchAI.status} /></div><div className="product-card-visual"><Image src="/wrenchai-dashboard.webp" width={1600} height={1071} sizes="(max-width: 600px) calc(100vw - 64px), (max-width: 1200px) 45vw, 520px" alt="WrenchAI dashboard showing study navigation, performance tabs, and General, Airframe, and Powerplant practice sections" /></div><h3>{projects.wrenchAI.name}</h3><p>{projects.wrenchAI.description}</p><TechnologyTags tags={projects.wrenchAI.tags} /><div className="product-card-actions"><Link href={projects.wrenchAI.caseStudy}>View Case Study <span>→</span></Link><a href={projects.wrenchAI.liveSite} {...external}>View Live Site <span>↗</span></a></div></article>
-      </div>
-      <div className="additional-heading"><div><p className="project-kicker">Breadth</p><h3>More projects</h3></div><span>{moreProjects.length} repositories · problem, decisions, status</span></div>
-      <div className="more-projects">{moreProjects.map((item) => <article className="mini-project" key={item.name}>
-        <div className="product-card-top"><p>{item.category}</p><ProjectStatus status={item.status} /></div>
-        <h3>{item.name}</h3><p>{item.problem}</p>
-        <p className="mini-label">Key decisions</p><ul>{item.decisions.map((decision) => <li key={decision}>{decision}</li>)}</ul>
-        <p className="mini-label">Where it stands</p><p>{item.outcome}</p>
-        <TechnologyTags tags={item.tags} />
-        <div className="product-card-actions">{item.caseStudy && <Link href={item.caseStudy}>Case Study <span>→</span></Link>}<a href={item.repository} {...external}>Repository <span>↗</span></a></div>
-      </article>)}</div>
-    </div></section>
+      <section className="section" aria-labelledby="domains-title">
+        <div className="wrap">
+          <SectionHead eyebrow="What I work on" title="Four areas, each backed by a project you can open." id="domains-title">
+            I’m looking for roles in software, systems and Linux, infrastructure, IT support and security. Here is the evidence for each.
+          </SectionHead>
+          <div className="grid grid-4">
+            {(Object.keys(domains) as Domain[]).map((domain) => (
+              <div className="domain" key={domain}>
+                <h3>{domains[domain].title}</h3>
+                <p>{domains[domain].summary}</p>
+                <ul>{byDomain(domain).map((p) => <li key={p.slug}><Link href={p.caseStudy ?? `/work/#${p.slug}`}>{p.name}</Link></li>)}</ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-    <section id="skills" className="section skills-section"><div className="container"><Heading number="03 — Skills" intro="A practical toolkit built through projects, system use, and continued study.">Technical toolkit</Heading><div className="skills-grid">{skills.map((group) => <article className="skill-group" key={group.title}><div className="skill-top"><span aria-hidden="true">{group.symbol}</span><h3>{group.title}</h3></div><ul>{group.items.map((item) => <li key={item}>{item}</li>)}</ul></article>)}</div></div></section>
-    <section id="experience" className="section"><div className="container split-section"><Heading number="04 — Experience">Reliability in structured, high-volume work.</Heading><div className="experience-list">{experience.map((job, index) => <article className="timeline" key={job.company}><div className="timeline-marker" aria-hidden="true" /><div className="timeline-head"><div><p>{job.company} · {job.location}</p><h3>{job.title}</h3></div><time>{job.dates}</time></div><p>{index === 0 ? 'Use inventory and order-management systems, communicate with customers, and coordinate accurate handoffs while priorities shift in a high-volume environment.' : 'Used handheld fulfillment systems to locate, verify, stage, and prepare accurate orders under peak seasonal deadlines.'}</p></article>)}</div></div></section>
-    <section id="education" className="section education-section"><div className="container split-section"><Heading number="05 — Education">Cybersecurity study built on a computer science foundation.</Heading><div className="education-list">{education.map((item, index) => <article className={index ? 'prior' : ''} key={item.school}><span>{item.dates}{'location' in item ? ` · ${item.location}` : ''}</span><h3>{item.school}</h3><p>{item.program}</p>{index === 0 && <p className="education-note">Upcoming study includes networking, systems administration, routing and wireless, and network security fundamentals.</p>}</article>)}</div></div></section>
-    <section id="contact" className="contact-section"><div className="container contact-grid"><div><p className="eyebrow">{site.location} · Let’s connect</p><h2>Interested in building and learning with a technical team.</h2><p>I’m open to software, IT and systems, cybersecurity, Linux and infrastructure, technical support, and other early-career technology opportunities.</p></div><div className="contact-links"><a href={site.linkedin} {...external}><span>LinkedIn</span><b>Connect ↗</b></a><a href={site.github} {...external}><span>GitHub</span><b>View projects ↗</b></a><a href="/resume.pdf" {...external}><span>Resume</span><b>Open PDF ↗</b></a></div></div></section>
-  </main><footer><div className="container"><b>AJ<span>.</span></b><p>© {new Date().getFullYear()} Aarav Jit. Built with Next.js and deployed through GitHub Pages.</p><a href="#top">Back to top ↑</a></div></footer></>;
+      <section className="section" aria-labelledby="work-title">
+        <div className="wrap">
+          <div className="section-head section-head-row">
+            <div style={{ display: 'grid', gap: '0.9rem', maxWidth: 720 }}>
+              <p className="eyebrow">Selected work</p>
+              <h2 id="work-title">What I’ve built, how, and where it falls short.</h2>
+              <p>Every project lists its evidence, my role, how the code was produced, and its biggest current limitation.</p>
+            </div>
+            <Link className="text-link" href="/work/">All {projects.length} projects →</Link>
+          </div>
+          <div className="project-list">
+            {featuredProjects.map((project, index) => <ProjectRow key={project.slug} project={project} priority={index === 1} />)}
+          </div>
+          <p className="callout" style={{ marginTop: '1.5rem' }}><strong>How I build.</strong> {buildDisclosure.short} <Link href="/about/#how-i-build">More on how I work →</Link></p>
+        </div>
+      </section>
+
+      <section className="section" aria-labelledby="lab-title">
+        <div className="wrap grid grid-2" style={{ alignItems: 'center', gap: 'clamp(2rem, 5vw, 4rem)' }}>
+          <div>
+            <p className="eyebrow">Engineering Lab <span className="badge badge-new" style={{ marginLeft: '0.5rem' }}>New</span></p>
+            <h2 id="lab-title" style={{ fontSize: 'clamp(1.8rem, 3.6vw, 2.6rem)', margin: '0.9rem 0 1rem' }}>A job-queue simulator you can break.</h2>
+            <p className="lede">Change worker count, scheduling strategy, failure rate and retry backoff, and watch latency, throughput and dead letters respond. Deterministic, seeded, tested, and labeled as a simulation.</p>
+            <div className="actions" style={{ marginTop: '1.6rem' }}>
+              <Link className="btn btn-primary" href="/lab/scheduler/">Open the simulator <Arrow /></Link>
+              <Link className="btn" href="/notes/retries-and-backoff-in-a-simulator/">Read the write-up</Link>
+            </div>
+          </div>
+          <div className="card">
+            <p className="kicker">Why this lab</p>
+            <p>HireStudio’s worker claims jobs with a read-then-update and never retries a failure. The simulator models the design I would replace it with: bounded attempts, capped exponential backoff, jitter and a dead-letter state.</p>
+            <Link className="text-link" href="/decisions/#job-claims">Read the decision record →</Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="section" aria-labelledby="decisions-title">
+        <div className="wrap">
+          <div className="section-head section-head-row">
+            <div style={{ display: 'grid', gap: '0.9rem', maxWidth: 720 }}>
+              <p className="eyebrow">Engineering decisions</p>
+              <h2 id="decisions-title">How I reason about tradeoffs.</h2>
+              <p>Short decision records from real repositories: context, options, decision, tradeoffs and result.</p>
+            </div>
+            <Link className="text-link" href="/decisions/">All {decisions.length} decisions →</Link>
+          </div>
+          <div className="grid grid-3">
+            {decisions.slice(0, 3).map((decision) => (
+              <Link key={decision.id} className="card card-link" href={`/decisions/#${decision.id}`}>
+                <span className="kicker">{decision.project}</span>
+                <h3>{decision.title}</h3>
+                <p>{decision.context.split('. ')[0]}.</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section" aria-labelledby="timeline-title">
+        <div className="wrap grid grid-2" style={{ gap: 'clamp(2rem, 5vw, 4rem)' }}>
+          <div>
+            <SectionHead eyebrow="Experience and education" title="Work, school and building, in parallel." id="timeline-title">
+              Retail operations taught me to work accurately under time pressure and to escalate early. Those habits carry straight into how I debug and ship.
+            </SectionHead>
+            <Link className="text-link" href="/timeline/">Full timeline with projects →</Link>
+          </div>
+          <ol className="timeline">
+            {[...employment, ...education].map((record) => (
+              <li className="tl-item" key={record.id} data-kind={record.kind} style={{ gridTemplateColumns: 'minmax(0, 1fr)' }}>
+                <div className="tl-body">
+                  <span className="kind">{record.kind === 'work' ? 'Work' : 'Education'}</span>
+                  <h3>{record.kind === 'work' ? record.title : record.organization}</h3>
+                  <p className="org">{record.kind === 'work' ? `${record.organization} · ${record.location}` : record.title}</p>
+                  <p className="tl-when" style={{ marginTop: '0.35rem' }}><LiveRange record={record} /></p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="section" aria-labelledby="activity-title">
+        <div className="wrap grid grid-2" style={{ gap: 'clamp(2rem, 5vw, 4rem)' }}>
+          <SectionHead eyebrow="Recent activity" title="What I pushed recently." id="activity-title">
+            Fetched live from GitHub’s public API when you load the page. Dates are GitHub’s, not the page’s.
+          </SectionHead>
+          <ActivityFeed user={profile.githubUser} />
+        </div>
+      </section>
+
+      <section className="section" aria-labelledby="contact-title">
+        <div className="wrap">
+          <SectionHead eyebrow="Contact" title="Hiring for software, systems, IT or security?" id="contact-title">
+            {profile.availability} The recruiter page has a one-screen summary and role-specific résumés.
+          </SectionHead>
+          <div className="actions">
+            <a className="btn btn-primary" href={profile.linkedin} {...external}>Message me on LinkedIn ↗</a>
+            <Link className="btn" href="/recruiters/">Recruiter summary</Link>
+            <a className="btn" href="/resume/aarav-jit-resume.pdf" download>Download résumé</a>
+          </div>
+        </div>
+      </section>
+    </>
+  );
 }

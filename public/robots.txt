@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://aaravjit.github.io/sitemap.xml
