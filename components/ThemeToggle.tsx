@@ -11,7 +11,6 @@ function currentTheme(): Theme {
 }
 
 /** Theme script for <head>: applies a saved choice before first paint to avoid a flash. */
-export const themeScript = `try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}`;
 
 export default function ThemeToggle() {
   const [theme, setTheme] = useState<Theme | null>(null);

@@ -5,6 +5,8 @@
  * /resume/<id>/ pages built from this file.
  */
 export type ResumeId = 'systems' | 'software' | 'it-support' | 'security';
+/** The short key used in home-page URLs: /?focus=it|systems|software|security. */
+export type FocusKey = 'it' | 'systems' | 'software' | 'security';
 
 export interface ResumeProject {
   slug: string;
@@ -16,7 +18,10 @@ export interface ResumeProject {
 
 export interface ResumeVariant {
   id: ResumeId;
+  focus: FocusKey;
   label: string;
+  /** Three-part tagline for the home hero when this focus is selected. */
+  tagline: readonly [string, string, string];
   headline: string;
   summary: string;
   skills: readonly { label: string; items: string }[];
@@ -92,6 +97,8 @@ export const resumeProjects: Record<string, ResumeProject> = {
 export const resumeVariants: readonly ResumeVariant[] = [
   {
     id: 'systems',
+    focus: 'systems',
+    tagline: ['Linux.', 'Systems.', 'Infrastructure.'],
     label: 'Systems and infrastructure',
     headline: 'Linux, Systems and Infrastructure · Cybersecurity Student',
     summary: 'Cybersecurity and Information Assurance student who builds the systems side of software: a Linux installer with hardware detection and automatic rollback, and cloud backends whose access rules are enforced and tested in Postgres. Two-plus years in high-volume retail fulfillment.',
@@ -107,6 +114,8 @@ export const resumeVariants: readonly ResumeVariant[] = [
   },
   {
     id: 'software',
+    focus: 'software',
+    tagline: ['Applications.', 'Backends.', 'Testing.'],
     label: 'Software and product engineering',
     headline: 'Software and Product Engineering · Cybersecurity Student',
     summary: 'Builder of full applications from spec to deployment: authentication, data models with database-enforced access control, payments, background jobs and validated AI features. I work with AI coding agents and own the architecture, review and testing. Cybersecurity and Information Assurance student.',
@@ -121,6 +130,8 @@ export const resumeVariants: readonly ResumeVariant[] = [
   },
   {
     id: 'it-support',
+    focus: 'it',
+    tagline: ['Support.', 'Troubleshooting.', 'Networks.'],
     label: 'IT and technical support',
     headline: 'IT Support · Cybersecurity and Networking Student',
     summary: 'Cybersecurity and Information Assurance student with hands-on Windows and Linux troubleshooting, PC building and hardware configuration, and a Linux installer I built with backups and automatic rollback. Two-plus years of customer-facing, high-volume operations work with clear communication and disciplined escalation.',
@@ -135,6 +146,8 @@ export const resumeVariants: readonly ResumeVariant[] = [
   },
   {
     id: 'security',
+    focus: 'security',
+    tagline: ['Access control.', 'Privacy.', 'Security testing.'],
     label: 'Cybersecurity',
     headline: 'Cybersecurity · Application and Data Security',
     summary: 'Cybersecurity and Information Assurance student whose projects center on access control and privacy: Postgres row-level security, location-privacy threat modeling, signed webhooks, and security findings fixed with regression tests. Early in formal security training; no certifications yet.',

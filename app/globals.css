@@ -184,7 +184,7 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 0; }
 .hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 64px 64px; mask-image: radial-gradient(ellipse 70% 60% at 70% 20%, #000 0%, transparent 70%); -webkit-mask-image: radial-gradient(ellipse 70% 60% at 70% 20%, #000 0%, transparent 70%); opacity: 0.55; pointer-events: none; z-index: -1; }
 .hero h1 { font-size: clamp(3rem, 9vw, 6.4rem); letter-spacing: -0.045em; font-weight: 680; line-height: 0.98; }
 .hero .tagline { font-size: clamp(1.4rem, 3.4vw, 2.3rem); letter-spacing: -0.03em; color: var(--ink-3); font-weight: 560; margin-top: 0.7rem; line-height: 1.15; }
-.hero .tagline span { color: var(--ink); }
+.hero .tagline b { color: var(--ink); font-weight: inherit; }
 .hero .lede { margin-top: 1.8rem; }
 .hero .actions { margin-top: 2.2rem; }
 .hero-meta { display: flex; flex-wrap: wrap; gap: 0.5rem 1.4rem; margin-top: 2.4rem; color: var(--ink-3); font-size: 0.9rem; }
@@ -524,3 +524,35 @@ fieldset.control { border: 0; padding: 0; margin: 0; min-width: 0; }
 .role-projects { display: grid; gap: 0.45rem; padding-left: 1.1rem; font-size: 0.92rem; color: var(--ink-2); }
 .role-card .links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.2rem; margin-top: auto; padding-top: 0.4rem; font-size: 0.92rem; }
 @media print { .role-card { break-inside: avoid; } }
+
+/* ------------------------------------------------------------------ role focus (home) */
+/* Every view is in the static HTML; <html data-focus> (set from ?focus= before first paint) picks one. */
+.fv { display: none; }
+html:not([data-focus]) .fv-general,
+html[data-focus="it"] .fv-it,
+html[data-focus="systems"] .fv-systems,
+html[data-focus="software"] .fv-software,
+html[data-focus="security"] .fv-security { display: revert; }
+.contents { display: contents; }
+
+.focus-selector { margin-top: 2rem; }
+.focus-selector nav { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 0.9rem; }
+.focus-label { font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
+.focus-selector ul { display: flex; flex-wrap: wrap; gap: 0.35rem; list-style: none; padding: 0.25rem; border: 1px solid var(--line); border-radius: 999px; background: var(--bg-raised); }
+.focus-selector a { display: inline-flex; align-items: center; min-height: 36px; padding: 0.3rem 0.9rem; border-radius: 999px; color: var(--ink-2); text-decoration: none; font-size: 0.92rem; font-weight: 520; }
+.focus-selector a:hover { color: var(--ink); background: var(--bg-hover); }
+.focus-selector a[aria-current="true"] { color: var(--bg); background: var(--ink); }
+.focus-selector a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 560px) { .focus-selector ul { border-radius: 14px; } }
+
+.focus-panel { border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-raised); padding: clamp(1.2rem, 3vw, 2rem); display: grid; gap: 0.9rem; }
+.focus-panel h2 { font-size: clamp(1.4rem, 2.6vw, 1.9rem); }
+.focus-panel h3 { font-size: 1rem; margin-top: 0.3rem; }
+.focus-panel .kv > div { grid-template-columns: 170px minmax(0, 1fr); }
+@media (max-width: 560px) { .focus-panel .kv > div { grid-template-columns: minmax(0, 1fr); } }
+.focus-panel .links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.2rem; font-size: 0.95rem; }
+
+/* Long button labels (e.g. per-role résumé downloads) wrap instead of overflowing narrow phones. */
+@media (max-width: 420px) {
+  .btn { max-width: 100%; height: auto; min-height: 42px; padding-block: 0.5rem; white-space: normal; text-align: center; line-height: 1.3; }
+}

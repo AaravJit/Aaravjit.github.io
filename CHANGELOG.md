@@ -12,6 +12,16 @@ Prepared on branch `claude/project-thread-phnjy9`; not yet deployed.
 - `sitemap.xml` and `robots.txt` are now generated from the route list instead of hand-edited.
 - New CI workflow runs type check, lint, unit tests, build, post-build site checks and the résumé freshness check on every pull request. The deploy workflow runs the same checks before publishing and rebuilds monthly.
 
+### Release hardening
+- Résumé PDF build now serves `out/` from a loopback-only static server (`scripts/static-server.mjs`) that only answers GET/HEAD, rejects malformed URLs, `..` segments and symlinks that leave the export, and always closes Chromium and the server. Private résumé copies must be written outside the repository. PDFs are byte-for-byte reproducible. 19 regression tests.
+- GitHub Actions: least-privilege permissions, actions pinned to commit SHAs, Dependabot for actions and npm. Pull requests only run checks; only `main` can deploy.
+- GitHub feed rebuilds repository links from validated names instead of trusting API URLs, caps descriptions, versions its cache and shows a clear message when the API is rate-limited.
+- Scheduler share links ignore out-of-range values. JSON-LD escapes `<`.
+- Dev-only dependency advisories cleared (`npm audit` reports 0).
+
+### Role views
+- Home page "View as" selector: `/?focus=it`, `systems`, `software` or `security` adapts the headline, summary, skills, project order, evidence and the résumé download to that role. Missing or unknown values show the general view. Applied before first paint, works with back/forward, no reload. One source of truth in `data/resume.ts` and `lib/focus.ts`.
+
 ### Design
 - New dark-first design system with a light theme, theme toggle without a flash on load, and print styles.
 - Command palette (Ctrl/Cmd + K or `/`) for jumping to any page, project, decision or note.

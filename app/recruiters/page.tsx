@@ -1,12 +1,13 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import PrintButton from '../../components/PrintButton';
+import RoleQualifications from '../../components/RoleQualifications';
 import { LiveRange } from '../../components/time/Live';
 import { external, PageHead } from '../../components/ui';
 import { decisions } from '../../data/decisions';
 import { buildDisclosure, profile } from '../../data/profile';
-import { featuredProjects, projects } from '../../data/projects';
-import { defaultResume, recruiterRoleOrder, resumeProjects, resumeVariants } from '../../data/resume';
+import { featuredProjects } from '../../data/projects';
+import { defaultResume, recruiterRoleOrder, resumeVariants } from '../../data/resume';
 import { education, employment } from '../../data/timeline';
 
 export const metadata: Metadata = {
@@ -16,10 +17,6 @@ export const metadata: Metadata = {
 };
 
 const roles = recruiterRoleOrder.map((id) => resumeVariants.find((v) => v.id === id)!);
-const projectLink = (slug: string) => {
-  const project = projects.find((p) => p.slug === slug);
-  return project?.caseStudy ?? `/work/#${slug}`;
-};
 
 export default function RecruitersPage() {
   return (
@@ -104,23 +101,7 @@ export default function RecruitersPage() {
           <div className="role-grid">
             {roles.map((v) => (
               <article key={v.id} id={`role-${v.id}`} className="card role-card" aria-labelledby={`role-${v.id}-title`}>
-                <p className="kicker">{v.headline}</p>
-                <h3 id={`role-${v.id}-title`}>{v.label}</h3>
-                <p>{v.summary}</p>
-                <dl className="kv">
-                  {v.skills.map((skill) => <div key={skill.label}><dt>{skill.label}</dt><dd>{skill.items}</dd></div>)}
-                </dl>
-                <h4>Projects that show it</h4>
-                <ul className="role-projects">
-                  {v.projects.map((slug) => {
-                    const rp = resumeProjects[slug];
-                    return <li key={slug}><Link href={projectLink(slug)}>{rp.name.split(':')[0]}</Link>: {rp.bullets[0]}</li>;
-                  })}
-                </ul>
-                <div className="links">
-                  <a href={`/resume/${v.file}`} download>{v.label} résumé (PDF)</a>
-                  <Link href={`/resume/${v.id}/`}>View in browser</Link>
-                </div>
+                <RoleQualifications variant={v} headingId={`role-${v.id}-title`} />
               </article>
             ))}
           </div>

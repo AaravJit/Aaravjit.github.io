@@ -1,11 +1,16 @@
 import Link from 'next/link';
 import ActivityFeed from '../components/ActivityFeed';
+import FocusOrderedList from '../components/focus/FocusOrderedList';
+import FocusSelector from '../components/focus/FocusSelector';
+import Fv from '../components/focus/Fv';
+import RoleQualifications from '../components/RoleQualifications';
 import ProjectRow from '../components/ProjectRow';
 import { LiveDuration, LiveRange } from '../components/time/Live';
 import { Arrow, external, SectionHead } from '../components/ui';
 import { decisions } from '../data/decisions';
 import { buildDisclosure, profile } from '../data/profile';
 import { domains, featuredProjects, projects, type Domain } from '../data/projects';
+import { resumeVariants } from '../data/resume';
 import { education, employment } from '../data/timeline';
 
 const walmart = employment[0];
@@ -19,16 +24,33 @@ export default function Home() {
         <div className="wrap">
           <p className="eyebrow rise">{profile.location} · Open to early-career roles</p>
           <h1 id="hero-title" className="rise rise-2" style={{ marginTop: '1.2rem' }}>{profile.name}</h1>
-          <p className="tagline rise rise-2">Software. <span>Systems.</span> Infrastructure.</p>
-          <p className="lede rise rise-3">{profile.intro} {profile.why}</p>
+          <p className="tagline rise rise-2">
+            <Fv view="general" as="span">Software. <b>Systems.</b> Infrastructure.</Fv>
+            {resumeVariants.map((v) => <Fv key={v.id} view={v.focus} as="span">{v.tagline[0]} <b>{v.tagline[1]}</b> {v.tagline[2]}</Fv>)}
+          </p>
+          <Fv view="general" as="p" className="lede rise rise-3">{profile.intro} {profile.why}</Fv>
+          {resumeVariants.map((v) => <Fv key={v.id} view={v.focus} as="p" className="lede">{v.summary}</Fv>)}
           <div className="actions rise rise-4">
             <Link className="btn btn-primary" href="/work/">Explore engineering work <Arrow /></Link>
-            <a className="btn" href="/resume/aarav-jit-resume.pdf" download>Download résumé</a>
+            <Fv view="general" as="span"><a className="btn" href="/resume/aarav-jit-resume.pdf" download>Download résumé</a></Fv>
+            {resumeVariants.map((v) => <Fv key={v.id} view={v.focus} as="span"><a className="btn" href={`/resume/${v.file}`} download>Download {v.label} résumé</a></Fv>)}
             <a className="btn" href={profile.github} {...external}>GitHub ↗</a>
             <a className="btn btn-ghost" href={profile.linkedin} {...external}>Contact on LinkedIn ↗</a>
           </div>
+          <FocusSelector />
         </div>
       </section>
+
+      {resumeVariants.map((v) => (
+        <Fv key={v.id} view={v.focus}>
+          <section className="wrap" aria-labelledby={`focus-${v.focus}-title`} style={{ paddingBottom: 'clamp(2rem, 5vw, 3.5rem)' }}>
+            <div className="focus-panel">
+              <RoleQualifications variant={v} headingId={`focus-${v.focus}-title`} headingLevel={2} links="home" />
+              <p className="small muted">Same verified history in every view; only the emphasis changes. <Link href="/">Show the general portfolio</Link>.</p>
+            </div>
+          </section>
+        </Fv>
+      ))}
 
       <section className="wrap" aria-label="At a glance" style={{ paddingBottom: 'clamp(3rem, 7vw, 5rem)' }}>
         <dl className="facts">
@@ -66,9 +88,11 @@ export default function Home() {
             </div>
             <Link className="text-link" href="/work/">All {projects.length} projects →</Link>
           </div>
-          <div className="project-list">
-            {featuredProjects.map((project) => <ProjectRow key={project.slug} project={project} />)}
-          </div>
+          <FocusOrderedList
+            className="project-list"
+            general={featuredProjects.map((p) => p.slug)}
+            items={Object.fromEntries(projects.filter((p) => p.featured || resumeVariants.some((v) => v.projects.includes(p.slug))).filter((p) => p.slug !== 'portfolio').map((p) => [p.slug, <ProjectRow key={p.slug} project={p} />]))}
+          />
           <p className="callout" style={{ marginTop: '1.5rem' }}><strong>How I build.</strong> {buildDisclosure.short} <Link href="/about/#how-i-build">More on how I work →</Link></p>
         </div>
       </section>
@@ -154,7 +178,8 @@ export default function Home() {
           <div className="actions">
             <a className="btn btn-primary" href={profile.linkedin} {...external}>Message me on LinkedIn ↗</a>
             <Link className="btn" href="/recruiters/">Recruiter summary</Link>
-            <a className="btn" href="/resume/aarav-jit-resume.pdf" download>Download résumé</a>
+            <Fv view="general" as="span"><a className="btn" href="/resume/aarav-jit-resume.pdf" download>Download résumé</a></Fv>
+            {resumeVariants.map((v) => <Fv key={v.id} view={v.focus} as="span"><a className="btn" href={`/resume/${v.file}`} download>Download {v.label} résumé</a></Fv>)}
           </div>
         </div>
       </section>
